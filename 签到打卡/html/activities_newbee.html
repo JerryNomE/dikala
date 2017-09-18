@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>个人模式</title>
+
+	<!-- 导入css -->
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+	<link rel="stylesheet" type="text/css" href="../css/activities.css">
+	
+	<!-- 导入js、jq -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/activities.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+	</script>
+</head>
+<body onload="init()">
+	<div class="header">
+		<div class="tit"><img src="../img/activities/banner.png" alt=""><img src="../img/activities/newbee.png" alt="" class="mark"></div>
+		<div id="inner_header_btns">
+			<div class="first">
+				<div class="left">分类</div>
+				<div class="right">推荐</div>
+			</div>
+			<div class="first_lines">
+				<div class="line left set"></div>
+				<div class="line right"></div>
+			</div>
+
+			<div class="second">
+				<div class="wak set">早起</div>
+				<div class="run">跑步</div>
+				<div class="lib">泡馆</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fixed_header_btns" class="disappear">
+		<div class="first">
+			<div class="left">分类</div>
+			<div class="right">推荐</div>
+		</div>
+		<div class="first_lines">
+			<div class="line left set"></div>
+			<div class="line right"></div>
+		</div>
+
+		<div class="second">
+			<div class="wak set">早起</div>
+			<div class="run">跑步</div>
+			<div class="lib">泡馆</div>
+		</div>
+	</div>
+	
+	<!-- page第一位0 分类 1推荐 第二位0早 1跑 2馆 href里面放跳转-->
+	<a class="container" id="page00" href="">
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic1.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">这里是早起活动</div>
+				<div class="details">
+					<div class="info_line">周期：03.27 - 04.02</div>
+					<div class="info_line">目标：在7:30打卡3天</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：50</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic2.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">呼吸7点的新鲜空气</div>
+				<div class="details">
+					<div class="info_line">周期：03.05 - 04.05</div>
+					<div class="info_line">目标：在7:00打卡30天</div>
+					<div class="info_line">承诺金：10元</div>
+					<div class="info_line">已报名人数：502</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic3.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">早睡！ 和熊猫眼说拜拜</div>
+				<div class="details">
+					<div class="info_line">周期：03.25 - 04.25</div>
+					<div class="info_line">目标：30天在7:00打卡</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：350</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic3.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">早睡！ 和熊猫眼说拜拜</div>
+				<div class="details">
+					<div class="info_line">周期：03.25 - 04.25</div>
+					<div class="info_line">目标：30天在7:00打卡</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：350</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic3.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">早睡！ 和熊猫眼说拜拜</div>
+				<div class="details">
+					<div class="info_line">周期：03.25 - 04.25</div>
+					<div class="info_line">目标：30天在7:00打卡</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：350</div>
+				</div>
+			</div>
+		</div>
+	</a>
+	<a class="container disappear" id="page01" href="">
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic1.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">这里是跑步活动</div>
+				<div class="details">
+					<div class="info_line">周期：03.27 - 04.02</div>
+					<div class="info_line">目标：在7:30打卡3天</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：50</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic2.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">呼吸7点的新鲜空气</div>
+				<div class="details">
+					<div class="info_line">周期：03.05 - 04.05</div>
+					<div class="info_line">目标：在7:00打卡30天</div>
+					<div class="info_line">承诺金：10元</div>
+					<div class="info_line">已报名人数：502</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic3.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">早睡！ 和熊猫眼说拜拜</div>
+				<div class="details">
+					<div class="info_line">周期：03.25 - 04.25</div>
+					<div class="info_line">目标：30天在7:00打卡</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：350</div>
+				</div>
+			</div>
+		</div>
+	</a>
+	<a class="container disappear" id="page02" href="">
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic1.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">这里是泡馆活动</div>
+				<div class="details">
+					<div class="info_line">周期：03.27 - 04.02</div>
+					<div class="info_line">目标：在7:30打卡3天</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：50</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic2.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">呼吸7点的新鲜空气</div>
+				<div class="details">
+					<div class="info_line">周期：03.05 - 04.05</div>
+					<div class="info_line">目标：在7:00打卡30天</div>
+					<div class="info_line">承诺金：10元</div>
+					<div class="info_line">已报名人数：502</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic3.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">早睡！ 和熊猫眼说拜拜</div>
+				<div class="details">
+					<div class="info_line">周期：03.25 - 04.25</div>
+					<div class="info_line">目标：30天在7:00打卡</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：350</div>
+				</div>
+			</div>
+		</div>
+	</a>
+	<a class="container disappear" id="page10" href="">
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic2.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">这里是早起活动</div>
+				<div class="details">
+					<div class="info_line">周期：03.27 - 04.02</div>
+					<div class="info_line">目标：在7:30打卡3天</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：50</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic2.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">呼吸7点的新鲜空气</div>
+				<div class="details">
+					<div class="info_line">周期：03.05 - 04.05</div>
+					<div class="info_line">目标：在7:00打卡30天</div>
+					<div class="info_line">承诺金：10元</div>
+					<div class="info_line">已报名人数：502</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic3.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">早睡！ 和熊猫眼说拜拜</div>
+				<div class="details">
+					<div class="info_line">周期：03.25 - 04.25</div>
+					<div class="info_line">目标：30天在7:00打卡</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：350</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic3.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">早睡！ 和熊猫眼说拜拜</div>
+				<div class="details">
+					<div class="info_line">周期：03.25 - 04.25</div>
+					<div class="info_line">目标：30天在7:00打卡</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：350</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic3.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">早睡！ 和熊猫眼说拜拜</div>
+				<div class="details">
+					<div class="info_line">周期：03.25 - 04.25</div>
+					<div class="info_line">目标：30天在7:00打卡</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：350</div>
+				</div>
+			</div>
+		</div>
+	</a>
+	<a class="container disappear" id="page11" href="">
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic2.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">这里是跑步活动</div>
+				<div class="details">
+					<div class="info_line">周期：03.27 - 04.02</div>
+					<div class="info_line">目标：在7:30打卡3天</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：50</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic2.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">呼吸7点的新鲜空气</div>
+				<div class="details">
+					<div class="info_line">周期：03.05 - 04.05</div>
+					<div class="info_line">目标：在7:00打卡30天</div>
+					<div class="info_line">承诺金：10元</div>
+					<div class="info_line">已报名人数：502</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic3.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">早睡！ 和熊猫眼说拜拜</div>
+				<div class="details">
+					<div class="info_line">周期：03.25 - 04.25</div>
+					<div class="info_line">目标：30天在7:00打卡</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：350</div>
+				</div>
+			</div>
+		</div>
+	</a>
+	<a class="container disappear" id="page12" href="">
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic2.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">这里是泡馆活动</div>
+				<div class="details">
+					<div class="info_line">周期：03.27 - 04.02</div>
+					<div class="info_line">目标：在7:30打卡3天</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：50</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic2.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">呼吸7点的新鲜空气</div>
+				<div class="details">
+					<div class="info_line">周期：03.05 - 04.05</div>
+					<div class="info_line">目标：在7:00打卡30天</div>
+					<div class="info_line">承诺金：10元</div>
+					<div class="info_line">已报名人数：502</div>
+				</div>
+			</div>
+		</div>
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle_newbee.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic3.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">早睡！ 和熊猫眼说拜拜</div>
+				<div class="details">
+					<div class="info_line">周期：03.25 - 04.25</div>
+					<div class="info_line">目标：30天在7:00打卡</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：350</div>
+				</div>
+			</div>
+		</div>
+	</a>	
+
+	<div class="footer">
+		<a class="rank_list" href="">
+			<img src="../img/activities/rank_list.png" alt=""> 排行榜
+		</a>
+		<a class="personal" href="">
+			<img src="../img/activities/personal.png" alt=""> 个人中心
+		</a>
+	</div>
+</body>
+</html>

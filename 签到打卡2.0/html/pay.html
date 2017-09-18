@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="wap-font-scale" content="no">
+
+	<title>支付</title>
+	<!-- <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script> -->
+	<!-- <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script> -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+
+	<script type="text/javascript" src="../js/page_init.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			var confirm = new Vue({
+				el: "#confirm-sum",
+				data:{
+					payment: 60,
+				}
+			});
+		});
+		// 成功提交金额之后动作
+		var submit = function () {
+			
+		};
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../css/P_balance_child.css">
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/balance_child.js"></script>
+</head>
+<body>
+	<div class="header" id="user">
+		<p>支付</p>
+	</div>
+	
+	<div class="container">
+		<div class="pageName">
+			<div class="round cash"></div>
+			<div class="words">
+				<div class="title">存入金额</div>
+				<div class="description" id="description">请确认</div>
+			</div>
+		</div>
+
+		<div class="text" id="block"></div>
+		<div class="text" id="confirm-sum">
+			该笔订单支付金额为<span class="payment">{{ payment }}</span>元
+		</div>
+		<!-- 成功 -->
+		<div class="text" id="succeed">
+			您的存入请求正在处理中...<br>
+			请留意您的微信账户
+		</div>
+	</div>
+
+	<div class="btns">
+		<a class="btn_gradient_yellow" id="comfirm"><p>确认存入</p></a>
+		<a id="cancel" class="btn_gradient_grey_wA"><p>取消</p></a>
+	</div>
+</body>
+</html>

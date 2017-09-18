@@ -1,0 +1,217 @@
+@color_yellow          : #f8e032, #ffbe05, #ff9105;
+@color_yellow2         : rgb(255,207,63), rgb(254,136,38);
+@color_black           : #272636, #68676f, #999 ,rgb(237,237,237), rgb(125,125,125);
+
+@font_size_first  : .28rem;//大类
+@font_size_second : .24rem;//小类
+@font_size_tit    : .28rem;//活动标题
+@font_size_info   : .22rem;//活动内容
+@font_size_footer : .28rem;//底端
+
+@header_btns_height            : .9rem;
+@header_btns_first_toEdge      : .7rem;
+@header_btns_second_margin_hor : .25rem;
+@header_btns_borderWidth       : .07rem;
+
+@activity_width             : 6.8rem;
+@activity_height            : 2.55rem;
+@activity_margin_ver        : .2rem;
+@decoration_height          : .6rem;
+@activity_img_width         : 2.95rem;
+@activity_info_padding_top  : .3rem;
+@activity_info_padding_left : .3rem;
+
+@footer_height : .9rem;
+
+//z-index:0默认 1活动装饰 2固定顶端的分类 3banner
+
+body{
+	background-color: extract(@color_black,4);
+}
+
+.header{
+	width       : 100%;
+	line-height : 0.01rem + 0;
+	img{
+		width: 100%;
+	}
+	.mark{
+		position : absolute;
+		right    : 0;
+		top      : 0;
+		width    : 1.25rem;
+	}
+	#inner_header_btns{
+		position: relative;
+	}
+}
+#inner_header_btns,#fixed_header_btns{
+	width            : 100%;
+	height           : @header_btns_height;
+	line-height      : 0.01rem + @header_btns_height;
+
+	background-color : white;
+	text-align       : center;
+
+	background-color : white;
+	.first{
+		position    : absolute;
+		top         : 0;
+		
+		width       : 7.2 - @header_btns_first_toEdge * 2;
+		height      : @header_btns_height - @header_btns_borderWidth * 2;
+		line-height : 0.01rem + @header_btns_height - @header_btns_borderWidth * 2;
+
+		padding     : @header_btns_borderWidth @header_btns_first_toEdge 0;
+		font-size   : @font_size_first;
+		div{
+			height: 100%;
+		}
+		.left{
+			float: left;
+		}
+		.right{
+			float: right;
+		}
+	}
+	.first_lines{
+		position : absolute;
+		bottom   : 0;
+
+		width    : 7.2 - @header_btns_first_toEdge * 2;
+		height   : @header_btns_borderWidth;
+
+		padding     : 0 @header_btns_first_toEdge;
+		.line{
+			height: 100%;
+			background-color: white;
+		}
+		.left{
+			float: left;
+		}
+		.right{
+			float: right;
+		}
+		.set{
+			background-color: extract(@color_yellow,1);
+		}
+	}
+	.second{
+		position   : relative;
+		width: ;
+
+		margin: 0 (@header_btns_first_toEdge+@font_size_first*2.5);
+		text-align : center;
+		font-size  : @font_size_second;
+		div{
+			display : inline-block;
+			margin  : 0 @header_btns_second_margin_hor;
+		}
+		.set{
+			color: extract(@color_yellow,1);
+		}
+	}
+}
+#fixed_header_btns{
+	z-index  : 2;
+	position : fixed;
+	top      : 0;
+	left     : 0;
+	overflow : hidden;
+}
+
+/*--------------------------正文----------------------------*/
+.container{
+	display       : block;
+	position      : relative;
+	margin-bottom : @footer_height + @activity_margin_ver;
+	.activity{
+		position         : relative;
+		width            : @activity_width;
+		height           : @activity_height;
+		margin           : @activity_margin_ver auto;
+
+		background-color : white;
+		
+		box-shadow       : .1rem .1rem .5rem -.2rem #888888;
+		border-radius    : .2rem;
+		border           : none;
+
+		overflow         : hidden;
+		display          : block;
+		.decoration_lt{
+			z-index  : 1;
+			width    : @decoration_height;
+			height   : @decoration_height;
+			position : absolute;
+			display  : block;
+			top      : 0;
+			left     : 0;
+		}
+		.decoration_rb{
+			z-index  : 1;
+			width    : @decoration_height;
+			height   : @decoration_height;
+			position : absolute;
+			display  : block;
+			right    : 0;
+			bottom   : 0;
+		}
+		
+		//左侧图片
+		.illustration{
+			width   : @activity_img_width;
+			height  : @activity_height;
+			float   : left;
+			display : block;
+		}
+		//右侧信息
+		.info{
+			width   : @activity_width - @activity_img_width - @activity_info_padding_left;
+			float   : left;
+			padding : @activity_info_padding_top 0 0 @activity_info_padding_left;
+			.tit{
+				width       : 100%;
+				color       : extract(@color_black,1);
+				font-size   : @font_size_tit;
+				font-weight : 600;
+			}
+			.details{
+				position   : relative;
+				width      : 100%;
+				margin-top : .2rem;
+
+				font-size  : @font_size_info;
+				color      : extract(@color_black,5);
+				.info_line{
+					width  : 100%;
+					// margin : .15rem 0;  //这是我电脑显示好的
+					margin : .05rem 0;  //这是手机上显示好的
+				}
+			}
+		}
+	}
+}
+
+
+.footer{
+	position         : fixed;
+	bottom           : 0;
+
+	width            : 100%;
+	height           : @footer_height;
+	line-height      : 0.01rem + @footer_height;
+
+	background-color : white;
+
+	font-size        : @font_size_footer;
+	text-align       : center;
+	.rank_list,.personal{
+		display : block;
+		width   : 50%;
+		float   : left;
+		img{
+			height         : @font_size_footer;
+		}
+	}
+}

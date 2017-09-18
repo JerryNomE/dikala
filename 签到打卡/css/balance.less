@@ -1,0 +1,86 @@
+@color_yellow          : #f8e032, #ffbe05, #ff9105;
+@color_yellow2         : rgb(255,207,63), rgb(254,136,38);
+@color_black           : #272636, #68676f, #999 ,rgb(237,237,237), rgb(125,125,125);
+
+@font_size_tit     : .7rem;
+@font_size_balance : .35rem;
+@font_size_btn     : .3rem;
+
+@btn_width        : 6.2rem;
+@btn_height       : 1.1rem;
+@btn_inner_width  : 5.9rem;
+@btn_inner_height : .8rem;
+
+*{
+	color: extract(@color_black,1);
+}
+
+body{
+	background-image: url("../img/headerbg_PK.png");
+}
+
+.header{
+	padding    : .7rem 0;
+	text-align : center;
+	.tit{
+		width       : 100%;
+		font-size   : @font_size_tit;
+		font-weight : 600;
+		color       : white;
+	}
+	.balance{
+		width       : 100%;
+		margin-top  : .2rem;
+		font-size   : @font_size_balance;
+		font-weight : 600;
+		color       : extract(@color_yellow,1);
+	}
+}
+
+.container{
+	position   : relative;
+	width      : 100%;
+	.super_btn{
+		width            : @btn_width;
+		height           : @btn_height;
+		line-height      : 0.01rem + @btn_height;
+
+		margin           : .35rem auto;
+
+		background-color : rgba(248,224,50,0.1);
+		border           : .02rem solid extract(@color_yellow,1);
+		border-radius: 4rem;
+		-moz-border-radius: 4rem;
+		.btn_inner{
+			width       : @btn_inner_width;
+			height      : @btn_inner_height;
+			line-height : 0.01rem + @btn_inner_height;
+
+			margin      : ((@btn_height - @btn_inner_height)/2) auto;
+
+			text-align  : center;
+			font-size   : @font_size_btn;
+			color       : white;
+
+			border-radius      : 4rem;
+			-moz-border-radius : 4rem;
+
+			FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=extract(@color_yellow,1),endColorStr=extract(@color_yellow,2)); 
+			background: -ms-linear-gradient(left, extract(@color_yellow,1),extract(@color_yellow,2));
+			background: -moz-linear-gradient(left,extract(@color_yellow,1),extract(@color_yellow,2));
+			background: -webkit-gradient(linear, 0% 100%, 0% 0%,from(extract(@color_yellow,1)), to(extract(@color_yellow,2)));
+			background: -webkit-gradient(linear, 0% 100%, 0% 0%,from(extract(@color_yellow,1)), to(extract(@color_yellow,2)));
+			background: -webkit-linear-gradient(left, extract(@color_yellow,1), extract(@color_yellow,2));
+			background: -o-linear-gradient(left, extract(@color_yellow,1), extract(@color_yellow,2));
+		}
+		.btn_inner:active{
+			FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=extract(@color_yellow,2),endColorStr=extract(@color_yellow,3)); 
+			background: -ms-linear-gradient(left, extract(@color_yellow,2),extract(@color_yellow,3));
+			background: -moz-linear-gradient(left,extract(@color_yellow,2),extract(@color_yellow,3));
+			background: -webkit-gradient(linear, 0% 100%, 0% 0%,from(extract(@color_yellow,2)), to(extract(@color_yellow,3)));
+			background: -webkit-gradient(linear, 0% 100%, 0% 0%,from(extract(@color_yellow,2)), to(extract(@color_yellow,3)));
+			background: -webkit-linear-gradient(left, extract(@color_yellow,2), extract(@color_yellow,3));
+			background: -o-linear-gradient(left, extract(@color_yellow,2), extract(@color_yellow,3));			
+		}
+	}
+}

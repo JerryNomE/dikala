@@ -1,0 +1,90 @@
+@import url("S_parameter.less");
+/*------------------------初始设定------------------------*/
+*{
+	padding : 0;
+	margin  : 0;
+	z-index : 0;
+}
+
+html{
+	font-size  : 100px;
+}
+
+body{
+	position                : relative;
+	background-repeat       : no-repeat;
+	-webkit-background-size : 100% auto;
+	background-size         : 100% auto;
+	padding-bottom          : .5rem;
+}
+
+a{
+	text-decoration             : none;
+	tap-highlight-color         : rgba(0,0,0,0);
+	-webkit-tap-highlight-color : rgba(0,0,0,0);
+	color                       : extract(@color_black,1);
+	display                     : block;
+	cursor                      : pointer;
+}
+
+:focus{
+	outline: 0;
+}
+
+.clear{
+	content : "";
+	display : block;
+	clear   : both;
+}
+
+/*两端对齐*/
+.justify{
+	text-align: justify;
+	&::after{
+		content  : "";
+		display  : inline-block;
+		width    : 100%;
+		overflow : hidden;
+		height   : 0;
+	}
+}
+
+.header{
+	width: 100%;
+}
+
+.fund{
+	font-weight: 600;
+	color: extract(@color_yellow,1);
+}
+
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+
+
+.round{
+	position      : relative;
+	width         : @round_size;
+	height        : @round_size;
+	line-height   : @round_size;
+
+	border-radius : @round_size;
+
+	color         : white;
+	text-align    : center;
+
+	background-color    : extract(@color_yellow,1);
+	background-repeat   : no-repeat;
+	background-size     : @round_size*2/3 @round_size*2/3;
+	background-position : center;
+	&.time{background-image: url("../img/time.png");}
+	&.cash{background-image: url("../img/cash.png");}
+	&.type{background-image: url("../img/type.png");background-size     : @round_size*1/2 @round_size*1/2;}
+	&.unset{background-color: extract(@color_black,5);}
+}
+
+

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> <!--viewport是网页默认的宽度和高度，上面这行代码的意思是，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100%。 允许用户的最大缩放值为1，用户不能缩放-->
+	<title>个人模式</title>
+	<link rel="stylesheet" type="text/css" href="../css/singleMode_newbee.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/singleMode.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+	</script>
+</head>
+<body>
+	<div class="pop_up" id="pop_clause">
+		<div class="pop_bg"></div>
+		<div class="pop_container">
+			<div class="pop_clause_tit">服务条款</div>
+			<div class="pop_clause_main">       
+			　　　您同意遵守《中华人民共和国保密法》、《计算机信息系统国际联网保密管理规定》、《计算机信息网络国际联网安全保护管理办法》、《中华人民共和国计算机信息国际联网管理暂行规定》及其实施办法等相关法律法规的任何及所有的规定，并对您以任何方式使用服务的任何行为及其结果承担全部责任。<br>
+       		　　在任何情况下，如果合理地认为您的任何行为，包括但不限于您的任何言论和其他行为违反或可能违反上述法律和法规的任何规定，可在任何时候不经任何事先通知终止向您提供服务。
+			</div>
+			<div id="pop_read_btn">已阅读</div>
+		</div>
+	</div>
+	<div class="pop_up disappear" id="pop_succeed">
+		<div class="pop_bg"></div>
+		<div class="pop_container">
+			<img src="../img/pop up/sign_up.png" alt="" class="blink">
+			<div class="succeed">报名成功</div>
+			<div class="go_check">
+				您已经报名成功，快去个人<br>
+				中心查看打卡任务吧！
+			</div>
+			<div class="invite">
+				<div class="deco_line"></div>
+				邀请好友一起坚持
+				<div class="deco_line"></div>
+			</div>
+			<div id="share_btn">分享</div>
+		</div>
+	</div>
+	<div class="pop_up disappear" id="pop_share">
+		<div class="pop_bg"></div>
+		<div class="pop_container">
+			<img src="../img/pop up/share.png" alt="" class="share_img">
+		</div>
+	</div>
+	<!-- 学校选择按钮（最后看） -->
+	<div class="pop_up disappear" id="surface">
+		<div class="pop_bg"></div><!-- 点击收回 -->
+		
+
+		<div class="schools_top schools">广东外语外贸大学</div>
+		<div class="schools">中山大学</div>
+		<div class="schools">广东工业大学</div>
+	</div>
+
+	<img src="../img/activities/newbee.png" alt="" class="mark">
+	<!-- 头部 -->
+	<div class="header">
+		<div class="mainTitle">个人模式</div>
+		<div id="school">
+			<div class="arrow">▼</div>
+			<span class="chose">选择学校</span>
+			<div class="clear"></div>
+		</div>
+	</div>
+	
+	<!-- 数据 -->
+	<div class="data">
+		
+		<!-- 状态 -->
+		<div class="frame">
+			<div class="decoration left"></div>
+			<div class="clear"></div>
+			
+
+			<div class="title">早起！每天比别人多活一小时</div>
+
+			<div class="schedule">
+				<table>
+					<tr>
+						<th><div class="justify">周期</div></th>
+						<td>
+							<span id="Dstart">3.14</span> - <span id="Dend">4.24</span>
+						</td>
+					</tr>
+					<tr>
+						<th><div class="justify">目标</div></th>
+						<td>连续打卡3天</td>
+					</tr>
+					<tr>
+						<th><div class="justify">承诺金</div></th>
+						<td>5元</td>
+					</tr>
+					<tr>
+						<th><div class="justify">打卡方式</div></th>
+						<td>在制定区域GPS定位</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="applied">
+				已报名50人，4月24日分<span class="fund">250</span>元
+			</div>
+
+		</div>
+	</div>
+
+	<!-- 按钮 -->
+	<div class="btns">
+		<div class="read">
+			<div class="check">
+				<input type="checkbox" id="checkboxInput" name="read"/>
+				<label for="checkboxInput"></label>
+			</div>
+			已阅读<a id="clause">服务条款</a><!--条款链接-->
+		</div>
+
+		<!-- 这里下面都是一块 -->
+		<a id="di" class="">
+			<div class="round"></div>
+			<div class="inner" id="inner_d">
+				加入打卡
+			</div>
+		</a>
+
+		<!-- <a href="" id="di" class="blocking" onclick="return confirm()">
+			<div class="round"></div>
+			<div class="" id="inner">
+				加入打卡
+			</div>
+		</a> -->
+
+		<div href="" id="blocking" class="blocking">
+			<div class="round"></div>
+			<!-- <div class="inner" id="inner_b">
+				加入打卡
+			</div> -->
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="wap-font-scale" content="no">
+
+	<title>通知中心</title>
+
+	<!-- <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script> -->
+	<!-- <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script> -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+
+	<script type="text/javascript" src="../js/page_init.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			var info = new Vue({
+				el: "#info",
+				data: {
+					name     : '一二三四五六七八九十',
+					portrait : "../img/portrait.png",
+					account  : 80, // 滴卡账户
+					save     : 60  // 愿望储蓄
+				}
+			});
+
+			var notifications = new Vue({
+				el: "#notifications",
+				data: {
+					notifications:[
+						{
+							// 通知内容
+							'info' : 'PK模式已成功匹配',
+							// 通知时间，当天没有日期，有'昨天'和'前天'
+							'time' : '12月12日12:12'
+						},
+						{
+							'info' : '就算是很长很长很长很长很长很长很长很长很长很长很长很长也大丈夫',
+							'time' : '02:02'
+						}
+					]
+				}
+			})
+		});
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../css/P_notification.css">
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/mainpage.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="note">
+			<a class="option top" href="me.html">个人</a>
+			<a class="current bottom">通知中心</a>
+		</div>
+		<div id="info">
+			<div id="name">{{ name }}</div>
+			<div class="settled">
+				<div class="img">
+					<img src="../img/thumb.png" class="thumb">
+					<img v-bind:src="portrait" id="portrait">
+				</div>
+				<div class="account">
+					滴卡账户：<span class="fund">¥{{account}}</span> 
+					愿望储蓄：<span class="fund">¥{{save}}</span>		
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="box" id="notifications">
+		<div class="notification" v-for="notification in notifications">
+			<div class="info">{{ notification.info }}</div>
+			<div class="time">{{ notification.time }}</div>
+		</div>
+	</div>
+</body>
+</html>

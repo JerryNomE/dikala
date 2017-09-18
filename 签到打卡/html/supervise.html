@@ -1,0 +1,335 @@
+<!-- 44-54行弹窗 316行class改为id -->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>监督模式</title>
+
+	<!-- 导入css -->
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+
+	<!-- 导入less -->
+	<!-- <link rel="stylesheet/less" type="text/css" href="../less/supervise.less" /> -->
+	<!-- <script src="http://cdn.bootcss.com/less.js/1.7.0/less.min.js"></script> -->
+	<!--less cdn-->
+	<!-- <script type="text/javascript" src="../js/less.min.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="../css/supervise.css">
+	
+	<!-- 导入js、jq -->
+	<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css"> -->
+	<!-- <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script> -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/supervise.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+	</script>
+</head>
+<body onload="changeSelected()">
+	<div class="pop_up" id="pop_clause">
+		<div class="pop_bg"></div>
+		<div class="pop_container">
+			<div class="pop_clause_tit">服务条款</div>
+			<div class="pop_clause_main">       
+			　　　您同意遵守《中华人民共和国保密法》、《计算机信息系统国际联网保密管理规定》、《计算机信息网络国际联网安全保护管理办法》、《中华人民共和国计算机信息国际联网管理暂行规定》及其实施办法等相关法律法规的任何及所有的规定，并对您以任何方式使用服务的任何行为及其结果承担全部责任。<br>
+       		　　在任何情况下，如果合理地认为您的任何行为，包括但不限于您的任何言论和其他行为违反或可能违反上述法律和法规的任何规定，可在任何时候不经任何事先通知终止向您提供服务。
+			</div>
+			<div id="pop_read_btn">已阅读</div>
+		</div>
+	</div>
+
+	<div class="pop_up" id="pop_share">
+		<div class="pop_bg"></div>
+		<div class="pop_container">
+			<img src="../img/pop up/share.png" alt="" class="share_img">
+		</div>
+	</div>	
+	<!-- 头部 -->
+	<div class="header">
+		<div class="mainTitle">监督模式</div>
+	</div>
+	
+	<!-- 正文 -->
+	<div class="container">
+		<div class="decoration left"></div>
+		<div class="clear"></div>
+		
+		<div class="title">
+			目标
+		</div>
+
+		<div id="btns3">
+			<!-- 类型 -->
+			<div class="type">
+				<div class="choice type_text unset">
+					点击图标设置
+				</div>
+
+				<div class="pic" id="type_btn">
+					<img src="../img/type.png" alt="" class="">
+				</div>
+
+				<div class="tips">
+					<div class="tips_tit fund">打卡类型</div>
+					<div class="stat unset">-未设置-</div>
+				</div>
+			</div>
+			
+			<!-- 时间 -->
+			<div class="type">
+				<div class="choice time_text unset">
+					点击图标设置
+				</div>
+
+				<div class="pic" id="time_btn">
+					<img src="../img/time.png" alt="" class="">
+				</div>
+				
+				<div class="tips">
+					<div class="tips_tit fund">打卡时间</div>
+					<div class="stat unset">-未设置-</div>
+				</div>
+			</div>
+			
+			<!-- 承诺金 -->
+			<div class="type">
+				<div class="choice cash_text unset">
+					点击图标设置
+				</div>
+
+				<div class="pic" id="cash_btn">
+					<img src="../img/cash.png" alt="" class="">
+				</div>
+				
+				<div class="tips">
+					<div class="tips_tit fund">承诺金</div>
+					<div class="stat unset">-未设置-</div>
+				</div>
+			</div>
+		</div>
+	
+		<!-- 点击图片后的选项 -->
+			<!-- 类型 -->
+		<div class="parameter" id="type_parameter">
+			<div class="title">
+				<div class="back" id="type_confirm">
+					<span class="justify">确定</span>
+				</div>
+				<div class="tips">
+					<div class="tips_tit fund">打卡类型</div>
+					<div class="stat type_text unset">请填写</div>
+				</div>
+			</div>
+
+			<div class="set_type">
+				输入要被监督的内容：<br/>
+				<div class="input_container">
+					<input type="text" id="type_input"/>
+				</div>
+			</div>
+		</div>
+
+			<!-- 时间 -->
+		<div class="parameter" id="time_parameter">
+			<div class="title">
+				<div class="back" id="time_confirm">
+					<span class="justify">确定</span>
+				</div>
+				<div class="tips">
+					<div class="tips_tit fund">打卡时间</div>
+					<div class="stat time_text unset">请选择</div>
+				</div>
+			</div>
+
+			<div class="time">
+				<div class="line">
+					从
+					<div class="select_box"><select name="start_month" id="start_month">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select></div>
+					月
+					<div class="select_box"><select name="start_dat" id="start_dat">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+						<option value="24">24</option>
+						<option value="25">25</option>
+						<option value="26">26</option>
+						<option value="27">27</option>
+						<option value="28">28</option>
+						<option value="29">29</option>
+						<option value="30">30</option>
+						<option value="31">31</option>
+					</select></div>
+					日开始
+				</div>
+
+				<div class="line">
+					到
+					<div class="select_box"><select name="end_month" id="end_month">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select></div>
+					月
+					<div class="select_box">
+						<div class="diabled"></div>
+						<select name="end_dat" id="end_dat">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+							<option value="26">26</option>
+							<option value="27">27</option>
+							<option value="28">28</option>
+							<option value="29">29</option>
+							<option value="30">30</option>
+							<option value="31">31</option>
+						</select></div>
+					日结束
+				</div>
+
+				<div class="line">
+					<div class="select_box"><select name="frequence" id="frequence">
+						<option value="day">每天</option>
+						<option value="wee">每周</option>
+						<option value="mon">每月</option>
+					</select></div>
+					打卡
+					<div class="input_container">
+						<input type="text" id="times">
+					</div>
+					次
+				</div>
+			</div>
+		</div>
+
+			<!-- 承诺金 -->
+		<div class="parameter" id="cash_parameter">
+			<div class="title">
+				<div class="back" id="cash_confirm">
+					<span class="justify">确定</span>
+				</div>
+				<div class="tips">
+					<div class="tips_tit fund">承诺金</div>
+					<div class="stat cash_text unset">请选择</div>
+				</div>
+			</div>
+
+			
+			<div class="line" id="cas_line">
+				<div class="select_box"><select name="lib_time" id="cash">
+					<option value="20">20</option>
+					<option value="50">50</option>
+					<option value="100">100</option>
+				</select></div>
+				元（￥）
+			</div>
+		</div>
+		<!-- ---------------------------------- -->
+		<img src="../img/PKmodeFrame.png" alt="" width="100%">
+
+		<!-- 监督模式描述 -->
+		<div class="explain">
+			<div class="explain_tit fund">监督模式？</div>
+			邀请朋友，由ta来监督自己，<br>判断自己是否完成任务<br><br>
+			在周期里面没有完成相应次数，<br>则承诺金归监督者
+		</div>
+	</div>
+
+<!-- 按钮 -->
+	<div class="btns">
+		<div class="read">
+			<div class="check">
+				<input type="checkbox" id="checkboxInput" name="read"/>
+				<label for="checkboxInput"></label>
+			</div>
+			已阅读<a href="" id="clause">服务条款</a><!--条款链接-->
+		</div>
+
+		<!-- 这里下面都是一块 -->
+		<div class="the_btn">
+			<div id="cover"></div>
+			<a class="btn upper_btn">邀请朋友监督</a>
+		</div>
+	</div>
+
+	
+</body>
+</html>

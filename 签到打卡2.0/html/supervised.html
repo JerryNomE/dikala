@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="wap-font-scale" content="no">
+
+	<title>监督模式——被监督</title>
+	<!-- <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script> -->
+	<!-- <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script> -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+
+	<script type="text/javascript" src="../js/page_init.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			var user = new Vue({
+				el: "#user",
+				data: {
+					supervisor: "大北瓜",
+				}
+			});
+			var target = new Vue({
+				el: "#target",
+				data: {
+					target: "仰卧起坐50次",
+					ddl: "2017-12-17",
+					deposit: "10"
+				}
+			});
+			var status = new Vue({
+				el: "#status",
+				data: {
+					status: 2 // 0未完成 1成功 2失败
+				},
+				filters:{
+					statusText: function (value) {
+						return  value == 0 ? "未完成" :
+								value == 1 ? "成功" : "失败"
+					}
+				},
+				computed: {
+					statusColor: function () {
+						return  this.status == 0 ? "undone" :
+								this.status == 1 ? "succeeded" : "failed";
+					}
+				}
+			})
+		});
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../css/P_supervise.css">
+	<script type="text/javascript" src="../js/common.js"></script>
+	<!-- <script type="text/javascript" src="../js/supervise.js"></script> -->
+</head>
+<body>
+	<div class="header" id="user">
+		<p class="title yellow">监督我的人</p>
+		<p class="sub">{{ supervisor }}</p>
+	</div>
+	
+	<div class="box2" id="target">
+		<div class="title">我的目标</div>
+		<div class="target">
+			{{ target }}
+		</div>
+		
+		<div class="line">
+			<div class="information">
+				<div class="round time"></div>
+			</div>
+			<div class="information">
+				<div class="words">
+					<div class="tit">完成时间</div>
+					<div class="description">{{ ddl }}</div>
+				</div>
+			</div>	
+		</div>
+
+		<div class="line">
+			<div class="information">
+				<div class="round cash"></div>
+			</div>
+			<div class="information">
+				<div class="words">
+					<div class="tit">承诺金</div>
+					<div class="description">￥{{ deposit }}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="status" :class="statusColor">
+		完成情况：{{ status | statusText }}
+	</div>
+
+	<div class="btns">
+	</div>
+</body>
+</html>

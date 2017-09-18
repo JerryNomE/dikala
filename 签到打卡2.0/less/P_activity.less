@@ -1,0 +1,97 @@
+@import url("S_common.less");
+@import url("M_pageStyle1.less");
+@import url("M_clause.less");
+
+body{
+	background-image: url("../img/activity/headerbg.png");
+}
+
+.box2{
+	@col : 2;
+	@cellpadding : .3rem;
+	@to_subtitle : @common_space;
+	.table{
+		font-size   : .28rem;
+		&::after{
+			.clear;
+		}
+		.tr{
+			height      : .3rem;
+			line-height : .3rem;
+			color       : extract(@color_black,2);
+			margin      : .5rem 0;
+			&::after{.clear;}
+			div{
+				float  : left;
+				height : 100%;
+			}
+			@th-width : 2rem;
+			.th{
+				.justify;
+				box-sizing  : border-box;
+				width       : @th-width;
+				padding     : 0 @cellpadding;
+				font-weight : 600;
+			}
+			.td{
+				width        : @box_width - @th-width - @cellpadding;
+				text-align   : left;
+				padding-left : @cellpadding;
+			}
+			/* 最后一行，加入人数 */
+			&.joined{
+				text-align : center;
+				margin-top : .75rem;
+			}
+		}
+	}
+}
+
+.pop_up{
+	.pop_container{
+		width      : 4.6rem;
+		margin     : 1.1rem auto 0;
+		text-align : center;
+		.blink{
+			width: 100%;
+		}
+		.succeed{
+			color       : white;
+			font-size   : .6rem;
+			font-weight : 600;
+		}
+		.go_check{
+			color       : rgb(175,175,175);
+			font-size   : .24rem;
+			font-weight : 600;
+			line-height : .4rem;
+			margin-top  : .2rem;
+		}
+		.invite{
+			color     : extract(@color_yellow,1);
+			font-size : .28rem;
+			margin    : .6rem 0;
+			.deco_line{
+				display : block;
+				width   : 1rem;
+				height  : .02rem;
+				color   : extract(@color_yellow,1);
+			}
+		}
+		.inner_btn{
+			width         : 3.5rem;
+			height        : .7rem;
+			line-height   : .7rem;
+			border-radius : .35rem;
+			border        : solid .02rem extract(@color_yellow,1);
+			color         : extract(@color_yellow,1);
+			font-size     : .28rem;
+			margin        : .3rem auto;
+		}
+		.share_img{
+			display: block;
+			width: 5rem;
+			right: .1rem;
+		}
+	}
+}

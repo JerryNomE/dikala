@@ -1,0 +1,43 @@
+@import url("M_pageStyle2.less");
+@import url("S_common.less");
+@import url("M_button.less");
+
+
+body{
+	background-image: url("../img/balance/headerbg.png");
+}
+
+.header{
+	font-size   : @header_fontSize;
+	line-height : @header_height;
+	.sub{
+		font-size: @header_fontSize * .6;
+	}
+}
+
+.container{
+	.text{
+		position   : absolute;
+		width      : inherit;
+		font-size  : .28rem;
+		text-align : center;
+		height     : .75rem;
+		#warn{
+			display: none;
+			color  : red;
+		}
+	}
+	#confirm-sum{
+		.payment{
+			color: extract(@color_yellow,1);
+			font-size: .56rem;
+			font-weight: 600;
+		}
+	}
+	#succeed{
+		display: none;
+	}
+}
+.container::after{
+	margin-top: 1rem;
+}

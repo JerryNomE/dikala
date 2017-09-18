@@ -1,0 +1,121 @@
+@import url("S_gradient.less");
+
+@btn_width : 7.2rem - @bodySpacing * 2;
+@btn_large_padding      : .1rem;
+@btn_large_inner_height : .85rem;
+@btn_large_inner_width  : @btn_width - 2 * @btn_large_padding;
+@btn_fontSize : .3rem;
+
+@btn_small_spacing : .2rem;
+@btn_small_width   : (@btn_width - @btn_small_spacing) / 2;
+
+.btns{
+	width      : @btn_width;
+	margin     : 0 auto;
+	font-size  : @btn_fontSize;
+	text-align : center;
+	*{
+		border-radius: 5rem;
+	}
+	.btn{
+		border      : .02rem solid extract(@color_yellow,1);
+		height      : @btn_large_inner_height;
+		line-height : @btn_large_inner_height;
+		margin-top  : .2rem;
+		color       : extract(@color_yellow,1);
+		font-weight : 600;
+		>p{
+			width       : inherit;
+			height      : @btn_fontSize;
+			line-height : @btn_fontSize;
+			margin      : (@btn_large_inner_height - @btn_fontSize)/2 0;
+			position    : absolute;
+			z-index: 1;
+		}
+	}
+	.btn_large{
+		.btn;
+		position : relative;
+		width    : @btn_large_inner_width;
+		padding  : @btn_large_padding;
+
+		text-shadow : #999 0 .05rem .05rem;
+	}
+	.btn_gradient_yellow{
+		.btn_large;
+		color : white;
+		background-color : extract(@color_yellowA,1);
+		&::before{
+			content       : "";
+			display       : block;
+			border-radius : 5rem;
+			position      : absolute;
+
+			height  : @btn_large_inner_height;
+			width   : @btn_large_inner_width;
+			z-index : 0;
+			.gradient_yellow;
+		}
+	}
+	.btn_gradient_yellow:active{
+		border-color : extract(@color_yellow,2);
+		background-color: extract(@color_yellowA,2);
+		&::before{
+			.gradient_yellow2;
+		}
+	}
+
+	.btn_gradient_yellow2{
+		.btn_gradient_yellow;
+		border-color : extract(@color_yellow,2);
+		background-color: extract(@color_yellowA,2);
+		&::before{
+			.gradient_yellow2;
+		}	
+		&:active{
+			border-color : extract(@color_yellow,4);
+			background-color: extract(@color_yellowA,3);
+			&::before{
+				.gradient_yellow3;
+			}
+		}
+	}
+
+	.btn_gradient_grey{
+		.btn_gradient_yellow;
+		border-color     : extract(@color_black,@grey-num);
+		background-color : extract(@color_blackA,2);
+		&::before{
+			.gradient_grey;
+		}	
+	}
+	.btn_gradient_grey_wA{
+		.btn_gradient_grey;
+		&:active{
+			border-color     : extract(@color_black,@grey-num - 1);
+			background-color : extract(@color_blackA,3);
+			&::before{
+				.gradient_grey2;
+			}
+		}	
+	}
+
+	.btn_small{
+		.btn;
+		width : @btn_small_width;
+		float : left;
+		&:active{
+			color: extract(@color_yellow,3);
+			border-color: extract(@color_yellow,3);
+		}
+	}
+	.btn_small_right{
+		.btn_small;
+		float : right;
+	}
+}
+.btns::after{
+	content : "";
+	display : block;
+	clear   : both;
+}

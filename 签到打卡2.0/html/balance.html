@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="wap-font-scale" content="no">
+
+	<title>余额</title>
+	<!-- <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script> -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+
+	<script type="text/javascript" src="../js/page_init.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			var user = new Vue({
+				el: "#user",
+				data:{
+					account: 60,
+				}
+			})
+		});
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../css/P_balance.css">
+	<!-- <script type="text/javascript" src="../js/common.js"></script> -->
+	<!-- <script type="text/javascript" src="../js/banalce.js"></script> -->
+</head>
+<body>
+	<div class="header" id="user">
+		<p>余额</p>
+		<p class="sub fund">￥{{account}}</p>
+	</div>
+	
+	<div class="container">
+		<div class="btns">
+			<a class="btn_gradient_yellow" href="balance_withdraw.html"><p>提现</p></a>
+			<a class="btn_gradient_yellow" href="balance_save.html"><p>存入</p></a>
+		</div>
+	</div>
+	
+</body>
+</html>

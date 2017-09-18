@@ -1,0 +1,33 @@
+@import url("S_parameter.less");
+.gradient_yellow{
+	background:-webkit-linear-gradient(left, extract(@color_yellow,1), extract(@color_yellow,2));
+	background:-o-linear-gradient(left, extract(@color_yellow,1), extract(@color_yellow,2));
+	background:linear-gradient(to right, extract(@color_yellow,1), extract(@color_yellow,2));
+}
+
+.gradient_yellow2{
+	background:-webkit-linear-gradient(left, extract(@color_yellow,2), extract(@color_yellow,3));
+	background:-o-linear-gradient(left, extract(@color_yellow,2), extract(@color_yellow,3));
+	background:linear-gradient(to right, extract(@color_yellow,2), extract(@color_yellow,3));
+}
+
+.gradient_yellow3{
+	background:-webkit-linear-gradient(left, extract(@color_yellow,3), extract(@color_yellow,5));
+	background:-o-linear-gradient(left, extract(@color_yellow,3), extract(@color_yellow,5));
+	background:linear-gradient(to right, extract(@color_yellow,3), extract(@color_yellow,5));
+
+    opacity:1;	
+}
+
+@grey-num : 6;
+.gradient_grey{
+	background:-webkit-linear-gradient(left, extract(@color_black,@grey-num), extract(@color_black,@grey-num - 1));
+	background:-o-linear-gradient(left, extract(@color_black,@grey-num), extract(@color_black,@grey-num - 1));
+	background:linear-gradient(to right, extract(@color_black,@grey-num), extract(@color_black,@grey-num - 1));
+}
+
+.gradient_grey2{
+	background:-webkit-linear-gradient(left, extract(@color_black,@grey-num - 1), extract(@color_black,@grey-num - 2));
+	background:-o-linear-gradient(left, extract(@color_black,@grey-num - 1), extract(@color_black,@grey-num - 2));
+	background:linear-gradient(to right, extract(@color_black,@grey-num - 1), extract(@color_black,@grey-num - 2));
+}

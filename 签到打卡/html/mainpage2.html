@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>首页</title>
+	<link rel="stylesheet" type="text/css" href="../css/mainpage2.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/mainpage.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 320;//设置默认最小宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+	</script>
+</head>
+<body>
+	<!-- 弹窗 -->
+	<div class="pop_up" id="pop_choose_mode">
+		<div class="pop_bg"></div>
+		<div class="pop_btns">
+			<a href="" class="pop_btn pop_btn1">个人</a>
+			<a href="" class="pop_btn pop_btn2">PK</a>
+			<a href="" class="pop_btn pop_btn3">监督</a>
+			<a href="" class="pop_btn pop_btn4" onclick="return unfinished()">组队</a>
+		</div>
+	</div>
+	<!-- 背景 -->
+	<div id="head_bg"><img src="../img/headerbg.png"></div>
+	<div class="clear"></div>
+	
+	<!-- 头部 -->
+	<div class="header">
+		<div class="left_btn float_l">
+			<a class="current upper">个人资料</a>
+			<a class="chose" href="">通知</a>
+		</div>	
+		<div class="right_imfo float_l">
+			<div class="name">一二三四五六</div>
+			<div class="img">
+				<img src="../img/thumb.png" class="thumb">
+				<img src="../img/favicon.png" class="portrait">
+			</div>
+			<div class="clear"></div>
+			<div class="bottom">
+				滴卡账户:<span class="fund">¥80</span> 
+				&nbsp&nbsp&nbsp<!--懒得加class-->
+				愿望储蓄:<span class="fund">¥60</span>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<!-- 数据 -->
+	<div class="data">
+		<!-- 排行榜 -->
+		<div class="rank frame">
+			<div class="decoration left"></div>
+			<div class="clear"></div>
+			
+
+			<div class="title">总排行榜</div>
+			<table cellspacing="7">
+				<tr class="subtitle">
+					<td>累计打卡</td>
+					<td>最长连续坚持</td>
+					<td>累计收益</td>
+				</tr>
+				<tr>
+					<td colspan="3" class="hr"></td>
+				</tr>
+				<!-- <tr></tr><!--凑数用--> 
+				<tr>
+					<td>82d</td>
+					<td>77d</td>
+					<td class="fund">¥20</td>
+				</tr>
+				<tr>
+					<td>第101名</td>
+					<td>第6名</td>
+					<td>第401名</td>
+				</tr>
+			</table>
+
+
+		</div>
+
+		<!-- 状态 -->
+		<div class="stat frame">
+			<div class="decoration left"></div>
+			<div class="clear"></div>
+			
+
+			<div class="title">状态</div>
+
+			<div id="schedule">
+				<div class="now_stat fund">正在滴卡中</div>
+				<div class="rate">
+					早起
+					<div class="target">
+						<div id="wake" class="current"></div>
+					</div>
+
+					<br><br>
+
+					跑步
+					<div class="target">
+						<div id="run" class="current"></div>
+					</div>
+				</div>
+			</div>
+
+			<div id="supervisor">
+				<table cellspacing="7">
+					<tr>
+						<th>当前监督者：</th>
+						<td>张三</td>
+					</tr>
+					<tr>
+						<th>当前监督内容：</th>
+						<td>仰卧起坐100次</td>
+					</tr>
+
+					<tr>
+						<th>监督时间：</th>
+						<td>17.4.10-17.4.15</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="toggle" onclick="toggle_stat()">查看我的监督 ></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+
+	<!-- 按钮 -->
+	<div class="btns">
+		<!-- 这里下面都是一块 -->
+		<a href="" class="di">
+			<div class="round"></div>
+			<div id="inner">
+				点我打卡
+			</div>
+		</a>
+		<!-- 这里上面都是一块 -->
+		<div class="sub_btn">
+			<a class="mode" id="mode">打卡模式</a>
+			<a href="" class="dairy">滴卡日志</a>
+		</div>
+	</div>
+</body>
+</html>

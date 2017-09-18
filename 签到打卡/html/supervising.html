@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> <!--viewport是网页默认的宽度和高度，上面这行代码的意思是，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100%。 允许用户的最大缩放值为1，用户不能缩放-->
+	<title>个人中心</title>
+	<link rel="stylesheet" type="text/css" href="../css/supervise_detail.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/supervise_detail.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+	</script>
+</head>
+<body>
+	<!-- 头部 -->
+	<div class="header">
+		<div class="subtit">我监督的人</div>
+		<div class="mainTitle yellow">这是一个人</div>
+	</div>
+	
+	<div class="container">
+		<!-- 有多个监督就弄多几个box -->
+		<div class="box">
+			<div class="line_decoration"></div>
+			<div class="tit">这是一个人的目标</div>
+			<div class="target">用扇贝打500个人</div>
+
+			<div class="target_details">
+				<div class="detail">
+					<div class="back">
+						<img src="../img/time.png" alt="">
+					</div>
+					<div class="tips">
+						<div class="tips_tit fund">完成时间</div>
+						<div class="stat">2017-4-5</div>
+					</div>
+				</div>
+
+				<div class="clear"></div>
+			</div>
+
+			<div class="target_details">
+				<div class="detail cash">
+					<div class="back">
+						<img src="../img/cash.png" alt="">
+					</div>
+					<div class="tips">
+						<div class="tips_tit fund">承诺金</div>
+						<div class="stat">￥20</div>
+					</div>
+				</div>
+
+				<div class="clear"></div>
+			</div>			
+		</div>
+	</div>
+	
+	<div class="btn gradient_yellow gradient_yellowA">已完成</div>
+	<div class="btn no_bg_btn">未完成</div>
+
+</body>
+</html>

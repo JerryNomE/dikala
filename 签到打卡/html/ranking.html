@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>排行榜</title>
+
+	<!-- 导入css -->
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+
+	<!-- 导入less -->
+	<!-- <link rel="stylesheet/less" type="text/css" href="../less/supervise.less" /> -->
+	<!-- <script src="http://cdn.bootcss.com/less.js/1.7.0/less.min.js"></script> -->
+	<!--less cdn-->
+	<!-- <script type="text/javascript" src="../js/less.min.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="../css/ranking.css">
+	
+	<!-- 导入js、jq -->
+	<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css"> -->
+	<!-- <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script> -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/ranking.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+	</script>
+</head>
+<body>
+	<!-- 头部 -->
+	<div class="header">
+		<!-- 这里是日期 -->
+		<div class="date">
+			<span class="month">MAY</span>
+			<span class="day">14</span>
+		</div>
+
+		<div class="info">
+			<div class="name">用户名</div>
+			<!-- 下面三块 -->
+			<div class="my_info">
+				<div class="part left_part">
+					<div class="sub_tit">坚持早起</div>
+					<div class="record">0天</div>
+				</div>
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="part right_part">
+					<div class="sub_tit">好友排名</div>
+					<div class="record">25名</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 正文 -->
+	<div class="container">
+		<div class="decoration left"></div>
+		<div class="clear"></div>		
+		
+		<div class="btns">
+			<!-- <div class="crown_box box">
+				<div class="box1 inner_box"><img src="../img/ranking/crown.png" alt=""></div>
+				<div class="box2 inner_box"><img src="../img/ranking/crown.png" alt=""></div>
+				<div class="box3 inner_box"><img src="../img/ranking/crown.png" alt=""></div>
+			</div> -->
+
+			<div class="choice_box box">
+				<div class="box1 inner_box set">好友排行</div>
+				<div class="box2 inner_box">校内排行</div>
+				<!-- <div class="box3 inner_box">全国排行</div> -->
+			</div>
+
+			<div class="line_box">
+				<div class="line"></div>
+			</div>
+		</div>
+
+		<div class="rank" id="friend_rank">
+			<div class="rank_info">
+				<!-- 名次 -->
+				<div class="num first">1</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">这是好友排名</div>
+					<div class="school">学校名</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">223</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>
+			
+
+			<!-- 下面差不多 -->
+			<div class="rank_info">
+				<!-- 名次 第一名first 二三名front 其他不加 -->
+				<div class="num front">2</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">一二三四五六七八九十</div>
+					<div class="school">广东外语外贸大学</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">4</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>
+			<div class="rank_info">
+				<!-- 名次 -->
+				<div class="num front">3</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">用户名</div>
+					<div class="school">学校名</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">4</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>	
+			<div class="rank_info">
+				<!-- 名次 -->
+				<div class="num">4</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">用户名</div>
+					<div class="school">学校名</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">4</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>				
+			<div class="rank_info">
+				<!-- 名次 -->
+				<div class="num">5</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">名字超过8看不见</div>
+					<div class="school">学校名</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">4</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>								
+		</div>
+	
+		<div class="rank" id="school_rank">
+			<div class="rank_info">
+				<!-- 名次 -->
+				<div class="num first">1</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">这是校内排名</div>
+					<div class="school">学校名</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">223</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>
+			
+
+			<!-- 下面差不多 -->
+			<div class="rank_info">
+				<!-- 名次 第一名first 二三名front 其他不加 -->
+				<div class="num front">2</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">一二三四五六七八九十</div>
+					<div class="school">广东外语外贸大学</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">4</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>
+			<div class="rank_info">
+				<!-- 名次 -->
+				<div class="num front">3</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">用户名</div>
+					<div class="school">学校名</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">4</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>	
+			<div class="rank_info">
+				<!-- 名次 -->
+				<div class="num">4</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">用户名</div>
+					<div class="school">学校名</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">4</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>				
+			<div class="rank_info">
+				<!-- 名次 -->
+				<div class="num">5</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">名字超过8看不见</div>
+					<div class="school">学校名</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">4</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>								
+		</div>		
+
+		<div class="rank" id="country_rank">
+			<div class="rank_info">
+				<!-- 名次 -->
+				<div class="num first">1</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">用户名</div>
+					<div class="school">学校名</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">223</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>
+			
+
+			<!-- 下面差不多 -->
+			<div class="rank_info">
+				<!-- 名次 第一名first 二三名front 其他不加 -->
+				<div class="num front">2</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">一二三四五六七八九十</div>
+					<div class="school">广东外语外贸大学</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">4</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>
+			<div class="rank_info">
+				<!-- 名次 -->
+				<div class="num front">3</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">用户名</div>
+					<div class="school">学校名</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">4</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>	
+			<div class="rank_info">
+				<!-- 名次 -->
+				<div class="num">4</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">用户名</div>
+					<div class="school">学校名</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">4</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>				
+			<div class="rank_info">
+				<!-- 名次 -->
+				<div class="num">5</div>
+				<!-- 用户头像 -->
+				<div class="portrait">
+					<img src="../img/ranking/head portrait.png" alt="">
+				</div>
+				<div class="user_info">
+					<div class="name">名字超过8看不见</div>
+					<div class="school">学校名</div>
+				</div>
+				<!-- 点赞 -->
+				<div class="like">
+					<div class="times">4</div>
+					<div class="heart">
+						<img src="../img/heart.png" alt="">
+					</div>
+				</div>
+				<!-- 连续天数 -->
+				<div class="days">连续25天</div>
+				<div class="clear"></div>
+			</div>								
+		</div>		
+		<!-- 查看更多 -->
+		<div class="paging">
+			<a href="">查看更多 >></a>
+		</div>
+	</div>
+</body>
+</html>

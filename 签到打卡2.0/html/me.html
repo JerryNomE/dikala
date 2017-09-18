@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="wap-font-scale" content="no">
+
+	<title>首页</title>
+
+	<link rel="stylesheet" type="text/css" href="../css/P_me.css">
+
+	<!-- <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script> -->
+	<!-- <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script> -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+
+	<script type="text/javascript" src="../js/page_init.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			var info = new Vue({
+				el: "#info",
+				data:{
+					name     : '一二三四五六七八九十',
+					portrait : "../img/portrait.png",
+					account  : 80, // 滴卡账户
+					save     : 60  // 愿望储蓄
+				}
+			});
+			var record = new Vue({
+				el: "#record",
+				data:{
+					total       : 0, // 累计打卡
+					longest     : 0, // 最长连续坚持
+					income      : 0, // 累计收益
+ 					//对应排行
+					totalRank   : 1,
+					longestRank : 1,
+					incomeRank  : 1
+				}
+			});
+			var progress = new Vue({
+				el: "#progress",
+				data:{
+					wakeTarget  : 5,    	// 一周打卡几次，没有参加填0（重要）
+					wakeCurrent : 1, 		// 当前完成次数
+					wakeToday   : true, 	// 今天打卡没
+					wakeDDL     : '7:30',	// 几点前打卡
+					wakeEnd     : '7-25',	// 何时结束打卡
+					wakeDeposit : 20,		// 承诺金
+
+					runTarget   : 1,
+					runCurrent  : 2,
+					runToday    : false,
+					runDistance : 5, 		// 跑步距离
+					runEnd      : '8-30',
+					runDeposit  : 5,
+
+					libraryTarget   : 0,
+					libraryCurrent  : 3,
+					libraryToday    : false,
+					libraryDuration : 2,
+					libraryEnd      : '9-8',
+					libraryDeposit  : 10,
+
+					wordsTarget  : 7,
+					wordsCurrent : 4,
+					wordsToday   : true,
+					wordsEnd     : '10-5',
+					wordsDeposit : 15,
+
+					// 监督模式
+					supervising : true,
+					supervised  : false,
+					supervisingHref : "#",
+					supervisedHref  : "#"
+				},
+				directives:{
+					go:{bind: function (el,binding) {
+						var T = binding.value.T;
+						var C = binding.value.C;
+						var W = C / T * 100;
+						W = W>100 ? 100 : W;
+						W = W + '%';
+						setTimeout(function(){
+							el.style.width = W
+						}, 0);
+					}}
+				}
+			})
+		});
+	</script>
+
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/mainpage.js"></script>
+</head>
+<body>
+	<div class="pop_up" id="modes">
+		<a class="mode" href="activities.html">个人</a>
+		<a class="mode" onclick="unfinishedInfo()">PK</a>
+		<a class="mode" onclick="unfinishedInfo()">监督</a>
+		<a class="mode" onclick="unfinishedInfo()">组队</a>
+	</div>
+
+	<div class="header">
+		<div class="note">
+			<a class="current top">个人资料</a>
+			<a class="option bottom" href="notification.html">通知</a>
+		</div>
+		<div id="info">
+			<div id="name">{{ name }}</div>
+			<div class="settled">
+				<div class="img">
+					<img src="../img/thumb.png" class="thumb">
+					<img v-bind:src="portrait" id="portrait">
+				</div>
+				<div class="account">
+					滴卡账户：<span class="fund">¥{{account}}</span> 
+					愿望储蓄：<span class="fund">¥{{save}}</span>		
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="box" id="record">
+		<div class="title">总排行榜</div>
+		<div class="table">
+			<ul class="th">
+				<li>累计打卡</li>
+				<li>最长连续坚持</li>
+				<li>累计收益</li>
+			</ul>
+			<ul class="tr">
+				<li>{{total}}d</li>
+				<li>{{longest}}d</li>
+				<li class="fund">￥{{income}}</li>
+			</ul>
+			<ul class="tr">
+				<li>第{{totalRank}}名</li>
+				<li>第{{longestRank}}名</li>
+				<li>第{{incomeRank}}名</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="box" id="progress">
+		<div class="title">
+			我的状态
+		</div>
+		<div class="joined" v-if="wakeTarget + runTarget + libraryTarget + wordsTarget > 0">
+			<div class="subtitle">正在滴卡中</div>
+
+			<div v-if="wakeTarget > 0" class="progress">
+				<!-- 平常显示 -->
+				<div class="status">
+					<div class="activity">
+						<div class="triangle"></div>早起
+					</div>
+					<div class="aim">
+						<div :class="['current',{'done':wakeToday}]" v-go="{T : wakeTarget , C : wakeCurrent}"></div>
+					</div>
+					<div class="num">
+						{{wakeCurrent}} / {{wakeTarget}}
+					</div>
+				</div>
+				<!-- 点击显示 -->
+				<div class="details">
+					<div class="table">
+						<div class="tr">
+							<div class="th">每天打卡ddl</div>
+							<div class="td">{{wakeDDL}}</div>
+						</div>
+						<div class="tr">
+							<div class="th">打卡频率</div>
+							<div class="td">{{wakeTarget}}次/周</div>
+						</div>
+						<div class="tr">
+							<div class="th">结束日期</div>
+							<div class="td">{{wakeEnd}}</div>
+						</div>
+						<div class="tr">
+							<div class="th">承诺金</div>
+							<div class="td fund">￥{{wakeDeposit}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div v-if="runTarget > 0" class="progress">
+				<div class="status">
+					<div class="activity">
+						<div class="triangle"></div>跑步
+					</div>
+					<div class="aim">
+						<div :class="['current',{'done':runToday}]" v-go="{T : runTarget , C : runCurrent}"></div>
+					</div>
+					<div class="num">
+						{{runCurrent}} / {{runTarget}}
+					</div>
+				</div>
+				
+				<div class="details">
+					<div class="table">
+						<div class="tr">
+							<div class="th">最小里程</div>
+							<div class="td">{{runDistance}}km</div>
+						</div>
+						<div class="tr">
+							<div class="th">打卡频率</div>
+							<div class="td">{{runTarget}}次/周</div>
+						</div>
+						<div class="tr">
+							<div class="th">结束日期</div>
+							<div class="td">{{runEnd}}</div>
+						</div>
+						<div class="tr">
+							<div class="th">承诺金</div>
+							<div class="td fund">￥{{runDeposit}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div v-if="libraryTarget > 0" class="progress">
+				<div class="status">
+					<div class="activity">
+						<div class="triangle"></div>泡馆
+					</div>
+					<div class="aim">
+						<div :class="['current',{'done':libraryToday}]" v-go="{T : libraryTarget , C : libraryCurrent}"></div>
+					</div>
+					<div class="num">
+						{{libraryCurrent}} / {{libraryTarget}}
+					</div>
+				</div>
+
+				<div class="details">
+					<div class="table">
+						<div class="tr">
+							<div class="th">最短时间</div>
+							<div class="td">{{libraryDuration}}h</div>
+						</div>
+						<div class="tr">
+							<div class="th">打卡频率</div>
+							<div class="td">{{libraryTarget}}次/周</div>
+						</div>
+						<div class="tr">
+							<div class="th">结束日期</div>
+							<div class="td">{{libraryEnd}}</div>
+						</div>
+						<div class="tr">
+							<div class="th">承诺金</div>
+							<div class="td fund">￥{{libraryDeposit}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div v-if="wordsTarget > 0" class="progress">
+				<div class="status">
+					<div class="activity">
+						<div class="triangle"></div>单词
+					</div>
+					<div class="aim">
+						<div :class="['current',{'done':wordsToday}]" v-go="{T : wordsTarget , C : wordsCurrent}"></div>
+					</div>
+					<div class="num">
+						{{wordsCurrent}} / {{wordsTarget}}
+					</div>			
+				</div>
+
+				<div class="details">
+					<div class="table">
+						<div class="tr">
+							<div class="th">结束日期</div>
+							<div class="td">{{wordsEnd}}</div>
+						</div>
+						<div class="tr">
+							<div class="th">承诺金</div>
+							<div class="td fund">￥{{wordsDeposit}}</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+
+		</div>
+		<div class="unjoined" v-else>
+			<p>您还没有参与打卡活动哦~</p>
+			<p>点击左下方<span class="fund">「加入打卡」</span>参与活动~</p>
+		</div>
+
+		<div class="supervise">
+			<a class="supervising" :href="supervising?supervisingHref:'javascript:void(0)'">
+				{{supervising ? "查看监督情况 >" : "您尚未被邀请监督"}}
+			</a>
+			<a class="supervised" :href="supervised?supervisedHref:'javascript:void(0)'">
+				{{supervised ? "查看被监督情况 >" : "点击邀请人监督"}}
+			</a>
+		</div>
+	</div>
+
+	<div class="btns">
+		<a class="btn_gradient_yellow" href="dika.html">
+			<p>点我打卡</p>
+		</a>
+		<div class="btn_small" id="show_mode"><p>加入打卡</p></div>
+		<a class="btn_small btn_small_right"><p>滴卡日志</p></a>
+	</div>
+</body>
+</html>

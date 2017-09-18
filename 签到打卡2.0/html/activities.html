@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="wap-font-scale" content="no">
+
+	<title>活动</title>
+	<!-- <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script> -->
+	<!-- <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script> -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+
+	<script type="text/javascript" src="../js/page_init.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			var links = new Vue({
+				el: "#links",
+				data: {
+					activities: [
+						{
+							// 什么类型
+							'type'        : 'wake',
+							// 是否在推荐上
+							'isCommanded' : true,
+							// 点进去的链接
+							'url'         : 'activity.html',
+							// 配图的链接
+							'imgSrc'      : '../img/activities/pic1.png',
+							// 活动标题
+							'title'       : '最多十个字',
+							// 活动时间（范围）
+							'time'        : '10.21-11.04',
+							// 目标
+							'target'      : '7:30起床',
+							// 承诺金
+							'deposit'     : 5,
+							//报名人数
+							'joined'      : 20
+						},
+						{
+							'type'        : 'run',
+							'isCommanded' : true,
+							'url'         : 'activity.html',
+							'imgSrc'      : '../img/activities/pic1.png',
+							'title'       : '最多十个字',
+							'time'        : '10.21-11.04',
+							'target'      : '3次/周3km',
+							'deposit'     : 5,
+							'joined'      : 20
+						},
+						{
+							'type'        : 'run',
+							'isCommanded' : true,
+							'url'         : 'activity.html',
+							'imgSrc'      : '../img/activities/pic1.png',
+							'title'       : '最多十个字',
+							'time'        : '10.21-11.04',
+							'target'      : '3次/周3km',
+							'deposit'     : 5,
+							'joined'      : 20
+						},
+						{
+							'type'        : 'run',
+							'isCommanded' : true,
+							'url'         : 'activities.html',
+							'imgSrc'      : '../img/activities/pic1.png',
+							'title'       : '最多十个字',
+							'time'        : '10.21-11.04',
+							'target'      : '3次/周3km',
+							'deposit'     : 5,
+							'joined'      : 20
+						},
+						{
+							'type'        : 'wake',
+							'isCommanded' : false,
+							'url'         : 'activities.html',
+							'imgSrc'      : '../img/activities/pic1.png',
+							'title'       : '最多十个字',
+							'time'        : '10.21-11.04',
+							'target'      : '5天/周7:30起床',
+							'deposit'     : 5,
+							'joined'      : 20
+						},
+					]
+				}
+			});
+		});
+
+		// 默认出现页面
+		var defaults = {
+			'major' : 'commands',	// 'kinds'
+			'minor' : 'run' 		// 'run', 'library', 'words'
+		}
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../css/P_activities.css">
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/activities.js"></script>
+</head>
+<body>
+	<div class="header">
+		<img src="../img/activities/banner.png" alt="" class="tit">
+		<div id="inner_header_menu">
+			<ul class="major">
+				<li class="commands left">推荐</li>
+				<li class="kinds right">分类</li>
+			</ul>
+
+			<ul class="minor">
+				<li class="wakes">早起</li>
+				<li class="runs">跑步</li>
+				<li class="librarys">泡馆</li>
+				<li class="wordss">单词</li>
+			</ul>
+		</div>
+
+		<div id="fixed_header_menu" class="disappear">
+			<ul class="major">
+				<li class="commands left">推荐</li>
+				<li class="kinds right">分类</li>
+			</ul>
+
+			<ul class="minor">
+				<li class="wakes">早起</li>
+				<li class="runs">跑步</li>
+				<li class="librarys">泡馆</li>
+				<li class="wordss">单词</li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- page第一位0 分类 1推荐 第二位0起 1跑 2馆 3词 href里面放跳转-->
+	<div id="links">
+		<a v-for="activity in activities" class="box" 
+		:class="[activity.type,
+		activity.isCommanded ? 'commanded' : '']" 
+		:href="activity.url">
+			<div class="illustration">
+				<img :src="activity.imgSrc" alt="">
+			</div>
+			
+			<div class="details">
+				<div class="title">{{ activity.title }}</div>
+				<div>周期：{{ activity.time }}</div>
+				<div>目标：{{ activity.target }}</div>
+				<div>承诺金：{{ activity.deposit }}元</div>
+				<div>已报名：{{ activity.joined }}人</div>
+			</div>
+		</a>
+	</div>
+	
+
+
+	<div class="footer">
+		<a class="rank_list" href="ranking.html">
+			<img src="../img/activities/rank_list.png"> 排行榜
+		</a>
+		<a class="personal" href="me.html">
+			<img src="../img/activities/personal.png"> 个人中心
+		</a>
+	</div>
+</body>
+</html>

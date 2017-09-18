@@ -1,0 +1,197 @@
+@color_yellow          : #f8e032, #ffbe05, #ff9105;
+@color_yellow2         : rgb(255,207,63), rgb(254,136,38);
+@color_black           : #272636, #68676f, #999 ,rgb(237,237,237), rgb(125,125,125);
+
+@font_size_name     : .75rem;
+@font_size_account  : .2rem;
+@font_size_box_tit  : .32rem;//副标题
+@font_size_planLine : .3rem;
+
+@box_width             : 6.2rem;//盒子宽度
+@box_margin_ver        : .3rem;//盒子间距
+@box_padding_hor       : .5rem;//盒子内间距
+@box_padding_ver       : .5rem;
+@box_inner_width       : @box_width - @box_padding_hor*2;
+@box_tit_margin_bottom : .35rem;//副标题到正文距离
+
+@header_height       : 1.6rem;
+@top_left_btn_height : .65rem;
+@left_btn_width      : 2rem;
+@right_info_width    : 4.5rem;
+// @name_height         : .85rem;
+@name_height         : @font_size_name;
+@img_height          : .5rem;
+
+@plan_bar_to_text : .1rem;
+@plan_bar_width   : 3.5rem;
+@plan_bar_height  : .1rem;
+@planLine_height  : .5rem;
+@plan_2mid        : .2rem;
+
+html{
+	color: extract(@color_black,1);
+	font-size: 100px;
+}
+
+body{
+	background-image: url("../img/headerbg.png");
+}
+/*顶部内容*/
+.header{
+	position: relative;
+	padding-top      : .7rem;
+	height           : @header_height;
+	width            : 100%;
+	.left_btn{
+		float: left;
+		position: relative;
+
+		height: 100%;
+		a{
+			display     : block;
+			position    : absolute;
+			left        : 0;
+
+			height      : @top_left_btn_height;
+			line-height : 0.01rem +  @top_left_btn_height;
+			
+			font-size   : .3rem;
+			text-align  : center;
+
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+		.current{
+			width: 2rem;
+
+			color: white;
+		}
+		.choice{
+			bottom       : 0;
+
+			width        : 1.3rem;
+			height       : @top_left_btn_height;
+			line-height  : 0.01rem + @top_left_btn_height;
+
+			color        : extract(@color_yellow,1);
+			border-color : extract(@color_yellow,1);
+			border-left  : none;
+		}
+	}
+
+	.right_info{
+		position   : absolute;
+		right      : .5rem;
+		width      : @right_info_width;
+		height     : @header_height;
+
+		text-align : right;
+		color      : white;
+		.name{
+			width       : 100%;
+			height      : @name_height;
+			line-height : 0.01rem + @name_height;
+			font-size   : .76rem;
+		}
+		.img{
+			position: relative;
+			height: @img_height;
+			margin-top: (@header_height - @name_height - @img_height - @font_size_account)/2;
+			img{
+				display: block;
+				float: right;
+				height: @img_height;
+			}
+			.portrait{
+				border-radius: @img_height/2;
+				margin-right: .2rem;
+			}
+			.thumb{
+				margin-top: @img_height/6;
+				height: @img_height*2/3;
+			}
+		}
+		.account{
+			position  : absolute;
+			right     : 0;
+			bottom    : 0;
+			font-size : @font_size_account;
+			color     : extract(@color_black,3);
+		}
+	}
+}
+
+.container{
+	width  : 100%;
+	margin : @box_margin_ver *2 auto 0;
+	.box{
+		position           : relative;
+		width              : @box_inner_width;
+		padding            : @box_padding_ver @box_padding_hor;
+		margin             : @box_margin_ver auto;
+
+		background-color   : white;
+
+		border-radius      : .2rem;
+		-moz-border-radius : .2rem;
+		box-shadow         : 0 0 .5rem -.05rem #888888;
+		border-radius      : .2rem;
+
+		overflow           : hidden;
+		.line_decoration{
+			position         : absolute;
+			top              : 0;
+			left             : 0;
+			width            : .15rem;
+			height           : .6rem;
+			background-color : extract(@color_yellow,1);
+		}
+		.box_tit{
+			margin-bottom : @box_tit_margin_bottom;
+			font-size     : @font_size_box_tit;
+			font-weight   : bold;
+		}
+
+		.plan_line{
+			width       : @box_width;
+			height      : @planLine_height;
+			line-height : 0.01rem + @planLine_height;
+			font-size   : @font_size_planLine;
+			div{
+				height : 100%;
+				float  : left;
+				color  : extract(@color_black,3);
+			}
+			.left_plan_line{
+				width         : @box_inner_width/2 - @plan_2mid;
+				padding-right : @plan_2mid;
+				text-align    : right;
+			}
+			.right_plan_line{
+				width         : @box_inner_width/2 - @plan_2mid;
+				padding-left  : @plan_2mid;
+			}
+		}
+		.bar_line{
+			padding       : 0 (@box_inner_width - @font_size_planLine * 2 - @plan_bar_to_text * 2 - @plan_bar_width)/2;
+			margin-bottom : .2rem;
+			.plan{
+				color  : extract(@color_yellow,1);
+				margin : 0 @plan_bar_to_text;
+				font-weight: 600;
+			}
+			.bar{
+				position         : relative;
+				width            : @plan_bar_width;
+				height           : @plan_bar_height;
+				margin-top       : (@planLine_height - @plan_bar_height)/2;
+				background-color : extract(@color_black,4);
+				.inner_bar{
+					background-color : extract(@color_yellow,1);
+					width            : 0;
+					transition       : width 2s;
+				}
+			}
+		}
+	}
+}

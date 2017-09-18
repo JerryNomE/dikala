@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+
+	<title>今日打卡</title>
+	<link rel="stylesheet" type="text/css" href="../css/dika.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/dika.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+
+	var dika_stat      = ['unjoined','unchecked','checking','checked'];
+	var wake_stat_text = ['点击加入','未打卡','审核中','打卡成功'];
+
+	$(document).ready(function() {
+		var wake        =  3; // <-你改这里 早起打卡
+		var lib         =  1; // <-你改这里 泡图书馆 图书馆是泡馆时间处于审查中，这时显示时间
+		var run         =  2; // <-你改这里 跑步打卡
+		var word        =  3; // <-你改这里 单词打卡
+		var supervised  =  1; // <-你改这里 被人监督
+		var supervising =  0; // <-你改这里 监督别人 只有有和没有2个状态（0&1）
+        changeWake(wake,'7:40');// 第二个可以不填，填了把打卡成功4个字改成打卡时间
+        changeLib(lib,'7:40');// 第二个可以不填，填了把审查中改成开始打卡时间
+        changeRun(run);
+        changeWord(word);
+        changeSupD(supervised);
+        changeSupG(supervising);
+	});
+
+	</script>
+</head>
+<body>
+	<!-- 头部 -->
+	<div class="header">
+		<div id="today">今天是</div>
+		<div id="mainTitle"></div>
+	</div>
+	
+	<!-- 正文 -->
+	<div class="container">
+		<div class="dika box">
+			<div class="line_decoration"></div>
+			<div class="box_tit">今日项目打卡</div>
+
+			<div id="dika_btns">
+				<!-- 4种状态：unjoined未加入 unchecked打卡 checking审核中 checked已完成 需要结合后台用js修改 -->
+				<a href="singleMode.html" class="dika_btn unchecked" onclick="return unfinished()">
+					<div class="tick"><div class="square"></div></div>
+					<div class="description">
+						<div class="btn_tit">早起</div>
+						<div class="stat">打卡<!--已完成是显示几点打的卡--></div>
+					</div>
+				</a>
+
+				<a href="singleMode.html" class="dika_btn right_btn unjoined" onclick="return unfinished()">
+					<div class="tick"><div class="square"></div></div>
+					<div class="description">
+						<div class="btn_tit">泡馆</div>
+						<div class="stat">点击加入</div>
+					</div>
+				</a>
+
+				<div class="dika_btn unjoined" onclick="return unfinished()"><!-- onclick事件和上面的一样-->
+					<div class="tick"><div class="square"></div></div>
+					<div class="description">
+						<div class="btn_tit">跑步</div>
+						<div class="stat">点击加入</div>
+					</div>
+				</div>
+
+				<div class="dika_btn right_btn unjoined" onclick="return unfinished()"><!-- onclick事件和上面的一样-->
+					<div class="tick"><div class="square"></div></div>
+					<div class="description">
+						<div class="btn_tit">背单词</div>
+						<div class="stat">点击加入</div>
+					</div>
+				</div>
+
+				<div class="dika_btn unjoined" onclick="return unfinished()"><!-- onclick事件和上面的一样-->
+					<div class="tick"><div class="square"></div></div>
+					<div class="description">
+						<div class="btn_tit">被监督</div>
+						<div class="stat">暂无监督</div>
+					</div>
+				</div>
+
+				<a href="supervising.html" class="dika_btn right_btn unjoined" onclick="return unfinished()"><!--有监督也是checking-->
+					<div class="tick"><div class="square"></div></div>
+					<div class="description">
+						<div class="btn_tit">监督ta</div>
+						<div class="stat">暂无监督<!--打卡--></div>	
+					</div>
+				</a>
+				<div class="clear"></div>
+				<!-- <a href="supervised.html" class="check_my_supervise" onclick="return unfinished()">查看我被监督情况 >> </a> -->
+			</div>
+
+			<div id="supervising">
+				<!-- 我监督的人内容，tan90° -->
+			</div>
+
+			<div id="supervised">
+				<!-- 我被监督的内容，cot0° -->
+			</div>
+		</div>
+		<!-- 上传截图 -->
+		<div class="upload box">
+			<div class="line_decoration"></div>
+			<div class="box_tit">上传截图</div>
+			
+			<!-- 主要部分 -->
+			<div id="upload_img" onclick="return unfinished()">
+				<!-- 点击这个div上传 -->
+				
+				<!-- 中间这里放img
+				$('#upload_img').html(html代码); -->
+			</div>
+
+			<div id="reupload" onclick="return unfinished()">重新上传</div>
+			<div id="upload_succeed">等待上传<!--成功上传--></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</body>
+</html>

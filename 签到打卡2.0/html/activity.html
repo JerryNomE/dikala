@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="wap-font-scale" content="no">
+
+	<title>活动</title>
+	<!-- <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script> -->
+	<!-- <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script> -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+
+	<script type="text/javascript" src="../js/page_init.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			var target = new Vue({
+				el: "#target",
+				data: {
+					target  : "仰卧起坐50次",		// 目标/标题
+					time    : '11.27 - 12.12',		// 活动时间
+					aim     : "每周打卡2天",		// 具体目标
+					deposit : 10,					// 承诺金
+					way     : "在制定区域GPS定位",	// 打卡方式
+					joined  : 50					// 打卡方式
+				}
+			});			
+		});
+		// 具体加入逻辑
+		var doJoin = function () {
+			// body...
+		}
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../css/P_activity.css">
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/clause.js"></script>
+	<script type="text/javascript" src="../js/activity.js"></script>
+
+</head>
+<body>
+	<div id="clauseVue">
+		<clause></clause>
+		<div class="pop_up" id="pop_succeed">
+			<div class="pop_container">
+				<img src="../img/activity/sign_up.png" alt="" class="blink">
+				<div class="succeed">报名成功</div>
+				<div class="go_check">
+					您已经报名成功，快去个人<br>
+					中心查看打卡任务吧！
+				</div>
+				<div class="invite">
+					<div class="deco_line"></div>
+					邀请好友一起坚持
+					<div class="deco_line"></div>
+				</div>
+				<a id="share_btn" class="inner_btn">分享</a>
+				<a href="me.html" class="inner_btn">点击跳转个人中心</a>
+			</div>
+		</div>
+		<div class="pop_up" id="pop_share">
+			<div class="pop_container">
+				<img src="../img/activity/share.png" alt="" class="share_img">
+				<a href="me.html" class="inner_btn">点击跳转个人中心</a>
+			</div>
+		</div>
+
+		<div class="header" id="user">
+			<p class="title yellow">活动详情</p>
+		</div>
+		
+		<div class="box2" id="target">
+			<div class="title">{{ target }}</div>
+			
+			<div class="table">
+				<div class="tr">
+					<div class="th">时间</div>
+					<div class="td">{{ time }}</div>
+				</div>
+				<div class="tr">
+					<div class="th">目标</div>
+					<div class="td">{{ aim }}</div>
+				</div>
+				<div class="tr">
+					<div class="th">承诺金</div>
+					<div class="td">{{ deposit }}元</div>
+				</div>
+				<div class="tr">
+					<div class="th">打卡方式</div>
+					<div class="td">{{ way }}</div>
+				</div>
+				<div class="tr joined">
+					已报名{{ joined }}人，活动结束后分<span class="fund" v-text="deposit * joined"></span>元
+				</div>
+			</div>
+		</div>
+		
+		<read-clause></read-clause>
+
+		<div class="btns">
+			<btn-clause></btn-clause>
+		</div>	
+	</div>
+
+</body>
+</html>

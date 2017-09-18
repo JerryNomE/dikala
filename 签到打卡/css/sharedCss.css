@@ -1,0 +1,180 @@
+﻿/*@font-face { 
+  font-family: 'HYQiHei'; 
+  src: url('../font/HYQiHei-35S.otf'); 
+} */
+/*字体太占空间了，不用了，谁会为了一页网页而去加载几十m的东西啦*/
+
+*{
+	padding: 0;
+	margin: 0;
+	z-index: 0;
+	/*font-family: 'HYQiHei',;*/
+	// overflow: hidden;
+}
+
+html{
+	font-size: 100px;
+}
+
+a{
+	text-decoration: none;
+	tap-highlight-color:rgba(0,0,0,0);
+	-webkit-tap-highlight-color:rgba(0,0,0,0);/*手机按a标签背景会变色，很坑*/
+	color: #272636;
+}
+:focus{
+	outline: 0;
+}
+.float_r{
+	float: right;
+}
+
+.float_l{
+	float: left;
+}
+
+.clear{
+	clear: both;
+}
+
+/*金钱字样*/
+.fund{
+	color: #f8e032 !important;
+	font-weight: 600;
+}
+.yellow{
+	color: #f8e032 !important;
+}
+li{
+	list-style: none;
+}
+
+.justify{
+	text-align: center;
+	text-align: justify;
+}
+.justify::after{
+	content: "";
+	display:inline-block;
+	width: 100%;
+	overflow: hidden;
+	height: 0;
+}
+
+.subtit_color{
+	color: #68676f;
+}
+.subest_color{
+	color: #999;
+}
+
+.disappear{
+	display: none!important;
+	*{
+		display: none!important;
+	}
+}
+
+/*-----checkbox样式-----*/
+
+.check{
+	display: inline-block;
+	/*width:  .3rem;
+	height: .3rem;*/
+	background: white;
+ 
+	border-radius: 100%;
+	position: relative;
+	-webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+	box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+}
+.check input[type=checkbox]{
+	visibility: hidden;
+}
+.check label{
+	display: block;
+	/*width:  .2rem;
+	height: .2rem;
+	border-radius: 1rem;*/
+ 
+	-webkit-transition: background .5s ease;
+	-moz-transition: background .5s ease;
+	-o-transition: background .5s ease;
+	-ms-transition: background .5s ease;
+	transition: background .5s ease;
+	cursor: pointer;
+	/*position: absolute;
+	top:  .05rem;
+	left: .05rem;*/
+	position: absolute;
+	top: 0;bottom: 0;right: 0;left: 0;
+	margin: auto;
+	z-index: 1;
+ 
+	background: white;
+ 
+	-webkit-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+	-moz-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+	box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+.check input[type=checkbox]:checked + label {
+	background: #f8e032;
+}
+
+/*弹窗*/
+.pop_up{
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.75);
+	height: 100%;
+	width: 100%;
+
+	z-index: 10;
+}
+.pop_up .pop_bg{
+	z-index: -1;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.pop_up .container{
+	position: relative;
+	z-index: 10;
+}
+
+
+/* 渐变效果 */
+.gradient_yellow{
+	color: white;
+	font-weight: 600;
+	border: none!important;
+	border-radius: 7rem;
+	text-align: center;
+	text-shadow:#999 0 .02rem .02rem;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#f8e032,endColorStr=#ffbe05);
+	background: -ms-linear-gradient(left, #f8e032,#ffbe05);
+	background: -moz-linear-gradient(left,#f8e032,#ffbe05);
+	background: -webkit-gradient(linear, 0% 100%, 0% 0%,from(#f8e032), to(#ffbe05));
+	background: -webkit-gradient(linear, 0% 100%, 0% 0%,from(#f8e032), to(#ffbe05));
+	background: -webkit-linear-gradient(left, #f8e032, #ffbe05); 
+	background: -o-linear-gradient(left, #f8e032, #ffbe05);	
+}
+.gradient_yellowA:active{
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#ffbe05,endColorStr=#ff9105); 
+	background: -ms-linear-gradient(left, #ffbe05,#ff9105);
+	background: -moz-linear-gradient(left,#ffbe05,#ff9105);
+	background: -webkit-gradient(linear, 0% 100%, 0% 0%,from(#ffbe05), to(#ff9105));
+	background: -webkit-gradient(linear, 0% 100%, 0% 0%,from(#ffbe05), to(#ff9105));
+	background: -webkit-linear-gradient(left, #ffbe05, #ff9105);
+	background: -o-linear-gradient(left, #ffbe05, #ff9105);
+}
+.no_bg_btn{
+	color: #ffbe05;
+	font-weight: 600;
+	border: #ffbe05 .02rem solid;
+	border-radius: 7rem;
+	text-align: center;
+}

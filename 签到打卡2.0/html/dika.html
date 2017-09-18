@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="wap-font-scale" content="no">
+
+	<title>打卡</title>
+
+	<!-- <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script> -->
+	<!-- <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script> -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+
+	<script type="text/javascript" src="../js/page_init.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			var dika = new Vue({
+				el: "#dika",
+				data:{
+					wake:{
+						name : '早起',
+						status : 0, // 0-3:未加入、未打卡、审核中、打完卡
+						description : ['点击加入','点击打卡','审核中','7:00']
+					},
+					run:{
+						name : '跑步',
+						status : 1,
+						description : ['点击加入','点击打卡','审核中','打卡成功']
+					},
+					library:{
+						name : '泡馆',
+						status : 2,
+						description : ['点击加入','点击打卡','19:30起','打卡成功']
+					},
+					words:{
+						name : '单词',
+						status : 3,
+						description : ['点击加入','点击打卡','审核中','打卡成功']
+					},
+					supervising:{
+						name : '监督ta',
+						status : 0, // 0-1：未加入、已加入
+						description : ['暂无监督','查看监督']
+					},
+					supervised:{
+						name : '被监督',
+						status : 1,
+						description : ['暂无监督','查看监督']
+					}
+				},
+				methods:{
+					showStatus: function (a) {
+						var s = a.status;
+						var d = a.description;
+						return d[s];
+					},
+					status: function (a) {
+						var s = a.status;
+						if(s == 0) return 'unjoined';
+						else if(s == 1) return 'undone';
+						else if(s == 2) return 'checking';
+						else return 'done';
+						return s;
+					}
+				}
+			});
+			var upload = new Vue({
+				el: "#upload",
+				data:{
+					// imgUrl : 
+				}
+			})
+		});
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../css/P_dika.css">
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/dika.js"></script>
+</head>
+<body>
+	<div class="header">
+		<span id="date"></span>
+		<span id="day"></span>
+	</div>
+
+	<div class="box" id="dika">
+		<div class="title">今天项目打卡</div>
+		<div class="container">
+			<div class="button left"  :class="status(wake)">
+				<div class="tick"></div>
+				<div class="description">
+					<div class="btn_tit">{{wake.name}}</div>
+					<div class="status" v-text="showStatus(wake)"></div>
+				</div>
+			</div>
+			<div class="button right" :class="status(run)">
+				<div class="tick"></div>
+				<div class="description">
+					<div class="btn_tit">{{run.name}}</div>
+					<div class="status" v-text="showStatus(run)"></div>
+				</div>
+			</div>
+			<div class="button left"  :class="status(library)">
+				<div class="tick"></div>
+				<div class="description">
+					<div class="btn_tit">{{library.name}}</div>
+					<div class="status" v-text="showStatus(library)"></div>
+				</div>
+			</div>
+			<div class="button right" :class="status(words)">
+				<div class="tick"></div>
+				<div class="description">
+					<div class="btn_tit">{{words.name}}</div>
+					<div class="status" v-text="showStatus(words)"></div>
+				</div>
+			</div>
+			<div class="button supervise left"  :class="status(supervising)">
+				<div class="tick"></div>
+				<div class="description">
+					<div class="btn_tit">{{supervising.name}}</div>
+					<div class="status" v-text="showStatus(supervising)"></div>
+				</div>
+			</div>
+			<div class="button supervise right" :class="status(supervised)">
+				<div class="tick"></div>
+				<div class="description">
+					<div class="btn_tit">{{supervised.name}}</div>
+					<div class="status" v-text="showStatus(supervised)"></div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<div class="box" id="upload">
+		<div class="title">上传截图</div>
+		<div class="container">
+			<div id="uploadImg">
+				<img src="../img/dika/location.png" alt="" id="runImg">
+				<img src="../img/dika/book.png" alt="" id="wordsImg">
+				<img src="" alt="" id="uploadedImg">
+			</div>
+
+			<div class="choices">
+				<div class="line" id="chooseType">
+					跑步
+					<div class="checkboxStatus">
+						<!-- <div class="hr"></div> -->
+						<div id="vernier"></div>
+					</div>
+					单词
+				</div>
+				<div class="line">
+					<div id="button">
+						点击上传
+					</div>
+				</div>
+				<div class="line">
+					<div id="upload_status">
+						等待上传
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>滴卡账户</title>
+
+	<!-- 导入css -->
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+	<link rel="stylesheet" type="text/css" href="../css/balance.css">
+	
+	<!-- 导入js、jq -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+	</script>
+</head>
+<body>
+	<div class="header">
+		<div class="tit">余额</div>
+		<div class="balance">￥100</div>
+	</div>
+
+	<div class="container">
+		<!-- 按钮 -->
+		<a href="balance_withdraw.html" class="super_btn" id="withdraw">
+			<div class="btn_inner">
+				提现
+			</div>
+		</a>
+
+		<a href="balance_save.html" class="super_btn" id="withdraw">
+			<div class="btn_inner">
+				存入
+			</div>
+		</a>
+	</div>
+</body>
+</html>

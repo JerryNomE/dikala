@@ -1,0 +1,107 @@
+@import url('M_popUp.less');
+@import url('S_parameter.less');
+@import url('M_button.less');
+
+#pop-clause{
+	// display    : block;
+	height     : 100%;
+	.pop_up_container{
+		@width     : 4.6rem;
+		width      : @width;
+		margin     : 1.1rem auto 0;
+		text-align : center;
+		.pop_clause_tit{
+			font-size : .62rem;
+			color     : white;
+		}
+		.pop_clause_main{
+			margin     : .55rem 0;
+			
+			color      : extract(@color_black,5);
+			text-align : justify;
+			font-size  : .24rem;
+		}
+		#pop_read_btn{
+			display       : block;
+			width         : 3.5rem;
+			height        : .7rem;
+			line-height   : .7rem;
+			border-radius : .7rem;
+			border        : solid .02rem extract(@color_yellow,1);
+			color         : extract(@color_yellow,1);
+			font-size     : .28rem;
+			margin        : .3rem auto;
+		}
+	}
+}
+
+.read-clause{
+	margin		: .5rem 0 .3rem;
+	color       : extract(@color_black,4);
+	font-size   : .3rem;
+	line-height : .3rem;
+	text-align  : center;
+	input[type=checkbox]{
+		visibility : hidden;
+		width      : 0;
+		height     : 0;
+		+ label{
+			@label-size    : .3rem;
+			position       : relative;
+			box-sizing     : border-box;
+			display        : inline-block;
+			height         : @label-size;
+			width          : @label-size;
+			margin-right   : .1rem;
+			vertical-align : baseline;
+
+			border-radius : .3rem;
+			// border        : .02rem solid extract(@color_black,1);
+			box-shadow: 0px 1px 3px rgba(0,0,0,.5);
+
+			background-color: white;
+			&::after{
+				content          : '';
+				position         : absolute;
+				display          : block;
+				background-color : white;
+				height           : @label-size - .1;
+				width            : @label-size - .1;
+				top:0;right:0;bottom:0;left:0;margin:auto;
+				
+				background    : transparent;
+				box-shadow    : inset 0px 1px 3px rgba(0,0,0,.5);
+				border-radius : 2rem;
+
+				transition : background .5s;
+			}
+		}
+		&:checked + label::after{
+			background-color : extract(@color_yellow,1);
+		}
+	}
+	#clause{
+		display: inline;
+		text-decoration: underline;
+	}
+}
+
+.btns{
+	.btns-clause{
+		position: relative;
+		div{
+			transition         : opacity .5s;
+			-moz-transition    : opacity .5s;
+			-webkit-transition : opacity .5s;
+			-o-transition      : opacity .5s;
+		}
+		.btn-clause-block{
+			position   : absolute;
+			margin-top : 0;
+			z-index    : 2;
+		}
+		.btn-clause{
+			opacity : 0;
+		}	
+	}
+}

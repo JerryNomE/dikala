@@ -1,0 +1,9 @@
+﻿1、mainpage 360宽度，100px字体，以rem作为长度单位
+
+2、singlemode 同上，720宽度，开始使用jq，把共有的css分出来，使用justify
+
+3、pkmmode 同上，开始外链js，痛苦的input样式
+
+4、supervise 同上，开始使用less和jqmobile（有很多限制了自己的样式），data改名为container，sublime上面添加了n多插件
+
+5、修改多数代码，提高代码重用性

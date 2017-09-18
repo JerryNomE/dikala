@@ -1,0 +1,242 @@
+@color_yellow          : #f8e032, #ffbe05, #ff9105;
+@color_yellow2         : rgb(255,207,63), rgb(254,136,38);
+@color_black           : #272636, #68676f, #999;
+
+@font_size_fund   : .60rem;//顶上储蓄总额
+@font_size_target : .24rem;//愿望储蓄总额几个字、XXX就可以、、input内容
+@font_size_tit    : .36rem;//愿望清单几个大字、目标是什么、、输入框
+@font_size_saved  : .20rem;//存了多少钱
+@font_size_wishes : .22rem;//、、大家在努力
+
+@container_margin_hor : .35rem;
+@container_width      : 7.2rem - @container_margin_hor * 2;
+
+@box_margin_hor : .12rem;
+@box_width      : @container_width / 2 - @box_margin_hor * 2;
+
+@box_info_margin_hor : .55rem;
+@box_info_margin_top : .2rem;
+@box_info_width      : @box_width - @box_info_margin_hor * 2;
+
+@input_width      : 5.15rem;
+@input_margin_top : .5rem;
+
+@targets_padding_hor: .23rem;
+@targets_padding_ver: .1rem;
+@targets_margin_hor : .2rem;
+@targets_margin_ver : .15rem;
+
+
+html{
+	color: extract(@color_black,1);
+}
+
+body{
+	background-image   : url("../img/wishlist/bg.png");
+	// background-size : 100% 100%;
+	background-repeat  : repeat-y;
+}
+
+/*-----------------------头部-------------------------*/
+.header{
+	width            : 100%;
+	height           : 1.45rem;
+
+	background-image : url("../img/wishlist/header_bg.png");
+	background-size  : 100% 100%;
+	.info{
+		height     : 1.2rem;
+		text-align : center;
+		.fund{
+			padding-top : .05rem;
+			font-size   : @font_size_fund;
+			.rmb{
+				font-size: @font_size_target;
+			}
+		}
+		.whats_upside{
+			font-size : @font_size_target - 0.02;
+			color     : white;
+		}
+	}
+}
+
+/*-------------------正文---------------------*/
+.container{
+	width  : @container_width;
+	margin : .1rem @container_margin_hor;
+	.title{
+		width         : 2.2rem;
+		height        : @font_size_tit + .05;
+
+		padding       : .2rem 0 .1rem;
+		margin        : auto;
+
+		font-weight   : bold;
+		font-size     : @font_size_tit;
+
+		border-bottom : solid 0.01rem black;
+	}
+
+	//4个框框
+	.boxes{
+		margin   : .5rem 0 .3rem;
+		position : relative;
+		.box{
+			position         : relative;
+
+			width            : @box_width;
+			height           : @box_width;
+
+			margin           : @box_margin_hor;
+
+			border-radius    : .2rem;
+			background-color : white;
+			box-shadow       : .1rem .1rem 0 rgba(0, 0, 0, 0.1);
+
+			float            : left;
+			.box_decoration{
+				width: .35rem;
+
+				display  : block;
+				position : absolute;
+				margin   : .2rem;
+			}
+			/*------------------bug区---------------------*/
+			.info{
+				vertical-align : middle;
+				width          : @box_info_width;
+				height         : 1.9rem;
+				overflow       : hidden;
+
+				margin         : @box_info_margin_top @box_info_margin_hor 0;
+				.aim,.wish{
+					width          : 100%;
+					display        : table;
+					vertical-align : middle;
+
+					text-align     : center;
+				}
+				.aim{
+					font-size      : @font_size_target;
+					line-height    : @font_size_target + 0.1;
+					color          : extract(@color_black,3);
+				}
+				.wish{
+					font-weight    : 600;
+					font-size      : @font_size_tit;
+					line-height    : @font_size_tit + 0.1;
+					color          : extract(@color_black,1);
+				}
+			}
+			/*--------------------bug区结束-------------------*/
+			.cash{
+				position   : absolute;
+				left       : @box_info_margin_hor;
+				bottom     : .35rem;
+
+				width      : @box_info_width;
+
+				font-weight: 600;
+				font-size  : @font_size_saved;
+				text-align : center;
+				.target{
+					margin-top : .05rem;
+					color      : extract(@color_yellow,1);
+				}
+			}
+		}
+	}
+
+	.wish_btn{
+		width      : 100%;
+		text-align : center;
+		margin-top: .5rem;
+		img{
+			width  : 1.4rem;
+		}
+	}
+
+	/*-------------------新愿望---------------------*/
+	.new_wish_box{
+		position         : relative;
+		margin           : .5rem @box_margin_hor .3rem;
+
+		border-radius    : .2rem;
+		background-color : white;
+		box-shadow       : .1rem .1rem 0 rgba(0, 0, 0, 0.1);
+
+		overflow         : hidden;
+		.box_decoration{
+			position : absolute;
+			width    : .35rem;
+
+			display  : block;
+			position : absolute;
+			margin   : .2rem;
+		}
+		//中间输入框
+		.inputs{
+			position : relative;
+			width    : @input_width;
+			margin   : @input_margin_top/2 auto;
+
+			overflow : hidden;
+			.input{
+				margin-top : @input_margin_top;
+				font-size  : @font_size_target;
+				.what_to_write{
+					font-weight: 600;
+				}
+				.input_box{
+					width          : 100%;
+					margin-top     : .2rem;
+					padding-bottom : .1rem;
+					border-bottom  : solid 0.01rem black;
+					input{
+						width: 100%;
+						color              : extract(@color_black,1);
+						font-size          : @font_size_tit;
+
+						appearance         : none; 
+						-moz-appearance    : none;
+						-webkit-appearance : none;
+						border             : none;
+					}
+				}
+			}
+		}
+		//输入框结束
+		
+		//大家的心愿
+		.targets{
+			width     : @input_width;
+			margin    : .5rem auto;
+			font-size : @font_size_wishes;
+			.target_tit{
+				font-weight : 600;
+			}
+			.target_btns{
+				height: (@targets_margin_ver + @targets_padding_ver * 2 + @font_size_wishes + 0.1) * 2;
+				overflow      : hidden;
+				margin-bottom : .3rem;
+				.target_btn{
+					padding       : @targets_padding_ver @targets_padding_hor;
+					margin        : @targets_margin_ver @targets_margin_hor 0 0;
+
+					float         : left;
+
+					color: extract(@color_black,3);
+
+					border        : solid 0.01rem extract(@color_black,3);
+					border-radius : @targets_padding_ver * 2 + @font_size_wishes;
+				}
+			}
+		}
+		//心愿结束
+	}
+}
+
+#page2{
+	display: none;
+}

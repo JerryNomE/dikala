@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>个人模式</title>
+
+	<!-- 导入css -->
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+	<link rel="stylesheet" type="text/css" href="../css/activities.css">
+	
+	<!-- 导入js、jq -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/activities.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+
+		var activities = //用数组存放数组，内容：
+			//['页码','图片链接','标题','起始日期','终止日期','目标',承诺金,报名人数]
+			[['00','pic1.png','测试','4.20','5.10','测试目标',500,5],
+			['00','pic2.png','测试2','6.20','8.10','测试2目标',1,20]];
+		$(document).ready(function() {
+			/*
+			 *新手模式那里函数是activities_init(activities,true);
+			 *普通活动是activities_init(activities);
+			 */
+			activities_init(activities);
+		});
+	</script>
+</head>
+<body onload="init()">
+	<div class="header">
+		<div class="tit"><img src="../img/activities/banner.png" alt=""></div>
+		<div id="inner_header_btns">
+			<div class="first">
+				<div class="left">分类</div>
+				<div class="right">推荐</div>
+			</div>
+			<div class="first_lines">
+				<div class="line left set"></div>
+				<div class="line right"></div>
+			</div>
+
+			<div class="second">
+				<div class="wak set">早起</div>
+				<div class="run">跑步</div>
+				<div class="lib">泡馆</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fixed_header_btns" class="disappear">
+		<div class="first">
+			<div class="left">分类</div>
+			<div class="right">推荐</div>
+		</div>
+		<div class="first_lines">
+			<div class="line left set"></div>
+			<div class="line right"></div>
+		</div>
+
+		<div class="second">
+			<div class="wak set">早起</div>
+			<div class="run">跑步</div>
+			<div class="lib">泡馆</div>
+		</div>
+	</div>
+	
+	<!-- page第一位0 分类 1推荐 第二位0早 1跑 2馆 href里面放跳转-->
+	<a class="container" id="page00" href="">
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic1.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">这里是早起活动</div>
+				<div class="details">
+					<div class="info_line">周期：03.27 - 04.02</div>
+					<div class="info_line">目标：在7:30打卡3天</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：50</div>
+				</div>
+			</div>
+		</div>
+	</a>
+	<a class="container disappear" id="page01" href="">
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic1.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">这里是跑步活动</div>
+				<div class="details">
+					<div class="info_line">周期：03.27 - 04.02</div>
+					<div class="info_line">目标：在7:30打卡3天</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：50</div>
+				</div>
+			</div>
+		</div>
+	<a class="container disappear" id="page02" href="">
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic1.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">这里是泡馆活动</div>
+				<div class="details">
+					<div class="info_line">周期：03.27 - 04.02</div>
+					<div class="info_line">目标：在7:30打卡3天</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：50</div>
+				</div>
+			</div>
+		</div>
+	</a>
+	<a class="container disappear" id="page10" href="">
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic2.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">这里是早起活动</div>
+				<div class="details">
+					<div class="info_line">周期：03.27 - 04.02</div>
+					<div class="info_line">目标：在7:30打卡3天</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：50</div>
+				</div>
+			</div>
+		</div>
+	</a>
+	<a class="container disappear" id="page11" href="">
+		<div class="activity">
+			<!-- 左上右下2个黄色方块 -->
+			<img src="../img/activities/left_top_triangle.png" alt="" class="decoration_lt">
+			<img src="../img/activities/right_bottom_triangle.png" alt="" class="decoration_rb">
+
+			<!-- 左侧图片 -->
+			<img src="../img/activities/pic2.png" alt="" class="illustration">
+			<!-- 右侧信息 -->
+			<div class="info">
+				<div class="tit">这里是跑步活动</div>
+				<div class="details">
+					<div class="info_line">周期：03.27 - 04.02</div>
+					<div class="info_line">目标：在7:30打卡3天</div>
+					<div class="info_line">承诺金：5元</div>
+					<div class="info_line">已报名人数：50</div>
+				</div>
+			</div>
+		</div>
+	</a>
+	<a class="container disappear" id="page12" href="">
+	</a>	
+
+	<div class="footer">
+		<a class="rank_list" href="ranking.html">
+			<img src="../img/activities/rank_list.png"> 排行榜
+		</a>
+		<a class="personal" href="mainpage.html">
+			<img src="../img/activities/personal.png"> 个人中心
+		</a>
+	</div>
+</body>
+</html>

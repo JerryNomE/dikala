@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>滴卡日志</title>
+
+	<!-- 导入css -->
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+	<link rel="stylesheet" type="text/css" href="../css/diary.css">
+	
+	<!-- 导入js、jq -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/diary.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+
+		/*-----------------------需要后台部分-----------------------*/
+	</script>
+</head>
+<body>
+	<div class="header">
+		<div class="no_bg_btn">
+			<img src="../img/diary/pen.png">　点　我　写　日　志
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="tit">大　家　的　故　事</div>
+		<!-- 修改部分，多个复制 -->
+		<div class="box">
+			<div class="box_tit">
+				<img src="../img/diary/book.png">　2017-3-17　07:20
+			</div>
+			<div class="box_text">跑步 - 今天我完成滴卡啦</div>
+		
+			<!-- 假装有图片 -->
+
+			<div class="oper">
+				<span id="comment"><img src="../img/diary/comment.png"> 评论</span>
+				　　<!--两个全角空格-->
+				<span id="like"><img src="../img/diary/heart.png"> 赞</span>
+			</div>
+		</div>
+
+
+		<div class="box">
+			<div class="box_tit">
+				<img src="../img/diary/book.png">　2017-3-17　07:20
+			</div>
+			<div class="box_text">不知不觉就这么早起了25天...好像回到了高中天天早起早读的日子，想起了曾经那么认真的自己...<br>
+			希望以后的每天也要坚持下去！！</div>
+		
+			<!-- 假装有图片 -->
+
+			<div class="oper">
+				<span id="comment"><img src="../img/diary/comment.png"> 评论</span>
+				　　<!--两个全角空格-->
+				<span id="like"><img src="../img/diary/heart.png"> 赞</span>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+@import url("S_common.less");
+@import url("S_parameter.less");
+@import url("S_box.less");
+
+body{
+	background-color : extract(@color_black,6);
+	padding-bottom   : 0;
+}
+
+.menu{
+	@height     : .9rem;
+	width       : inherit;
+	height      : @height;
+	line-height : @height;
+
+	color            : extract(@color_black,2);
+	text-align       : center;
+	background-color : white;
+	// border-bottom    : @border_width solid extract(@color_blackA,1);
+	*{
+		height: inherit;
+	}
+	ul li{
+		display    : block;
+		list-style : none;
+	}
+	.major{
+		position    : relative;
+		width       : 7.2rem - @bodySpacing * 2;
+		margin      : 0 auto;
+		padding     : 0 @bodySpacing;
+		font-size   : .28rem;
+		font-weight : 600;
+		li{
+			margin: 0 .3rem;
+		}
+		.set{
+			@line_weight : .07rem;
+			height: @height - @line_weight;
+			border-bottom: @line_weight solid extract(@color_yellow,1);
+		}
+	}
+	.minor{
+		position: absolute;
+		top:0;right:0;bottom:0;left:0;margin:auto;
+		font-size: .24rem;
+		&::after{.clear;}
+		li{
+			float   : left;
+			padding : 0 .2rem;
+		}
+		.set{
+			color: extract(@color_yellow,1);
+		}
+	}
+	&::after{.clear;}
+}
+
+.header{
+	.tit{
+		display : block;
+		width   : 100%;
+	}
+	#inner_header_menu{
+		.menu;
+		position: relative;
+	}
+}
+
+#fixed_header_menu{
+	.menu;
+	display  : none;
+	position : fixed;
+	top      : 0;
+	left     : 0;
+	z-index  : 1;
+}
+
+/*--------------各种活动----------------*/
+@footer_height : .9rem;
+#links{
+	padding-bottom: @footer_height;
+	.box{
+		@box_width  : 7.2rem - @bodySpacing * 2;
+		@box_height : 2.55rem;
+		width  : @box_width;
+		height : @box_height;
+		margin : .3rem @bodySpacing;
+
+		overflow : hidden;
+		&::before{
+			content  : "";
+			display  : block;
+			position : absolute;
+			top      : 0;
+			left     : 0;
+
+			height   : .6rem;
+			width    : .6rem;
+			background: url("../img/activities/triangle.png")no-repeat;
+			background-size: 100% 100%;
+		}
+		&::after{
+			.clear;
+			content  : "";
+			display  : block;
+			position : absolute;
+			right    : 0;
+			bottom   : 0;
+
+			height   : .6rem;
+			width    : .6rem;
+			background: url("../img/activities/triangle.png")no-repeat;
+			background-size: 100% 100%;
+
+			transform :rotate(180deg);
+		}
+
+		@img_width : 2.95rem;
+		.illustration{
+			display : block;
+			height  : inherit;
+			width   : @img_width;
+
+			float   : left;
+			img{
+				height : 100%;
+				// min-width: 100%;
+			}
+		}
+		.details{
+			@space : .2rem;
+			width  : @box_width - @img_width - @space * 2;
+			height : @box_height - @space * 2;
+
+			padding   : @space;
+			overflow  : hidden;
+			white-space:nowrap;
+			.title{
+				color       : extract(@color_black,1);
+				font-size   : .28rem;
+				font-weight : 600;
+				&~div{
+					margin    : .15rem 0;
+					color     : extract(@color_black,2);
+					font-size : .22rem;
+				}
+			}
+		}
+	}
+}
+/*--------------各种活动结束----------------*/
+
+.footer{
+	@font_size_footer : .28rem;
+	position    : fixed;
+	bottom      : 0;
+
+	width       : 100%;
+	height      : @footer_height;
+	line-height : @footer_height;
+
+	background-color : white;
+
+	font-size  : @font_size_footer;
+	text-align : center;
+	@width : 7.2rem / 2;
+	.rank_list,.personal{
+		display : block;
+		box-sizing: border-box;
+		width   : @width;
+		float   : left;
+		border  : 0px solid extract(@color_black,6);
+		img{
+			height : @font_size_footer;
+		}
+	}
+	.personal{
+		float : right;
+		border-left-width  : @border_width;
+	}
+}

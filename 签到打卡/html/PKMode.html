@@ -1,0 +1,286 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> <!--viewport是网页默认的宽度和高度，上面这行代码的意思是，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100%。 允许用户的最大缩放值为1，用户不能缩放-->
+	<title>PK模式</title>
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+	<link rel="stylesheet" type="text/css" href="../css/PKMode.css">
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/PKMode.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+	</script>
+</head>
+<body>
+	<div class="pop_up pop_match" id="pop_matching">
+		<div class="pop_bg"></div>
+		<div class="pop_container">
+			<img src="../img/pop up/searching.png" alt="" class="pop_img">
+			
+			<!-- matching和matched不同部分： -->
+			<div class="pop_stat" id="pop_matching_stat">正在匹配</div>
+			<div class="pop_info">请留意个人中心消息通知</div>
+
+			<a href="mainpage.html" class="no_bg_btn">点击跳转个人中心</a>
+		</div>
+	</div>
+	<div class="pop_up pop_match" id="pop_matched">
+		<div class="pop_bg"></div>
+		<div class="pop_container">
+			<img src="../img/pop up/succeed.png" alt="" class="pop_img">
+			
+			<!-- matching和matched不同部分： -->
+			<div class="pop_stat" id="pop_matching_stat">匹配成功！</div>
+			<div class="pop_info">您的PK对手是</div>
+			<div class="pop_opponent_name">猜猜我的名字总共有多少个字啊</div>
+			<div class="pop_hr"></div>
+			<div class="pop_info">任务目标</div>
+			<div class="pop_mission">每天7点前在 <img src="../img/GPS_white.png" alt=""> 打卡</div>
+
+
+			<a href="mainpage.html" class="no_bg_btn">点击跳转个人中心</a>
+		</div>
+	</div>
+	<div class="pop_up" id="pop_clause">
+		<div class="pop_bg"></div>
+		<div class="pop_container">
+			<div class="pop_clause_tit">服务条款</div>
+			<div class="pop_clause_main">       
+			　　　您同意遵守《中华人民共和国保密法》、《计算机信息系统国际联网保密管理规定》、《计算机信息网络国际联网安全保护管理办法》、《中华人民共和国计算机信息国际联网管理暂行规定》及其实施办法等相关法律法规的任何及所有的规定，并对您以任何方式使用服务的任何行为及其结果承担全部责任。<br>
+       		　　在任何情况下，如果合理地认为您的任何行为，包括但不限于您的任何言论和其他行为违反或可能违反上述法律和法规的任何规定，可在任何时候不经任何事先通知终止向您提供服务。
+			</div>
+			<div id="pop_read_btn">已阅读</div>
+		</div>
+	</div>
+	<div class="pop_up pop_match" id="pop_PKrule">
+		<div class="pop_bg"></div>
+		<img src="../img/pop up/PKrule.png" alt="" id="pop_PKrule_img">
+	</div>
+
+	<!-- 朋友监督 -->
+	<div class="pop_up" id="pop_share">
+		<div class="pop_bg"></div>
+		<div class="pop_container">
+			<img src="../img/pop up/share.png" alt="" class="share_img">
+		</div>
+	</div>	
+
+
+	<!-- 头部 -->
+	<div class="header">
+		<div class="mainTitle">PK模式</div>
+		<div class="q_container">
+			<img src="../img/Q.png" alt="" id="q">
+		</div>
+	</div>
+	
+	<!-- 数据 -->
+	<div class="data">
+		
+		<div id="3btn">
+			<div class="bg"></div>
+			<!-- 类型 -->
+			<div class="type top">
+				<div class="choice type_text unset">
+					点击图标设置
+				</div>
+
+				<div class="pic" id="type_btn">
+					<img src="../img/type.png" alt="" class="">
+				</div>
+
+				<div class="tips">
+					<div class="tips_tit fund">打卡类型</div>
+					<div class="stat unset">-未设置-</div>
+				</div>
+			</div>
+			
+			<!-- 时间 -->
+			<div class="type">
+				<div class="choice time_text unset">
+					点击图标设置
+				</div>
+
+				<div class="pic disabled" id="time_btn">
+					<img src="../img/time.png" alt="" class="">
+				</div>
+				
+				<div class="tips">
+					<div class="tips_tit fund">打卡时间</div>
+					<div class="stat unset">-未设置-</div>
+				</div>
+			</div>
+			
+			<!-- 承诺金 -->
+			<div class="type">
+				<div class="choice cash_text unset">
+					点击图标设置
+				</div>
+
+				<div class="pic" id="cash_btn">
+					<img src="../img/cash.png" alt="" class="">
+				</div>
+				
+				<div class="tips">
+					<div class="tips_tit fund">承诺金</div>
+					<div class="stat unset">-未设置-</div>
+				</div>
+			</div>
+		</div>
+	
+		<!-- 点击图片后的选项 -->
+			<!-- 类型 -->
+		<div class="parameter" id="type_parameter">
+			<div class="title">
+				<div class="back">
+					<span class="justify">返回</span>
+				</div>
+				<div class="tips">
+					<div class="tips_tit fund">打卡类型</div>
+					<div class="stat type_text unset">请选择</div>
+				</div>
+			</div>
+
+			<div class="type_btns">
+				<div class="abled_btn"><span class="justify">早起</span></div>
+				<div class="abled_btn"><span class="justify">跑步</span></div>
+				<div class="abled_btn"><span class="justify">泡馆</span></div>
+				<div onclick="unfinished()"><span class="justify">单词</span></div>
+				<div class="ex"></div>
+			</div>
+		</div>
+
+			<!-- 时间 -->
+		<div class="parameter" id="time_parameter">
+			<div class="title">
+				<div class="back" id="time_confirm">
+					<span class="justify">确定</span>
+				</div>
+				<div class="tips">
+					<div class="tips_tit fund">打卡时间</div>
+					<div class="stat time_text unset">请选择</div>
+				</div>
+			</div>
+
+			<div class="time">
+				<div class="line">
+					从
+					<div class="select_box"><select name="start_date" id="start">
+						<option value="1">下周一</option>
+						<option value="2">下个月</option>
+					</select></div>
+					开始
+				</div>
+
+				<!-- 早起 -->
+				<div class="line" id="wak_line">
+					每周
+					<div class="select_box"><select name="wake_time" id="wake_time">
+						<option value="630">6:30</option>
+						<option value="700">7:00</option>
+						<option value="730">7:30</option>
+					</select></div>
+					早起至目的地打卡
+					<div class="select_box"><select name="wak_times" id="wak_times">
+						<option value="5">5</option>
+						<option value="7">7</option>
+					</select></div>
+					次
+				</div>
+				<!-- 跑步 -->
+				<div class="line" id="run_line">
+					每周跑步
+					<div class="select_box"><select name="run_time" id="run_time">
+						<option value="5km">2次，至少5公里/次</option>
+						<option value="3km">5次，至少3公里/次</option>
+						<option value="1km">5次，至少1公里/次</option>
+					</select></div>
+					（需截图上传）
+				</div>
+				<!-- 泡图书馆 -->
+				<div class="line" id="lib_line">
+					每周泡图书馆
+					<div class="select_box"><select name="lib_time" id="lib_time">
+						<option value="2">2次</option>
+						<option value="3">3次</option>
+					</select></div>
+					，每次至少30min
+				</div>
+				<div class="line" id="time_tips">
+					
+				</div>
+			</div>
+		</div>
+
+			<!-- 承诺金 -->
+		<div class="parameter" id="cash_parameter">
+			<div class="title">
+				<div class="back" id="cash_confirm">
+					<span class="justify">确定</span>
+				</div>
+				<div class="tips">
+					<div class="tips_tit fund">承诺金</div>
+					<div class="stat cash_text unset">请选择</div>
+				</div>
+			</div>
+
+			
+			<div class="line" id="cas_line">
+				<div class="select_box"><select name="lib_time" id="cash">
+					<option value="20">20</option>
+					<option value="50">50</option>
+					<option value="100">100</option>
+				</select></div>
+				元（￥）
+			</div>
+		</div>
+		<!-- ---------------------------------- -->
+		<img src="../img/PKmodeFrame.png" alt="" width="100%">
+
+		<!-- 获胜条件 -->
+		<div class="explain">
+			<div class="explain_tit fund">获胜条件？</div>
+			<span id="condition">每天7点前在<img src="../img/GPS.png" alt="" class="gps">打卡</span>
+			<br>
+			坚持至对手中断打卡即为胜利者
+		</div>
+	</div>
+
+<!-- 按钮 -->
+	<div class="btns">
+		<div class="read">
+			<div class="check">
+				<input type="checkbox" id="checkboxInput" name="read"/>
+				<label for="checkboxInput"></label>
+			</div>
+			已阅读<a href="" id="clause">服务条款</a><!--条款链接-->
+		</div>
+
+		<!-- 这里下面都是一块 -->
+		<div class="btns">
+			<div id="cover"></div>
+
+			<a class="btn upper_btn" id="PK_random">随机匹配对手</a>
+			<a class="btn lower_btn" id="PK_friend">PK微信好友</a>
+		</div>
+	</div>
+
+	
+</body>
+</html>

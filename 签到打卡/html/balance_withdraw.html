@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>提现</title>
+
+	<!-- 导入css -->
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+	<link rel="stylesheet" type="text/css" href="../css/balance.css">
+	<link rel="stylesheet" type="text/css" href="../css/balance_child.css">
+	
+	<!-- 导入js、jq -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/balance_child.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+	</script>
+</head>
+<body>
+	<div class="header">
+		<div class="tit">提现</div>
+		<div class="balance"><span style="color: white">我的余额：</span>￥100</div>
+	</div>
+
+	<div class="container">
+		<div class="parameter">
+			<div class="title">
+				<div class="back">
+					<img src="../img/cash.png" alt="">
+				</div>
+				<div class="tips">
+					<div class="tips_tit fund">提现金额</div>
+					<div class="stat" id="cash_text">请输入</div>
+				</div>
+			</div>
+
+			<div class="line" id="page1">
+				<input type="text" id="num">
+				元（￥）
+			</div>
+
+			<div class="line" id="page2">
+				您的存入请求正在处理中...<br>
+				请留意您的微信账户
+			</div>
+		</div>		
+
+		<img src="../img/PKmodeFrame.png" alt="" width="100%">
+		
+		<div href="" class="super_btn" id="withdraw">
+			<div class="btn_inner">
+				确认提现
+			</div>
+		</div>
+	</div>
+</body>
+</html>

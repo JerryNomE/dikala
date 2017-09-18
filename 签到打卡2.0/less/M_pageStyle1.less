@@ -1,0 +1,63 @@
+@import url("S_box.less");
+@import url("S_parameter.less");
+
+// header
+@header_height : .7rem;
+@header_fontSize : .5rem;
+.header{
+	padding    : .7rem 0;
+	height     : @header_height;
+
+	text-align : center;
+	color      : white;
+	font-size  : @header_fontSize;
+}
+
+// box
+@box_margin_ver  : .3rem;
+@box_padding_ver : .4rem;
+@box_padding_hor : .5rem;
+@box_width    : 7.2rem - 2 * (@bodySpacing + @box_padding_hor);
+@common_space : .2rem;
+
+.box{
+	margin   : 0 auto @box_margin_ver;
+	padding  : @box_padding_ver @box_padding_hor;
+	width    : @box_width;
+	overflow : hidden;
+	
+	box-shadow : 0 0 .25rem -.05rem #888888;
+	.title{
+		font-size   : .32rem;
+		font-weight : 600;
+	}
+	.container{
+		margin-top : @common_space;
+	}
+}
+.box2{
+	.box;
+	background-image    : url("../img/box2Bottom.png");
+	background-size     : 100% auto;
+	background-position : bottom;
+	background-repeat   : no-repeat;
+}
+
+.before{
+	content  : "";
+	display  : block;
+	position : absolute;
+	margin   : -@box_padding_ver -@box_padding_hor;
+	width    : .17rem;
+	height   : .6rem;
+	background-color : extract(@color_yellow,1);
+}
+.after{
+	content : "";
+	display : block;
+	clear   : both;
+}
+.box::before{.before;}
+.box::after {.after;}
+.box2::before{.before;}
+.box2::after {.after;}

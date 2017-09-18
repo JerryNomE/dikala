@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+
+	<title>我参加的打卡</title>
+	<link rel="stylesheet" type="text/css" href="../css/joined.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/joined.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+
+		/*--------------------修改部分--------------------*/
+		//有无加入打卡
+		var wak_join = true;
+		var run_join = true;
+		var lib_join = false;
+		//具体状况如果没加入那就不改了
+		//早起[总打卡天数,当前打卡天数,结束年,月,日,承诺金,打卡时间]
+		var wak = [5,3,2017,4,5,20,'7:00'];
+		//跑步[总打卡天数,当前打卡天数,结束年,月,日,承诺金,最少里程]
+		var run = [7,2,2018,2,13,10,5];
+		//泡馆[总打卡天数,当前打卡天数,结束年,月,日,承诺金]
+		var lib = [6,4,2019,8,3,1];
+	</script>
+</head>
+<body>
+	<!-- 头部 -->
+	<div class="header">
+		<div class="left_btn">
+			<a class="current gradient_yellow">个人资料　</a>
+			<a class="choice no_bg_btn">通知　</a>
+		</div>	
+		<div class="right_info">
+			<div class="name">一二三四五六</div>
+			<div class="img">
+				<img src="../img/thumb.png" class="thumb">
+				<img src="../img/ranking/head portrait.png" class="portrait">
+			</div>
+			<div class="clear"></div>
+			<div class="account">
+				滴卡账户:<span class="yellow">¥80</span> 
+				　　<!--两个全角空格，懒得加class-->
+				愿望储蓄:<span class="yellow">¥60</span>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<!-- 正文 -->
+	<div class="container">
+		<div class="box" id="wak_plan">
+			<div class="line_decoration"></div>
+
+			<div class="box_tit">早起</div>
+			
+			<div class="plan_line bar_line">
+				<div class="plan">进度</div>
+				<div class="bar"><div class="inner_bar" id="wak_bar"></div></div>
+			</div>
+
+			<div class="plan_line">
+				<div class="left_plan_line">每日打卡ddl</div>
+				<div class="right_plan_line" id="wak_time">7:00</div>
+			</div>
+			<div class="plan_line">
+				<div class="left_plan_line">结束日期</div>
+				<div class="right_plan_line" id="wak_end">2017-4-5</div>
+			</div>
+			<div class="plan_line">
+				<div class="left_plan_line">承诺金</div>
+				<div class="right_plan_line" id="wak_money">￥20</div>
+			</div>
+		</div>
+
+		<div class="box" id="run_plan">
+			<div class="line_decoration"></div>
+
+			<div class="box_tit">跑步</div>
+			
+			<div class="plan_line bar_line">
+				<div class="plan">进度</div>
+				<div class="bar"><div class="inner_bar" id="run_bar"></div></div>
+			</div>
+
+			<div class="plan_line">
+				<div class="left_plan_line">最少里程</div>
+				<div class="right_plan_line" id="run_aim">3km</div>
+			</div>
+			<div class="plan_line">
+				<div class="left_plan_line">结束日期</div>
+				<div class="right_plan_line" id="run_end">2017-4-5</div>
+			</div>
+			<div class="plan_line">
+				<div class="left_plan_line">承诺金</div>
+				<div class="right_plan_line" id="run_money">￥20</div>
+			</div>
+		</div>
+
+		<div class="box" id="lib_plan">
+			<div class="line_decoration"></div>
+			
+
+			<div class="box_tit">泡馆</div>
+			
+			<div class="plan_line bar_line">
+				<div class="plan">进度</div>
+				<div class="bar"><div class="inner_bar" id="lib_bar"></div></div>
+			</div>
+
+			<div class="plan_line">
+				<div class="left_plan_line">结束日期</div>
+				<div class="right_plan_line" id="lib_end">2017-4-5</div>
+			</div>
+			<div class="plan_line">
+				<div class="left_plan_line">承诺金</div>
+				<div class="right_plan_line" id="lib_money">￥20</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>不知道放哪里的接受监督弹窗</title>
+
+	<!-- 导入css -->
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+	<link rel="stylesheet" type="text/css" href="../css/toSupervise.css">
+	
+	<!-- 导入js、jq -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/toSupervise.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+
+		/*-----------------------需要后台部分-----------------------*/
+		var name = '人名';
+		var type = '用扇贝扇人';//监督内容
+		var time = 2017 + '-' + 5 + '-' + 3;
+	</script>
+</head>
+<body>
+	<div class="pop_up" id="pop_succeed">
+		<div class="pop_bg"></div>
+		<div class="pop_container">
+			<img src="../img/pop up/supervise.png" alt="" class="blink">
+			<div class="succeed">同意监督</div>
+			<div class="go_check">
+				您已接受来自<span class="name yellow">人名</span>的监督请求<br>
+				请在个人中心里完成对好友监督
+			</div>
+			<a href="mainpage.html" id="share_btn">点击跳转至个人中心</a>
+		</div>
+	</div>
+
+	<div class="pop_up" id="pop_refuse">
+		<div class="pop_bg"></div>
+		<div class="pop_container">
+			<img src="../img/pop up/refuse.png" alt="" class="blink">
+			<div class="succeed">拒绝监督</div>
+			<div class="go_check">
+				您拒绝了您的好友<br>
+				<span class="name yellow">人名</span>的监督请求
+			</div>
+			<a href="mainpage.html" id="share_btn">点击跳转至个人中心</a>
+		</div>
+	</div>
+
+	<div class="pop_up" id="pop_challenge">
+		<div class="tit">
+			您的好友<br>
+			<span class="name">又是一个人名</span>
+		</div>
+
+		<div class="container">
+			<img src="../img/pop up/recieve_supervise.png" alt="" class="bg">
+
+			<div class="btns">
+				<a class="btn gradient_yellow gradient_yellowA" id="accept">接受邀请</a>
+				<a class="btn no_bg_btn" id="refuse">拒绝</a>
+			</div>
+
+			<div class="main">
+				<div class="part">
+					<div class="part_tit">监督内容</div>
+					<div class="hr"></div>
+					<div class="part_info" id="content">用扇贝打500个人事实上司会死石灰石</div>
+				</div>
+				<div class="part">
+					<div class="part_tit">截止时间</div>
+					<div class="hr"></div>
+					<div class="part_info" id="end_time">2017-5-20</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

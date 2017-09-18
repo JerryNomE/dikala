@@ -1,0 +1,187 @@
+<!-- 提交愿望的逻辑 到wishlist.js里面写 -->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>我的愿望</title>
+
+	<!-- 导入css -->
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+	<link rel="stylesheet" type="text/css" href="../css/wishlist.css">
+	
+	<!-- 导入js、jq -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/wishlist.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+	</script>
+</head>
+<body onload="init()">
+	<div class="header">
+		<div class="info">
+			<div class="fund"><span class="rmb">￥</span>410</div>
+			<div class="whats_upside">愿望储蓄总额</div>
+		</div>
+	</div>
+
+	<div class="container" id="page1">
+		<div class="title justify">愿 望 清 单</div>
+
+		<!-- 愿望表---------------------------------------- -->
+		<div class="boxes">
+			<div class="box">
+				<img src="../img/wishlist/wish_decoration.png" alt="" class="box_decoration">
+
+				<div class="info">
+					<!-- 上面 灰色目标 -->
+					<div class="aim">
+						背1000个单词就可以
+					</div>
+					<!-- 中间 愿望 -->
+					<div class="wish">
+						去一个地方旅游
+					</div>
+				</div>
+				<!-- 下面 金额 -->
+				<div class="cash">
+					<div class="saved">已存 ￥ 50</div>
+					<div class="target">目标 ￥ 300</div>
+				</div>
+			</div>
+			<div class="box">
+				<img src="../img/wishlist/wish_decoration.png" alt="" class="box_decoration">
+
+				<div class="info">
+					<!-- 上面 灰色目标 -->
+					<div class="aim">
+						一行
+					</div>
+					<!-- 中间 愿望 -->
+					<div class="wish">
+						一行
+					</div>
+				</div>
+				<!-- 下面 金额 -->
+				<div class="cash">
+					<div class="saved">已存 ￥ 50</div>
+					<div class="target">目标 ￥ 300</div>
+				</div>
+			</div>
+
+			<div class="box">
+				<img src="../img/wishlist/wish_decoration.png" alt="" class="box_decoration">
+
+				<div class="info">
+					<!-- 上面 灰色目标 -->
+					<div class="aim">
+						<!-- 背1000个单词就可以 -->
+					</div>
+					<!-- 中间 愿望 -->
+					<div class="wish">
+						一行五个字
+					</div>
+				</div>
+				<!-- 下面 金额 -->
+				<div class="cash">
+					<div class="saved">已存 ￥ 50</div>
+					<div class="target">目标 ￥ 300</div>
+				</div>
+			</div>
+			<div class="box">
+				<img src="../img/wishlist/wish_decoration.png" alt="" class="box_decoration">
+
+				<div class="info">
+					<!-- 上面 灰色目标 -->
+					<div class="aim">
+						尝试着居中
+					</div>
+					<!-- 中间 愿望 -->
+					<div class="wish">
+						<!-- 去一个地方旅游 -->
+					</div>
+				</div>
+				<!-- 下面 金额 -->
+				<div class="cash">
+					<div class="saved">已存 ￥ 50</div>
+					<div class="target">目标 ￥ 300</div>
+				</div>
+			</div>
+		<div class="clear"></div>
+		</div>
+
+		<!-- 新增愿望按钮 -->
+		<div class="wish_btn" id="new">
+			<img src="../img/wishlist/new_wish.png" alt="">
+		</div>
+	</div>
+	
+	<!-- 填写愿望 ----------------------------------------- -->
+	<div class="container" id="page2">
+		<div class="title justify">我 的 愿 望</div>
+
+		<!-- 愿望表 -->
+		<div class="new_wish_box">
+			<img src="../img/wishlist/wish_decoration.png"alt="" class="box_decoration">
+
+			<div class="inputs">
+				<div class="input">
+					<div class="what_to_write">实现心愿前先完成什么目标呢（选填）</div>
+					<div class="input_box">
+						<input type="text" placeholder="填入想要完成的目标" id="small_target">
+					</div>
+				</div>
+
+				<div class="input">
+					<div class="what_to_write">许下我的心愿</div>
+					<div class="input_box">
+						<input type="text" placeholder="写下我的心愿" id="award">
+					</div>
+				</div>
+
+				<div class="input">
+					<div class="what_to_write">心愿目标金额（￥）</div>
+					<div class="input_box">
+						<input type="text" placeholder="输入心愿金额" id="amount">
+					</div>
+				</div>				
+			</div>
+
+			<div class="targets">
+				<div class="target_tit">大家正在为这些心愿而努力：</div>
+				<div class="target_btns">
+					<div class="target_btn">最多放8个愿望</div>
+					<div class="target_btn">一般显示不下</div>
+					<div class="target_btn">放不下算了</div>
+					<div class="target_btn">反正也看不到</div>
+					<div class="target_btn">就2行</div>
+					<div class="target_btn">没啥说了</div>
+					<div class="target_btn">就这样吧</div>
+					<div class="target_btn">凑字数</div>
+
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<!-- 新增愿望按钮 -->
+		<div class="wish_btn" id="submit">
+			<img src="../img/wishlist/submit_wish.png" alt="">
+		</div>
+	</div>	
+</body>
+</html>

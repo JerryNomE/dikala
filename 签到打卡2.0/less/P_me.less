@@ -1,0 +1,305 @@
+@import url("S_common.less");
+@import url("M_pageStyle1.less");
+@import url("S_gradient.less");
+@import url("S_parameter.less");
+@import url("M_button.less");
+@import url("M_popUp.less");
+
+@note_padding_ver : .2rem;
+@note_border      : .02rem;
+@note_fontSize    : .3rem;
+@header_height    : @note_padding_ver*4 + @note_fontSize*2 + .4rem;
+
+@name_fontSize : .6rem;
+@name_height   : @name_fontSize + .1rem;
+
+@portrait_height : .5rem;
+@thumb_height    : .36rem;
+@thumb_margin    : (@portrait_height - @thumb_height) / 2;
+
+body{
+	background-image: url("../img/mainpage/headerbg.png");
+}
+
+.header{
+	position : relative;
+	height   : @header_height;
+	/*左侧*/
+	.note{
+		position : absolute;
+		height   : inherit;
+		width    : 100%;
+		a{
+			position  : absolute;
+			left      : 0;
+			padding   : @note_padding_ver .6rem @note_padding_ver .35rem;
+
+			font-size : @note_fontSize;
+
+			border-top-right-radius    : .8rem;
+			border-bottom-right-radius : .8rem;
+		}
+		.current{
+			.gradient_yellow;
+			color       : white;
+			text-shadow : #999 0 .05rem .05rem;
+		}
+		.option{
+			border      : @note_border extract(@color_yellow,1) solid;
+			padding     : (@note_padding_ver - @note_border) .6rem (@note_padding_ver - @note_border) .35rem;
+			border-left : 0;
+
+			color       : extract(@color_yellow,1);
+		}
+		.bottom{
+			bottom   : 0;
+		}
+	}
+	/*右侧*/
+	#info{
+		position   : absolute;
+		right      : @bodySpacing + .1rem;
+		height     : inherit;
+		width      : 4rem;
+		text-align : right;
+		#name{
+			width       : 100%;
+			height      : @name_height;
+			line-height : @name_height + .01rem;
+
+			font-size   : @name_fontSize;
+			color       : white;
+
+			overflow    : hidden;
+		}
+		.settled{
+			position : absolute;
+			bottom   : 0;
+			height   : 1rem;
+			width    : 100%;
+			.img{
+				position : absolute;
+				top      : 0;
+				right    : 0;
+				height   : @portrait_height;
+				width    : 100%;
+				img{
+					display: block;
+					float: right;
+				}
+				#portrait{
+					height : @portrait_height;
+					width  : @portrait_height;
+					border-radius : 50%;
+				}
+				.thumb{
+					height : @thumb_height;
+					margin : @thumb_margin 0 @thumb_margin @thumb_margin*2;
+				}
+			}
+			.account{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				font-size: .26rem;
+			}
+		}
+	}
+}
+
+@col : 3;
+@cellspacing : .25rem;
+@to_subtitle : @common_space;
+#record{
+	.table{
+		margin-top: @to_subtitle;
+		ul{
+			display: block;
+		}
+		ul::after{
+			content : "";
+			display : block;
+			clear   : both;
+		}
+		li{
+			display    : block;
+			width      : @box_width / @col;
+			padding    : @cellspacing 0;
+
+			font-size  : .28rem;
+			text-align : center;
+			float      : left;
+		}
+		.th{
+			font-weight   : 600;
+			color         : extract(@color_black,2);
+			border-bottom : 1px solid extract(@color_black,3);
+		}
+		.tr{
+			color: extract(@color_black,3);
+		}
+	}
+}
+
+@progress_fontSize : .28rem;
+@line_weight : .05rem;
+@line_length : 3rem;
+
+#progress{
+	.joined{
+		margin-bottom: .4rem;
+		.subtitle{
+			font-size  : .32rem;
+			color      : extract(@color_yellow,1);
+			text-align : center;
+			margin     : @to_subtitle 0 @to_subtitle;
+		}
+		.progress{
+			font-size : @progress_fontSize;
+			color     : extract(@color_black,2);
+			position  : relative;
+			margin    : .2rem 0;
+			.status::after{
+				.clear;
+			}
+			.status{
+				.activity{
+					// padding : 0 .05rem 0 .25rem;
+					padding : 0 .05rem;
+					float   : left;
+					.triangle{
+					    width   : 0;
+					    height  : 0;
+						display : inline-block;
+						margin-right   : .1rem;
+						margin-bottom  : .05rem;
+						vertical-align : middle;
+
+					    border-top    : @progress_fontSize/3 solid transparent;
+					    border-left   : @progress_fontSize/1.5 solid extract(@color_blackA,1);
+					    border-bottom : @progress_fontSize/3 solid transparent;
+
+					    transition         : transform .5s;
+					    -moz-transition    : -moz-transform .5s;
+					    -webkit-transition : -webkit-transform .5s;
+					    -o-transition      : -o-transform .5s;
+					}
+				}
+				.aim{
+					overflow : hidden;
+					position : absolute;
+					top:0;right:0;bottom:0;left:0;margin:auto;
+					width            : @line_length;
+					height           : @line_weight;
+					background-color : extract(@color_black,4);
+					// float            : right;
+					.current{
+						width     : 0;
+						height    : 100%;
+						max-width : 100%;
+						transition : width @transition_time;
+						background-color: extract(@color_yellow,1);
+					}
+					.done{
+						background-color: green;
+					}
+				}
+				.num{
+					float: right;
+				}				
+			}
+
+			.details{
+				// height: 0;
+				display  : none;
+				overflow : hidden;
+				transition         : height .5s;
+				-moz-transition    : height .5s;
+				-webkit-transition : height .5s;
+				-o-transition      : height .5s;
+				.table{
+					@cellpadding : .3rem;
+					.tr{
+						width: @box_width;
+						color: extract(@color_black,2);
+						padding: .2rem 0;
+						div{
+							width: @box_width / 2 - @cellpadding;
+							float: left;
+						}
+						.th{
+							text-align: right;
+							padding-right: @cellpadding;
+						}
+						.td{
+							text-align: left;
+							padding-left: @cellpadding;
+						}
+					}
+				}
+				.table::after{
+					.clear;
+				}
+			}
+		}
+		.progress::after{
+			content : "";
+			display : block;
+			clear   : both;
+		}
+	}
+
+	.unjoined{
+		padding-top : .1rem;
+		text-align  : center;
+		font-size   : .3rem;
+		p{
+			padding: .1rem 0;
+		}
+	}
+
+	.supervise{
+		margin-top : .2rem;
+		a{
+			display    : block;
+			width      : @box_width / 2;
+			font-size  : .25rem;
+			text-align : center;
+			float      : left;
+		}
+	}
+	.supervise::after{
+		content : "";
+		display : block;
+		clear   : both;
+	}
+}
+
+// 点击加入打卡后的弹窗
+@round_height : 2rem;
+@round_fontSize : .7rem;
+#modes{
+	.mode{
+		position : relative;
+		width    : @round_height;
+		height   : @round_height;
+		line-height   : @round_height;
+		border-radius    : @round_height;
+		background-color : extract(@color_yellow,1);
+
+		color       : white;
+		font-weight : 600;
+		font-size   : @round_fontSize;
+		text-align  : center;
+
+		float: left;
+		margin-left: (7.2 - @round_height * 2) / 3;
+		p{
+			position: absolute;
+			top:0;right:0;bottom:0;left:0;margin:auto;
+		}
+		&:active{
+			background-color: extract(@color_yellow,2);
+		}
+	}
+}

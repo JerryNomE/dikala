@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="wap-font-scale" content="no">
+
+	<title>PK模式</title>
+	<!-- <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script> -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+
+	<script type="text/javascript" src="../js/page_init.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			var user = new Vue({
+				el: "#user",
+			});
+			var read = new Vue({
+				el: "#read"
+			})
+
+			// 打卡内容可选项
+			var timeOptions = new Vue({
+				el: "#time",
+				data: {
+					wake    : ['6:30','7:00','7:30'],
+					run     : ['3km*3次','3km*5次','5km*3次','5km*5次'],
+					library : ['1h*3次','1h*5次','3h*3次','3h*5次'],
+					words   : ['每天']
+				}
+			})
+
+			// 承诺金额
+			var deposit = new Vue({
+				el: "#deposit",
+				data:{
+					deposit : [5,10,20]
+				}
+			})
+		});
+
+		/* 
+		 * 点击PK时用户选择的内容为（type、time、deposit各只有一项）
+		 * 需要的时候 变量 = getChosen()
+		 * var chosen = getChosen();// 栗子，没实际意义
+		 */
+
+		// 点击随机PK随机匹配
+		var doRandomPK = function () {
+			// body...
+		};
+		// 点击好友PK随机匹配
+		var doFriendPK = function () {
+			// body...
+		};
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../css/P_PKmode.css">
+	<script type="text/javascript" src="../js/clause.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/PKmode.js"></script>
+</head>
+<body>
+	<div class="pop_up" id="pop_PKrule">
+		<img src="../img/PKmode/PKrule.png" alt="" id="pop_PKrule_img">
+	</div>
+
+	<div class="pop_up" id="pop_matching">
+		<div class="pop_container">
+			<img src="../img/pop up/searching.png" alt="" id="pop_img">
+			
+			<!-- matching和matched不同部分： -->
+			<div class="pop_stat" id="pop_matching_stat">正在匹配</div>
+			<div class="pop_info">请留意个人中心消息通知</div>
+
+			<a href="me.html" class="no_bg_btn">点击跳转个人中心</a>
+		</div>
+	</div>
+	
+	<div class="pop_up" id="pop_share">
+		<div class="pop_container">
+			<img src="../img/activity/share.png" alt="" class="share_img">
+			<a href="me.html" class="no_bg_btn">点击跳转个人中心</a>
+		</div>
+	</div>
+
+	<div class="header" id="user">
+		<clause></clause>
+		<p>PK模式<img src="../img/PKmode/Q.png" alt="" id="Q"></p>
+	</div>
+	
+	<div class="container">
+		<div class="table">
+			<!-- 打卡类型 -->
+			<div class="tr" id="type">
+				<div class="input">
+					<div class="triangle"></div>
+					<div class="spin">
+						<div class="select">
+							<div class="option" value="wake">早　起</div>
+							<div class="option" value="run">跑　步</div>
+							<div class="option" value="library">泡　馆</div>
+							<div class="option" value="words">单　词</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="icon">
+					<div class="round type"></div>
+				</div>
+
+				<div class="status">打卡类型</div>
+			</div>
+
+			<!-- 打卡内容 -->
+			<div class="tr" id="time">
+				<div class="input">
+					<div class="triangle"></div>
+					<div class="spin">
+						<!-- 早起选项 -->
+						<div class="select" type="wake">
+							<div class="option" v-for="option in wake">{{ option }}</div>
+						</div>
+						<!-- 跑步选项 -->
+						<div class="select" type="run">
+							<div class="option" v-for="option in run">{{ option }}</div>
+						</div>
+						<!-- 泡馆选项 -->
+						<div class="select" type="library">
+							<div class="option" v-for="option in library">{{ option }}</div>
+						</div>
+						<!-- 单词选项 -->
+						<div class="select" type="words">
+							<div class="option" v-for="option in words">{{ option }}</div>
+						</div>
+					</div>
+				</div>
+				<div class="icon">
+					<div class="round time"></div>
+				</div>
+				<div class="status">打卡内容</div>
+			</div>
+
+			<!-- 承诺金 -->
+			<div class="tr" id="deposit">
+				<div class="input">
+					<div class="triangle"></div>
+					<div class="spin">
+						<div class="select">
+							<div class="option" v-for="option in deposit" :value='option'>{{ option }}</div>
+						</div>
+					</div>
+				</div>
+				<div class="icon">
+					<div class="round cash"></div>
+				</div>
+				<div class="status">承诺金</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="read"><read-clause></read-clause></div>
+
+	<div class="btns">
+		<div class="btns-clause">
+			<div class="btn-clause-block btn_gradient_grey"><p>随机匹配PK</p></div>
+			<div class="btn_gradient_yellow btn-clause" id="random"><p>随机匹配PK</p></div>
+		</div>
+		<div class="btns-clause">
+			<div class="btn-clause-block btn_gradient_grey"><p>与好友PK</p></div>
+			<div class="btn_gradient_yellow2 btn-clause" id="friend"><p>与好友PK</p></div>
+		</div>
+	</div>
+	
+</body>
+</html>

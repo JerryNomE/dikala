@@ -1,0 +1,239 @@
+@import url("S_common.less");
+@import url("M_pageStyle1.less");
+@import url("S_parameter.less");
+
+body{
+	background-image: url("../img/dika/headerbg.png");
+}
+
+@header_fontSize : .5rem;
+.header{
+	// font-size   : @header_fontSize;
+	line-height : @header_height;
+	#day{
+		font-size: @header_fontSize * .7;
+	}
+}
+
+@button_radius : .36rem;
+@button_space  : .3rem;
+@button_width  : (@box_width - @button_space)/2 - @button_radius * 2;
+@button_padding_ver : .2rem;
+
+// 点击滴卡部分
+#dika{
+	@dika_button_height : 1.05rem - @button_padding_ver * 2;
+	.button{
+		position : relative;
+		width    : @button_width;
+		height   : @dika_button_height;
+
+		border-radius : @button_radius;
+
+		padding : @button_padding_ver @button_radius;
+		margin  : .2rem 0 0;
+		color   : white;
+		.tick{
+			position : relative;
+			@margin  : .1rem;
+			width    : @dika_button_height - @margin * 2;
+			height   : @dika_button_height - @margin * 2;
+			margin   : @margin @margin*2 @margin 0;
+			float    : left;
+			background-position: 0 0;
+			background-size: 100% 100%;
+		}
+		.description{
+			position: relative;
+			width  : @button_width - @dika_button_height;
+			height : @dika_button_height;
+			text-align : center;
+			float      : left;
+			.btn_tit{
+				width : 100%;
+				@font_size  : .32rem;
+				font-size   : @font_size;
+				line-height : @font_size;
+			}
+			.status{
+				width    : 100%;
+				position : absolute;
+				bottom   : 0;
+				@font_size  : .25rem;
+				font-size   : @font_size;
+				line-height : @font_size;
+			}
+		}
+	}
+	
+	@square_width  : 64%;
+	@square_border : .05rem;
+	.unjoined{
+		background-color: extract(@color_black,5);
+		.tick::after{
+			content  : "";
+			display  : block;
+			position : absolute;
+			bottom   : 0;
+
+			width  : @square_width;
+			height : @square_width;
+			border : @square_border solid white;
+			border-radius : @square_border;			
+		}
+	}
+	.undone{
+		background-color: extract(@color_yellow,1);
+		.tick::after{
+			content  : "";
+			display  : block;
+			position : absolute;
+			bottom   : 0;
+
+			width  : @square_width;
+			height : @square_width;
+			border : @square_border solid white;
+			border-radius : @square_border;			
+		}
+	}
+	.checking{
+		background-color: extract(@color_yellow,2);
+		.tick::after{
+			content  : "";
+			display  : block;
+			position : absolute;
+			bottom   : 0;
+
+			width  : @square_width;
+			height : @square_width;
+			border : @square_border solid white;
+			border-radius : @square_border;			
+		}
+	}
+	.done{
+		background-color: extract(@color_yellow,5);
+		.tick{
+			background-image: url("../img/dika/tick.png");
+		}
+	}
+}
+#dika::after{
+	.clear;
+}
+.supervise{
+	.tick::after{
+		display: none!important;
+	}
+}
+.supervise.unjoined{
+	.tick{
+		background-image: url("../img/dika/eye_close.png");
+	}
+}
+.supervise.undone{
+	.tick{
+		background-image: url("../img/dika/eye.png");
+	}
+}
+
+// 上传截图部分
+#upload{
+	@width : @button_width + @button_radius * 2;
+	#uploadImg{
+		position: relative;
+		width  : @width;
+		height : @width;
+
+		border-radius: @button_radius;
+
+		float : left;
+
+		background-position : 0 0;
+		background-size     : 100% 100%;
+		margin-top          : @common_space;
+
+		box-shadow : 0 0 .2rem extract(@color_blackA,1);
+		overflow   : hidden;
+		img{
+			position: absolute;
+			width  : 100%;
+			height : 100%;
+		}
+		#wordsImg{
+			display: none;
+		}
+	}
+
+	.line{
+		@height     : (@width - @common_space * 2) / 3;
+		@fontSize   : .3rem;
+		width       : @width;
+		height      : @height;
+		line-height : @height;
+
+		margin-top  : @common_space;
+
+		font-size   : @fontSize;
+		text-align  : center;
+
+		float : right;
+
+		.checkboxStatus{
+			@displayHeight : @fontSize * .7;
+			display        : inline-block;
+			position       : relative;
+			vertical-align : middle;
+
+			// width         : @width * .3;
+			width  : @displayHeight * 2.5;
+			height : @displayHeight + .01;
+
+			border        : .02rem solid black;
+			border-radius : 5rem;
+
+			background-color: extract(@color_yellowA,2);
+			.hr{
+				position : absolute;
+
+				width  : @width * .3 - @fontSize;
+				height : .02rem;
+
+				background-color: black;
+				top:0;right:0;bottom:0;left:0;margin:auto;
+			}
+			#vernier{
+				position  : absolute;
+				@round    : @displayHeight;
+				width     : @round;
+				height    : @round;
+				// margin : (@displayHeight - @round) / 2 - .01;
+				margin    : -.02rem -.02rem;
+				z-index   : 1;
+
+				border           : .02rem solid extract(@color_black,1);
+				background-color : #fff;
+				border-radius    : 5rem;
+
+				transition         : left .5s;
+				-moz-transition    : left .5s;
+				-webkit-transition : left .5s;
+				-o-transition      : left .5s;
+			}
+		}
+
+		#button{
+			height      : @height - @button_padding_ver * 2;
+			line-height : @height - @button_padding_ver * 2;
+			padding     : @button_padding_ver @button_radius;
+
+			color     : white;
+			font-size : .3rem;
+			border-radius    : @button_radius;
+			background-color : extract(@color_yellow,2);
+		}
+		#upload_status{
+			font-size : .25rem;
+			color     : extract(@color_yellow,2);
+		}
+	}
+}

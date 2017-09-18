@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>不知道放哪里的接受PK弹窗</title>
+
+	<!-- 导入css -->
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss.css">
+	<link rel="stylesheet" type="text/css" href="../css/sharedCss_720.css">
+	<link rel="stylesheet" type="text/css" href="../css/challenged.css">
+	
+	<!-- 导入js、jq -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/shared.js"></script>
+	<script type="text/javascript" src="../js/challenged.js"></script>
+	<script>
+		new function (){
+	 	    var _self = this;
+	 	    _self.width = 720;//设置默认宽度
+	 	    _self.fontSize = 100;//默认字体大小
+	 	    _self.widthProportion = function(){
+	 	    	var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;
+	 	    	return p;
+	 		};
+	 	    _self.changePage = function(){
+	 	        document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+	 	    }
+	 	    _self.changePage();
+	 	    window.addEventListener('resize',function(){_self.changePage();},false);
+		};
+
+		/*-----------------------需要后台部分-----------------------*/
+		var name  = '人名';
+		var type  = 0;//0早起 1泡馆 2跑步
+		var start = 0;//0下周 1下月
+		var rate  = 0;//早起的不用管 一周打卡几次
+		var time  = '4:20';//早起打卡时间
+		var money = 20;
+		/*那段搞事的标题记得记得记得要去js那里改了*/
+	</script>
+</head>
+<body>
+	<div class="pop_up" id="pop_succeed">
+		<div class="pop_bg"></div>
+		<div class="pop_container">
+			<img src="../img/pop up/sign_up.png" alt="" class="blink">
+			<div class="succeed">开始PK</div>
+			<div class="go_check">
+				您已接受来自<br>
+				<span class="name yellow">人名</span>的PK邀请
+			</div>
+			<a href="mainpage.html" id="share_btn">点击跳转至个人中心</a>
+		</div>
+	</div>
+
+	<div class="pop_up" id="pop_challenge">
+		<div class="tit">
+			您的好友<br>
+			<span class="name">又是一个人名</span>
+		</div>
+
+		<div class="container">
+			<img src="../img/pop up/recieve_PK.png" alt="" class="bg">
+
+			<div class="btns">
+				<a class="btn gradient_yellow gradient_yellowA" id="accept">来就来！谁怕谁</a>
+				<a class="btn no_bg_btn" id="reject">不不不...我怂了</a>
+			</div>
+
+			<div class="main">
+				<div id="type">早起，每天+1s</div>
+				<div class="PK_detail" id="condition">
+					下周一起，工作日7点前在<img src="../img/GPS_white.png">打卡
+				</div>
+				<div class="PK_detail">谁坚持不下去谁就是LOSER！</div>
+
+				<div id="btn_flow">查看规则图示</div>
+
+				<div class="cash">PK金额：<span class="yellow">￥<span id="money">10</span></span></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="pop_up pop_match" id="pop_PKrule">
+		<div class="pop_bg"></div>
+		<img src="../img/pop up/PKrule.png" alt="" id="pop_PKrule_img">
+	</div>
+</body>
+</html>

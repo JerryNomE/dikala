@@ -1,0 +1,454 @@
+﻿@color_yellow : #f8e032, #ffbe05, #ff9105;//extract(@,index)来获得
+@color_black  : #272636, #68676f, #999;
+
+@font_size_tit     : .5rem;
+@font_size_subtit  : @font_size_tit * 0.64;//.32 右侧黄色字体
+@font_size_setting : @font_size_tit * 0.56;//.28 设置情况
+@font_size_sever   : @font_size_tit * 0.48;//.24 已阅读条款
+@font_size_invite  : @font_size_tit * 0.60;//.30 最下按钮
+
+@btn_height          : 1.2rem;
+@pop_share_img_right : .5rem;
+
+html{
+	color: extract(@color_black,1);
+}
+
+body{
+	background-image: url("../img/supervise/headerbg_supervise.png");
+}
+
+/*------------------------头部-------------------------*/
+.header{
+	margin         : 0 auto .7rem;
+	padding-top    : .7rem;
+	text-align     : center;
+	vertical-align : middle;
+
+	width          : 5rem;
+	height         : .7rem;
+	line-height    : 0.01rem + .7rem;
+}
+
+.header .mainTitle{
+	height    : 100%;
+	color     : white;
+	font-size : .7rem;
+	display   : inline;
+}
+
+
+/*------------------------正文-------------------------*/
+.container{
+	margin  : 0 auto;
+	padding : .2rem .5rem;
+	width   : 5.3rem;
+
+	font-size: @font_size_setting;
+	
+	background-color        : #fff;
+	background-image        : url("../img/frame_bottom.png");
+	-webkit-background-size : 100%;
+	background-size         : 100%;//不知道为啥，-webkit-要在上面，不然会整个竖直拉伸
+	background-position     : bottom;
+	background-repeat       : no-repeat;
+
+	border-radius      : .2rem;
+	-moz-border-radius : .2rem;
+	box-shadow         : 0 0 .5rem -.05rem #888888;
+
+	overflow: hidden;
+
+	.decoration{
+		width            : .15rem;
+		height           : .6rem;
+		background-color : extract(@color_yellow,1);
+		margin           : -.2rem -.5rem;
+	}
+
+	.title{
+		width      : 100%;
+		font-size  : @font_size_tit;
+		text-align : center;
+	}
+
+	#btns3{
+		.type{
+			position   : relative;
+			height     : @btn_height;
+			/*width    : 7.2rem;*/
+			width      : 100%;
+			margin-top : .5rem;
+
+			div{
+				position : absolute;
+				height   : 100%;
+			}
+			
+			//左侧文字提示
+			.choice{
+				// right       : 4.5rem;
+				line-height : 0.01rem + 1.2rem;
+				width: 1.8rem;
+				text-align: center;
+			}
+
+			//图片
+			.pic{
+				width            : @btn_height;
+				height           : @btn_height;
+
+				border-radius    : @btn_height * 0.5;
+
+				background-color : extract(@color_yellow,1);
+
+				top: 0; bottom: 0; left: 0; right: 0; margin: auto;	
+				img{
+					width    : 50%;
+					height   : 50%;
+
+					position : absolute;
+					top: 0;bottom: 0;left: 0;right: 0;
+					margin: auto;					
+				}
+
+			}
+			.pic:active{
+				background-color: extract(@color_yellow,2);
+			}
+
+			//右边提示
+			.tips{
+				width      : 1.4rem;
+				right      : .3rem;
+				text-align : center;
+				div{
+					position    : relative;
+					float       : left;
+					height      : @btn_height * 0.5;
+					line-height : 0.01rem + @btn_height * 0.5;
+					width       : 100%;
+				}
+				.tips_tit{
+					font-size: @font_size_subtit;
+				}
+			}
+		}
+	}
+
+	.unset{
+		color: extract(@color_black,3);
+	}
+	.set{
+		color: extract(@color_black,2);
+		overflow: hidden;
+	}
+
+	.parameter{
+		width         : 100%;
+		margin-bottom : .1rem;
+		display       : none;
+		
+		/*返回那行*/
+		.title{
+			margin-bottom: .4rem;
+			font-size: @font_size_subtit;
+			.back{
+				width            : @btn_height;
+				height           : @btn_height;
+				line-height      : 0.01rem + @btn_height;
+				border-radius    : @btn_height * 0.5;
+				background-color : extract(@color_yellow,1);
+				color            : white;
+				.justify{
+					display: block;
+					width: 65%;
+					margin: auto;
+				}
+			}
+			.back:active{
+				background-color : extract(@color_yellow,2);
+			}
+
+			.tips{
+				position    : absolute;
+				width       : 1.5rem;
+				height      : @btn_height;
+				text-align  : center;
+
+				margin-top  : -@btn_height;
+				margin-left : @btn_height+.2rem;
+				div{
+					position    : relative;
+					float       : left;
+					height      : @btn_height * 0.5;
+					line-height : 0.01rem + @btn_height * 0.5;
+					width       : 100%;
+				}
+				.tips_tit{
+					font-size: @font_size_subtit;
+				}
+				.stat{
+					font-size: @font_size_setting;
+				}
+			}
+		}
+
+		/*类型输入*/
+		.set_type{
+			width: 100%;
+			.input_container{
+				width         : 4.6rem;
+				// height        : @font_size_setting;
+				line-height   : 0.01rem + @font_size_setting;
+				padding       : .15rem .3rem;
+				border        : solid .05rem extract(@color_black,1);
+				border-radius : @font_size_setting + .15;
+				
+				margin-top: .4rem;
+				
+				input[type=text]{
+					width       : 100%;
+					// height      : @font_size_setting;
+					// line-height : 0.01rem + @font_size_setting;
+					font-size   : @font_size_setting;
+					border      : 0;
+					color       : extract(@color_black,1);
+				}
+			}		
+		}
+
+		/*打卡时间*/
+		.time{
+			.line{
+				position : relative;
+				margin   : .6rem 0;
+			}
+			select{
+				position           : relative;
+				display            : inline-block;
+				padding            : .1rem;
+				padding-right      : .4rem;
+				font-size          : @font_size_setting;
+
+				appearance         :none; 
+				-moz-appearance    :none;
+				-webkit-appearance :none;
+
+				border-radius      : .1rem;
+				border             : .02rem solid black;
+			}
+			.select_box{
+				position             : relative;
+				display              : inline-block;
+				.disabled{
+					position         : absolute;
+					width            : .85rem;
+					height           : .5rem;
+
+					background-color : #999;
+
+					filter           :alpha(opacity=50); 
+					-moz-opacity     :0.5;
+					opacity          :0.5;
+				}
+			}
+			.select_box:after{
+				content                 : "\25bc";
+			    position                : absolute;
+			    top                     : 0;
+			    right                   : 0;
+			    bottom                  : 0;
+			    width                   : .4rem;
+			    font-size				: .2rem;
+			    line-height             : 0.01rem + .65rem;
+			    vertical-align          : middle;
+			    text-align              : center;
+			    background              : none;
+			    color                   : black;
+			   -moz-border-radius       : 0 .06rem .06rem 0;
+			   -webkit-border-radius    : 0 .06rem .06rem 0;
+			    border-radius           : 0 .06rem .06rem 0;
+			    pointer-events          : none;
+			}
+			.input_container{
+				width         : @font_size_setting*2.5;
+				// height        : @font_size_setting;
+				line-height   : 0.01rem + @font_size_setting;
+				padding       : .1rem .2rem;
+
+				display       : inline-block;
+				border        : solid .02rem extract(@color_black,1);
+				border-radius : @font_size_setting + .15;
+				
+				// margin-top: .4rem;
+				
+				input[type=text]{
+					width       : 100%;
+					// height      : @font_size_setting;
+					// line-height : 0.01rem + @font_size_setting;
+					font-size   : @font_size_setting;
+					border      : 0;
+					color       : extract(@color_black,1);
+				}
+			}					
+		}
+	}
+	/*承诺金*/
+	#cash_parameter{
+		.line{
+			position : relative;
+			margin   : .6rem 0;
+		}
+		select{
+			position           : relative;
+			display            : inline-block;
+			padding            : .1rem;
+			padding-right      : .4rem;
+			font-size          : @font_size_setting;
+
+			appearance         : none; 
+			-moz-appearance    : none;
+			-webkit-appearance : none;
+
+			border-radius      : .1rem;
+			border             : .02rem solid black;
+		}
+		.select_box{
+			position: relative;
+			display: inline-block;
+		}
+		.select_box:after{
+			content                 : "\25bc";
+		    position                : absolute;
+		    top                     : 0;
+		    right                   : 0;
+		    bottom                  : 0;
+		    width                   : .4rem;
+		    font-size				: .2rem;
+		    line-height             : 0.01rem + .65rem;
+		    vertical-align          : middle;
+		    text-align              : center;
+		    background              : none;
+		    color                   : black;
+		   -moz-border-radius       : 0 .06rem .06rem 0;
+		   -webkit-border-radius    : 0 .06rem .06rem 0;
+		    border-radius           : 0 .06rem .06rem 0;
+		    pointer-events          : none;
+		}
+		.input_container{
+			width         : @font_size_setting*2.5;
+			// height        : @font_size_setting;
+			line-height   : 0.01rem + @font_size_setting;
+			padding       : .1rem .2rem;
+
+			display       : inline-block;
+			border        : solid .02rem extract(@color_black,1);
+			border-radius : @font_size_setting + .15;
+			
+			// margin-top: .4rem;
+			
+			input[type=text]{
+				width       : 100%;
+				// height      : @font_size_setting;
+				// line-height : 0.01rem + @font_size_setting;
+				font-size   : @font_size_setting;
+				border      : 0;
+				color       : extract(@color_black,1);
+			}
+		}					
+	}
+
+	/*监督模式描述*/	
+	.explain{
+		width         : 100%;
+		text-align    : center;
+		font-size     : @font_size_setting;
+		margin-bottom : .35rem;
+		.explain_tit{
+			font-size : @font_size_subtit;
+		}
+	}
+}
+
+/*下面*/
+.btns{
+	/*阅读条款*/
+	position: relative;
+	margin-top: .4rem;
+	.read{
+		color       : extract(@color_black,3);
+		font-size   : @font_size_sever;
+		text-align  : center;
+		#clause{
+			display         : inline;
+			color           : extract(@color_black,3);
+			text-decoration : underline;
+		}
+
+		/*ckeckbox样式*/
+		.check{
+			width  : @font_size_sever;
+			height : @font_size_sever;
+			label{
+				width: @font_size_sever - .075;
+				height: @font_size_sever - .075;
+				border-radius: @font_size_sever / 2;
+			}
+		}
+	}
+
+	/*按钮*/
+	.the_btn{
+		#cover{
+			width: 100%;
+			height: .8rem;
+			position: absolute;
+		}
+		.btn{
+			display          : block;
+			color            : white;
+			width            : 6.3rem;
+			height           : .8rem;
+			line-height      : 0.01rem + .8rem;
+			font-size        : @font_size_invite;
+			text-align       : center;
+			border-radius    : 4rem;
+			margin           : .25rem auto;
+			background-color : extract(@color_yellow,1);
+
+			FILTER     : progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=extract(@color_yellow,1),endColorStr=extract(@color_yellow,2));
+			background : -ms-linear-gradient(left, extract(@color_yellow,1),extract(@color_yellow,2));
+			background : -moz-linear-gradient(left,extract(@color_yellow,1),extract(@color_yellow,2));
+			background : -webkit-gradient(linear, 0% 100%, 0% 0%,from(extract(@color_yellow,1)), to(extract(@color_yellow,2)));
+			background : -webkit-gradient(linear, 0% 100%, 0% 0%,from(extract(@color_yellow,1)), to(extract(@color_yellow,2)));
+			background : -webkit-linear-gradient(left, extract(@color_yellow,1), extract(@color_yellow,2)); 
+			background : -o-linear-gradient(left, extract(@color_yellow,1), extract(@color_yellow,2)); 
+		}
+		.btn:active{
+			FILTER     : progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=extract(@color_yellow,2),endColorStr=extract(@color_yellow,3)); 
+			background : -ms-linear-gradient(left, extract(@color_yellow,2),extract(@color_yellow,3));
+			background : -moz-linear-gradient(left,extract(@color_yellow,2),extract(@color_yellow,3));
+			background : -webkit-gradient(linear, 0% 100%, 0% 0%,from(extract(@color_yellow,2)), to(extract(@color_yellow,3)));
+			background : -webkit-gradient(linear, 0% 100%, 0% 0%,from(extract(@color_yellow,2)), to(extract(@color_yellow,3)));
+			background : -webkit-linear-gradient(left, extract(@color_yellow,2), extract(@color_yellow,3));   
+			background : -o-linear-gradient(left, extract(@color_yellow,2), extract(@color_yellow,3));  
+		}		
+	}	
+}
+
+/*分享弹窗*/
+#pop_share{
+	display: none;
+	.pop_container{
+		position : relative;
+		width    : 100%;
+		.share_img{
+			position : absolute;
+			display  : block;
+			width    : 7.2rem - @pop_share_img_right * 2;
+			top      : .5rem;
+			right    : @pop_share_img_right;
+		}
+	}
+} 

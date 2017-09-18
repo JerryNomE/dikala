@@ -1,0 +1,91 @@
+@import url("M_pageStyle1.less");
+@import url("S_common.less");
+@import url("M_button.less");
+
+body{
+	background-image: url("../img/supervise/headerbg.png");
+}
+
+.header{
+	height: auto;
+	@adjust : .2rem;
+	padding: (.7rem - @adjust) 0 (.7rem - @adjust);
+	.yellow{
+		color: extract(@color_yellow,1);
+	}
+	.title{
+		font-size: .28rem;
+	}
+}
+
+.box2{
+	.title{
+		width       : 100%;
+		font-size   : .5rem;
+		text-align  : center;
+		font-weight : 500;
+	}
+	.target{
+		width       : inherit;
+		padding     : .1rem 0;
+		font-size   : .28rem;
+		text-align  : center;
+		font-weight : 600;
+	}
+	.line{
+		margin : .5rem 0;
+		width  : inherit;
+		.information{
+			position : relative;
+			width    : @box_width / 2;
+			height   : @round_size;
+			float    : left;
+			@round2words : .5rem / 2;
+			.round{
+				float        : right;
+				margin-right : @round2words;
+			}
+			.words{
+				position    : absolute;
+				margin-top  : (@round_size - @title_height * 2) / 2;
+				margin-left : @round2words;
+
+				text-align  : center;
+				@title_height : @round_size / 3;
+				>div{
+					position : relative;
+					height   : @title_height;
+					width    : 1.5rem;
+					overflow : hidden;
+				}
+				.tit{
+					line-height : @title_height;
+					font-size   : .3rem;
+					color       : extract(@color_yellow,1);
+					font-weight : 600;
+				}
+				.description{
+					line-height : .5rem;
+					font-size   : .25rem;
+				}		
+			}		
+		}		
+	}
+	:after{.clear}
+}
+
+#status{
+	margin-top : .2rem;
+	font-size  : .3rem;
+	text-align : center;
+}
+#status.undone{color:extract(@color_black,3)}
+#status.succeeded{color:extract(@color_yellow,1)}
+#status.failed{color:red}
+
+.btns{
+	margin-top: .5rem;
+	>p{
+		margin-bottom: .2rem;
+	}
+}

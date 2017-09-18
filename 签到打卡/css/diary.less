@@ -1,0 +1,101 @@
+@color_yellow          : #f8e032, #ffbe05, #ff9105;
+@color_yellow2         : rgb(255,207,63), rgb(254,136,38);
+@color_black           : #272636, #68676f, #999 ,rgb(237,237,237), rgb(125,125,125);
+
+/*通用圆角盒子*/
+@font_size_box_tit     : .32rem;//副标题
+@box_width             : 6.2rem;//盒子宽度
+@box_margin_ver        : .3rem;//盒子间距
+@box_padding_hor       : .5rem;//盒子内间距
+@box_padding_ver       : .5rem;
+@box_inner_width       : @box_width - @box_padding_hor*2;
+@box_tit_margin_bottom : .35rem;//副标题到正文距离
+
+@header_height        : 1.5rem;
+@header_btn_height    : .9rem;
+@header_btn_marginTop : (@header_height - @header_btn_height)/2;
+
+@font_size_tit : .36rem;
+
+html{
+	color: extract(@color_black,1);
+}
+
+body{
+	background-image: url("../img/diary/bg.png");
+	background-repeat: repeat-y;
+}
+
+/*头部*/
+.header{
+	width            : 100%;
+	height           : @header_height;
+	font-size        : .28rem;
+	background-color : black;
+	overflow         : hidden;
+	.no_bg_btn{
+		width       : 5rem;
+		height      : @header_btn_height;
+		line-height : 0.01rem + @header_btn_height;
+		margin      : @header_btn_marginTop auto;
+		img{
+			height         : .28rem;
+			vertical-align : text-bottom;
+		}
+	}
+}
+
+/*正文*/
+.container{
+	width  : 100%;
+	margin : @box_margin_ver *2 auto 0;
+	.tit{
+		width          : @font_size_tit * 9.5;
+
+		margin         : 0 auto;
+		padding-bottom : .1rem;
+
+		border-bottom  : extract(@color_black,1) .02rem solid;
+
+		font-size      : @font_size_tit;
+		font-weight    : 600;
+		text-align     : center;
+	}
+	.box{
+		position           : relative;
+		width              : @box_inner_width;
+		padding            : @box_padding_ver @box_padding_hor;
+		margin             : @box_margin_ver auto;
+
+		background-color   : white;
+
+		border-radius      : .2rem;
+		-moz-border-radius : .2rem;
+		box-shadow         : .1rem .1rem 0 rgba(0, 0, 0, 0.1);
+		border-radius      : .2rem;
+
+		overflow           : hidden;
+		.box_tit{
+			margin-bottom : @box_tit_margin_bottom;
+			font-size     : @font_size_box_tit;
+			color         : extract(@color_black,2);
+		}
+		.box_text{
+			width     : 100%;
+			// padding   : 0 .3rem;
+			margin    : @box_tit_margin_bottom;
+
+			color     : extract(@color_black,3);
+			font-size : .28rem;
+		}
+		.oper{
+			color      : extract(@color_black,2);
+			font-size  : .24rem;
+			text-align : right;
+			img{
+				height : .24rem;
+				vertical-align: text-bottom;
+			}
+		}
+	}
+}

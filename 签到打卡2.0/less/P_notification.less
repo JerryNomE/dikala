@@ -1,0 +1,144 @@
+@import url("S_common.less");
+@import url("S_gradient.less");
+@import url("M_pageStyle1.less");
+@import url("S_parameter.less");
+
+body{
+	background-image: url("../img/mainpage/headerbg.png");
+}
+
+.header{
+	@note_padding_ver : .2rem;
+	@note_border      : .02rem;
+	@note_fontSize    : .3rem;
+	@header_height    : @note_padding_ver*4 + @note_fontSize*2 + .4rem;
+
+	@name_fontSize : .6rem;
+	@name_height   : @name_fontSize + .1rem;
+
+	@portrait_height : .5rem;
+	@thumb_height    : .36rem;
+	@thumb_margin    : (@portrait_height - @thumb_height) / 2;
+	position : relative;
+	height   : @header_height;
+	/*左侧*/
+	.note{
+		position : absolute;
+		height   : inherit;
+		width    : 100%;
+		a{
+			position  : absolute;
+			left      : 0;
+			padding   : @note_padding_ver .6rem @note_padding_ver .35rem;
+
+			font-size : @note_fontSize;
+
+			border-top-right-radius    : .8rem;
+			border-bottom-right-radius : .8rem;
+		}
+		.current{
+			.gradient_yellow;
+			color       : white;
+			text-shadow : #999 0 .05rem .05rem;
+		}
+		.option{
+			border      : @note_border extract(@color_yellow,1) solid;
+			padding     : (@note_padding_ver - @note_border) .6rem (@note_padding_ver - @note_border) .35rem;
+			border-left : 0;
+
+			color       : extract(@color_yellow,1);
+		}
+		.bottom{
+			bottom   : 0;
+		}
+	}
+	/*右侧*/
+	#info{
+		position   : absolute;
+		right      : @bodySpacing + .1rem;
+		height     : inherit;
+		width      : 4rem;
+		text-align : right;
+		#name{
+			width       : 100%;
+			height      : @name_height;
+			line-height : @name_height + .01rem;
+
+			font-size   : @name_fontSize;
+			color       : white;
+
+			overflow    : hidden;
+		}
+		.settled{
+			position : absolute;
+			bottom   : 0;
+			height   : 1rem;
+			width    : 100%;
+			.img{
+				position : absolute;
+				top      : 0;
+				right    : 0;
+				height   : @portrait_height;
+				width    : 100%;
+				img{
+					display: block;
+					float: right;
+				}
+				#portrait{
+					height : @portrait_height;
+					width  : @portrait_height;
+					border-radius : 50%;
+				}
+				.thumb{
+					height : @thumb_height;
+					margin : @thumb_margin 0 @thumb_margin @thumb_margin*2;
+				}
+			}
+			.account{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				font-size: .26rem;
+			}
+		}
+	}
+}
+
+#notifications{
+	padding-bottom: 0;
+	&::before{
+		width  : 0;
+		height : 0;
+	}
+	.notification{
+		@line_height  : .75rem;
+		position      : relative;
+		width         : inherit;
+		min-height    : @line_height;
+		line-height   : @line_height;
+		margin-bottom : @box_padding_ver;
+		&::before{
+			content  : '';
+			position : absolute;
+			left     : -@box_padding_hor;
+			height   : @line_height;
+			width    : .17rem;
+			background-color: extract(@color_yellow,1);
+		}
+		&::after{.clear;}
+		@time_width : 1.8rem;
+		.info{
+			float     : left;
+			width     : @box_width - @time_width;
+			color     : extract(@color_black,2);
+			font-size : .28rem;
+		}
+		.time{
+			float      : left;
+			width      : @time_width;
+			color      : extract(@color_black,3);
+			font-size  : .24rem;
+			text-align : right;
+		}
+	}
+}

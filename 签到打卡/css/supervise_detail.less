@@ -1,0 +1,165 @@
+@color_yellow          : #f8e032, #ffbe05, #ff9105;
+@color_yellow2         : rgb(255,207,63), rgb(254,136,38);
+@color_black           : #272636, #68676f, #999 ,rgb(237,237,237), rgb(125,125,125);
+
+@box_width             : 6.7rem;//盒子宽度
+@box_margin_ver        : .3rem;//盒子间距
+@box_padding_hor       : .5rem;//盒子内间距
+@box_padding_ver       : .5rem;
+
+@font_size_parameter_tit   : .3rem;
+@font_size_parameter_stat  : .25rem;
+
+@mark_height      : 1.2rem;
+@tips_text_height : .5rem;
+
+body{
+	background-image: url("../img/supervise/headerbg_supervise.png");
+}
+.yellow{
+	color: extract(@color_yellow,1);
+}
+/*头部*/
+.header{
+	margin         : 0 auto .7rem;
+	padding-top    : .7rem;
+	text-align     : center;
+	vertical-align : middle;
+
+	width          : 100%;
+	height         : .7rem;
+	line-height    : 0.01rem + .7rem;
+	color          : white;
+	.subtit{
+		position: absolute;
+		width: 100%;
+		font-size: .3rem;
+		top: .1rem;
+	}
+	.mainTitle{
+		height    : 100%;
+		font-size : .7rem;
+		display   : inline;
+	}
+}
+
+/*正文*/
+.container{
+	width  : 100%;
+	margin : 0 auto @box_margin_ver;
+	.box{
+		position           : relative;
+		width              : @box_width - @box_padding_hor*2;
+		padding            : @box_padding_ver @box_padding_hor;
+		margin             : @box_margin_ver auto;
+
+		background-color        : #fff;
+		background-image        : url("../img/frame_bottom.png");
+		background-size         : 100% auto;
+		-webkit-background-size : 100% auto;
+		background-position     : bottom;
+		background-repeat       : no-repeat;
+
+		border-radius      : .2rem;
+		-moz-border-radius : .2rem;
+		box-shadow         : 0 0 .5rem -.05rem #888888;
+		border-radius      : .2rem;
+
+		overflow           : hidden;
+		.line_decoration{
+			position: absolute;
+			width            : .15rem;
+			height           : .6rem;
+			background-color : extract(@color_yellow,1);
+			margin           : -@box_padding_ver -@box_padding_hor;
+		}
+
+		.tit{
+			position    : relative;
+			width       : 100%;
+			font-size   : .5rem;
+			text-align  : center;
+		}
+		.target{
+			position    : relative;
+			width       : 100%;
+			margin-top  : .2rem;
+			font-size   : .3rem;
+			font-weight : 600;
+			text-align  : center;
+		}
+
+		.target_details{
+			position: relative;
+			.detail{
+				position: relative;
+				margin: .6rem 0 .6rem @mark_height;
+				.back{
+					width            : @mark_height;
+					height           : @mark_height;
+					line-height      : 0.01rem + @mark_height;
+
+					border-radius    : @mark_height/2;
+					background-color : extract(@color_yellow,1);
+
+					text-align: center;
+				}
+
+				.tips{
+					position: absolute;
+					margin-top  : -@mark_height;
+					margin-left : @mark_height + 0.3rem;
+					div{
+						position    : relative;
+						text-align  : center;
+						height      : @tips_text_height;
+						line-height : 0.01rem + @tips_text_height;
+					}
+					.tips_tit{
+						margin-top : .1rem;
+						font-size  : @font_size_parameter_tit;
+					}
+					.stat{
+						font-size  : @font_size_parameter_stat;
+						color      : extract(@color_black,3);
+					}
+				}
+			}
+		}
+	}
+}
+
+#stat_for_failed{
+	display     : none;
+	width       : 100%;
+	height      : .45rem;
+	line-height : 0.01rem + .45rem;
+	font-size   : .3rem;
+	text-align  : center;
+	margin-top  : .5rem;
+}
+
+.btn{
+	display     : block;
+	width       : @box_width;
+	height      : .9rem;
+	line-height : 0.01rem + .9rem;
+	margin      : .5rem auto;
+	font-size   : .3rem;
+}
+
+#finished{
+	color            : white;
+	font-weight      : 600;
+	text-align       : center;
+	border-radius    : .45rem;
+	background-color : extract(@color_yellow,1);
+}
+
+#unfinished{
+	color            : white;
+	font-weight      : 600;
+	text-align       : center;
+	border-radius    : .45rem;	
+	background-color : extract(@color_black,3);
+}

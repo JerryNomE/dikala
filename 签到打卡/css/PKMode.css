@@ -1,0 +1,521 @@
+body{
+	background-image: url("../img/headerbg_PK.png");
+}
+
+/*----------头部----------*/
+.header{
+	padding-top: .8rem;
+	margin: auto;
+	text-align: center;
+	vertical-align: middle;
+
+	width: 5rem;
+	height: .7rem;
+	line-height: .7rem;
+}
+
+.header .mainTitle{
+	height: 100%;
+	color: white;
+	font-size: .7rem;
+	display: inline;
+}
+.header .q_container{
+	display: inline-block;
+	width: .4rem;
+	height: 100%;
+	padding: auto;
+	/*margin-left: -.35rem;*/
+}
+.header #q{
+	/*position: relative;*/
+	/*display: block;*/
+	width: .4rem;
+	height: .4rem;
+}
+
+/*----------数据----------*/
+.data{
+	/*margin-top: 2.6rem;*/
+	width: 100%;
+	margin-top: 1.5rem;
+	padding: auto;
+}
+
+.data .bg{
+	position: absolute;
+	width: 50%;
+	border-right: 1px solid #BFBFBF;
+	height: 3.5rem;
+	margin-top: .5rem;
+}
+
+.data .type{
+	position: relative;
+	height: 1.2rem;
+	/*width: 7.2rem;*/
+	width: 100%;
+	margin-top: .5rem;
+	font-size: .3rem;
+}
+
+.data .top{
+	margin-top: 0;
+}
+
+.data .type div{
+	position: absolute;
+}
+
+.data .type .choice{
+	right: 4.5rem;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	font-size: .32rem;
+}
+.data .type .set{
+	width: 1rem;
+}
+.data .type .unset{
+	color: #999;
+}
+
+.data .type .pic{
+	height: 1.2rem;
+	width: 1.2rem;
+
+	border-radius: .6rem;
+
+	background-color: #f8e032;
+
+	top: 0; bottom: 0; left: 0; right: 0; margin: auto;
+}
+
+.data .type .pic img{
+	width: 50%;
+	height: 50%;
+
+	position: absolute;
+	top: 0;bottom: 0;left: 0;right: 0;
+	margin: auto;
+}
+
+.data .type .pic:active{
+	background-color: #febe05;
+}
+.data .type .disabled,.data .type .disabled:active{
+	background-color: #777;
+}
+
+.data .type .tips{
+	left: 4.5rem;
+	height: 1.2rem;
+	width: 1.3rem;
+}
+.data .type .tips div{
+	position: relative;
+	text-align: center;
+	width: 1.3rem;
+
+	height: .5rem;
+	line-height: .5rem;
+}
+.data .type .tips .tips_tit{
+	margin-top: .1rem;
+}
+.tips .unset{
+	color: #999;
+}
+.data .type .tips .stat{
+	font-size: .25rem;
+}
+
+/*---获胜条件---*/
+.data .explain{
+	width: 100%;
+	text-align: center;
+	font-size: .3rem;
+	margin-bottom: .35rem;
+}
+
+.data .explain .explain_tit{
+	font-size: .4rem;
+	margin-bottom: .3rem;
+}
+
+.data .explain .gps{
+	height: .3rem;
+}
+
+.data .explain .block{
+	height: .1rem;
+}
+
+/*--------------------------下面--------------------------*/
+.btns .read{
+	color: #999;
+	font-size: .3rem;
+	text-align: center;
+}
+
+.btns .read #clause{
+	display: inline;
+	color: #999;
+	font-size: .3rem;
+	text-align: center;
+	text-decoration: underline;
+}
+/*-----checkbox样式-----*/
+
+.btns .read .check{
+	width:  .3rem;
+	height: .3rem;
+}
+.btns .read .check label{
+	width:  .2rem;
+	height: .2rem;
+	border-radius: 1rem;
+}
+
+/*--------------------------按钮--------------------------*/
+.btns{
+	position: relative;
+}
+
+.btn{
+	display: block;
+
+	color: white;
+
+	width: 6.25rem;
+	height: .8rem;
+	line-height: .8rem;
+	font-size: .25rem;
+	text-align: center;
+
+	border-radius: 4rem;
+
+	margin: auto;
+	margin-top: .25rem;
+
+/*	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#f8e032,endColorStr=#ffbe05);
+	background: -ms-linear-gradient(left, #f8e032,#ffbe05);
+	background: -moz-linear-gradient(left,#f8e032,#ffbe05);
+	background: -webkit-gradient(linear, 0% 100%, 0% 0%,from(#f8e032), to(#ffbe05));
+	background: -webkit-gradient(linear, 0% 100%, 0% 0%,from(#f8e032), to(#ffbe05));
+	background: -webkit-linear-gradient(left, #f8e032, #ffbe05); 
+	background: -o-linear-gradient(left, #f8e032, #ffbe05); */
+}
+
+.btn:active{
+/*	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#ffbe05,endColorStr=#ff9105); 
+	background: -ms-linear-gradient(left, #ffbe05,#ff9105);
+	background: -moz-linear-gradient(left,#ffbe05,#ff9105);
+	background: -webkit-gradient(linear, 0% 100%, 0% 0%,from(#ffbe05), to(#ff9105));
+	background: -webkit-gradient(linear, 0% 100%, 0% 0%,from(#ffbe05), to(#ff9105));
+	background: -webkit-linear-gradient(left, #ffbe05, #ff9105);   
+	background: -o-linear-gradient(left, #ffbe05, #ff9105);  */
+}
+
+.upper_btn{
+	background-color: #f8e032;
+}
+.lower_btn{
+	background-color: #ffbe05;
+}
+
+.btns #cover{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+/*-------------------------伪·弹窗效果-------------------------------*/
+.parameter{
+	width: 5.8rem;
+	margin: auto;
+	font-size: .3rem;
+	margin-bottom: .1rem;
+	display: none;
+}
+.parameter #wak_line,.parameter #run_line,.parameter #lib_line{
+	display: none;
+}
+
+.parameter .title{
+	margin-bottom: .4rem;
+}
+
+.parameter .title .back{
+	width: 1.2rem;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	border-radius: .6rem;
+	background-color: #f8e032;
+
+	color: white;
+}
+
+.parameter .title .back:active{
+	background-color: #febe05;
+}
+
+.parameter .justify{
+	display: block;
+	width: .75rem;
+	margin: auto;
+}
+
+
+.parameter .title .tips{
+	position: absolute;
+	margin-top: -1.2rem;
+	margin-left: 1.5rem;
+	height: 1.2rem;
+	width: 1.3rem;
+}
+.parameter .title .tips div{
+	position: relative;
+	text-align: center;
+	/*width: 1.3rem;*/
+
+	height: .5rem;
+	line-height: .5rem;
+}
+.parameter .title .tips .tips_tit{
+	margin-top: .1rem;
+}
+.parameter .title .tips .stat{
+	font-size: .25rem;
+}
+.time_set{
+	font-size: .15rem!important;
+	text-align: right;
+	line-height: .2rem!important;
+	padding-top: .3rem; 
+}
+#time_parameter .time_set{
+	text-align: left;
+	padding-top: 0;
+}
+/*打卡类型按钮*/
+.parameter .type_btns{
+	width: 100%;
+	text-align: justify;
+}
+.parameter .type_btns div{
+	display: inline-block;
+	width: 1.2rem;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	
+	border-radius: 1rem;
+	text-align: center;
+
+	background-color: #c9c9c9;
+	color: white;
+}
+.parameter .type_btns div:active{
+	background-color: #343434;
+}
+.parameter .type_btns .ex{
+	width: 100%;
+	height: 0;
+}
+
+
+/*打卡时间*/
+.parameter .time{
+	font-size: .25rem;
+}
+
+.parameter .time .line{
+	position: relative;
+	margin: .6rem 0;
+	/*width: 100%;*/
+	/*text-align: center;*/
+}
+
+.parameter .time select{
+	position: relative;
+	display: inline-block;
+	/*width: 1.35rem;
+	height: .5rem;*/
+	/*line-height: .5rem;*/
+	
+	padding: .1rem;
+	padding-right: .4rem;
+	font-size: .25rem;
+
+	/*清除或改变原有样式*/
+	outline: none;/*点击后的蓝框*/
+	appearance:none;/*箭头*/
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	
+	border-radius: .1rem;
+	border: .02rem solid black;
+
+	/*text-indent: .1rem;*/
+}
+.parameter .time .select_box{
+	position: relative;
+	display: inline-block;
+}
+.parameter .time .select_box:after{
+	content                 : "\25bc";
+    position                : absolute;
+    top                     : 0;
+    right                   : 0;
+    bottom                  : 0;
+    width                   : .4rem;
+    font-size				: .2rem;
+    line-height             : .55rem;
+    vertical-align          : middle;
+    text-align              : center;
+    background              : none;
+    color                   : black;
+   -moz-border-radius       : 0 6px 6px 0;
+   -webkit-border-radius    : 0 6px 6px 0;
+    border-radius           : 0 6px 6px 0;
+    pointer-events          : none;
+}
+.parameter .time #time_tips{
+	text-align: center;
+	font-size: .15rem;
+	color: #666;
+}
+
+/*承诺金*/
+.parameter .line{
+	font-size: .25rem;
+	position: relative;
+	margin: .6rem 0;
+	/*width: 100%;*/
+	/*text-align: center;*/
+}
+.parameter #cas_line{
+	text-align: center;
+	display: block;
+}
+.parameter .line select{
+	position: relative;
+	display: inline-block;
+	/*width: 1.35rem;
+	height: .5rem;*/
+	/*line-height: .5rem;*/
+	
+	padding: .1rem;
+	padding-right: .4rem;
+	font-size: .25rem;
+
+	/*清除或改变原有样式*/
+	outline: none;/*点击后的蓝框*/
+	appearance:none;/*箭头*/
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	
+	border-radius: .1rem;
+	border: .02rem solid black;
+
+	/*text-indent: .1rem;*/
+}
+.parameter .line .select_box{
+	position: relative;
+	display: inline-block;
+}
+.parameter .line .select_box:after{
+	content                 : "\25bc";
+    position                : absolute;
+    top                     : 0;
+    right                   : 0;
+    bottom                  : 0;
+    width                   : .4rem;
+    font-size				: .2rem;
+    line-height             : .55rem;
+    vertical-align          : middle;
+    text-align              : center;
+    background              : none;
+    color                   : black;
+   -moz-border-radius       : 0 6px 6px 0;
+   -webkit-border-radius    : 0 6px 6px 0;
+    border-radius           : 0 6px 6px 0;
+    pointer-events          : none;
+}
+
+/*匹配的弹窗*/
+#pop_matching,#pop_matched{
+	display: none;
+}
+.pop_match .pop_container{
+	margin: 1.6rem auto 0;
+	width: 100%;
+}
+.pop_match .pop_container .pop_img{
+	display: block;
+	width: 2.6rem;
+	margin-left: 2.3rem;
+}
+.pop_match .pop_container .pop_stat{
+	margin: .58rem 0 .3rem 0;
+	width: 100%;
+	text-align: center;
+	font-size: .63rem;
+	color: white;
+	font-weight: 600;
+}
+.pop_match .pop_container .pop_info{
+	width: 100%;
+	text-align: center;
+	font-size: .24rem;
+	color: #999;
+}
+.pop_match .pop_container .pop_opponent_name{
+	width: 100%;
+	margin-top: .1rem;
+	text-align: center;
+	font-size: .5rem;
+	color: rgb(252,224,0);
+}
+.pop_match .pop_container .pop_hr{
+	width: 4.2rem;
+	height: .02rem;
+	margin: .15rem auto;
+	background-color: rgb(179,177,171);
+}
+.pop_match .pop_container .pop_mission{
+	width: 100%;
+	margin-top: .1rem;
+	text-align: center;
+	font-size: .24rem;
+	color: white;
+}
+.pop_match .pop_container .pop_mission img{
+	height: .3rem;
+	vertical-align: bottom;
+}
+.pop_match .pop_container .no_bg_btn{
+	margin: .7rem auto;
+	width: 4.2rem;
+	height: .74rem;
+	color: rgb(252,224,0);
+	border-color: rgb(252,224,0);
+	line-height: .74rem;
+	font-size: .24rem;
+	font-weight: 500;
+}
+
+/*分享弹窗 详见supervise.less*/
+#pop_share{display:none}#pop_share .pop_container{position:relative;width:100%}#pop_share .pop_container .share_img{position:absolute;display:block;width:6.2rem;top:.5rem;right:.5rem}
+
+/*pk规则弹窗*/
+#pop_PKrule{
+	display: none;
+}
+#pop_PKrule #pop_PKrule_img{
+	position: relative;
+	display: block;
+	width: 6rem;
+	height: 9.02rem;
+	margin: 0 auto;
+}

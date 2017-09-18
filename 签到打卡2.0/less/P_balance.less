@@ -1,0 +1,24 @@
+@import url("S_common.less");
+@import url("M_pageStyle1.less");
+@import url("S_parameter.less");
+@import url("M_button.less");
+
+body{
+	background-image: url("../img/balance/headerbg.png");
+}
+
+.header{
+	font-size   : @header_fontSize;
+	line-height : @header_height;
+	.sub{
+		font-size: @header_fontSize * .6;
+	}
+}
+
+.container{
+	margin-top: 1rem!important;
+	padding: 0 @bodySpacing;
+	.btns a{
+		margin-top: .5rem!important;
+	}
+}

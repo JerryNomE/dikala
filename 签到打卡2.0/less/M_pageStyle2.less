@@ -1,0 +1,87 @@
+@import url("S_box.less");
+@import url("S_parameter.less");
+
+@header_height : .7rem;
+@header_fontSize : .5rem;
+.header{
+	padding    : .7rem 0;
+	height     : @header_height;
+	line-height : @header_height;
+
+	text-align : center;
+	color      : white;
+	font-size  : @header_fontSize;
+}
+
+@container_padding_hor : .4rem;
+@container_padding_ver : .5rem;
+// @container_width    : 7.2rem - 2 * (@bodySpacing + @container_padding_ver);
+@container_width : 7.2rem - 2 * @bodySpacing;
+.container{
+	position : relative;
+	width    : @container_width;
+
+	margin-top    : 1rem;
+	margin-bottom : .5rem;
+	padding       : 0 @bodySpacing;
+
+	.set{background-color: extract(@color_yellow,1);}
+
+	.pageName{
+		position      : relative;
+		margin-bottom : .5rem;
+		.words{
+			position      : absolute;
+			margin-top    : -@round_size + (@round_size - @title_height * 2) / 2;
+			margin-left   : @round_size + 0.3rem;
+			margin-bottom : .5rem;
+
+			text-align  : center;
+			@title_height : @round_size / 3;
+			div{
+				position  : relative;
+				height    : @title_height;
+				min-width : 1.3rem;
+				max-width : @container_width - @round_size - 0.3rem;
+				overflow  : hidden;
+			}
+			.title{
+				line-height : @title_height;
+				font-size   : .3rem;
+				color       : extract(@color_yellow,1);
+			}
+			.description{
+				line-height : .5rem;
+				font-size   : .25rem;
+				color       : extract(@color_black,3);
+			}		
+		}
+	}
+}
+.container::after{
+	content    : "";
+	display    : block;
+	
+	width      : 100%;
+	height     : 1.5rem;
+
+
+	background-image    : url("../img/containerBottom.png");
+	background-size     : 100%;
+	background-position : bottom;
+	background-repeat   : no-repeat;
+
+	clear : both;
+}
+
+input{
+	@input_width : 2.65rem;
+	@font_size_parameter_input : .28rem;
+	width         : @input_width;
+
+	border        : none;
+	border-bottom : .02rem black solid;
+
+	font-size     : @font_size_parameter_input;
+	text-align    : center;
+}

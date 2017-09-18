@@ -1,0 +1,248 @@
+@color_yellow          : #f8e032, #ffbe05, #ff9105;
+@color_yellow2         : rgb(255,207,63), rgb(254,136,38);
+@color_black           : #272636, #68676f, #999 ,rgb(237,237,237), rgb(125,125,125),#bbb;
+
+@font_size_tit               : .6rem;//上方日期
+@font_size_box_tit           : .32rem;//副标题
+@font_size_upload_btn        : .26rem;//上传按钮
+@font_size_di_btn_tit        : .32rem;//下方打的什么卡
+@font_size_di_btn_stat       : .25rem;//打卡情况
+@font_size_right_bottom_text : .28rem;//盒子右下角切换
+
+@box_width             : 6.7rem;//盒子宽度
+@box_margin_ver        : .3rem;//盒子间距
+@box_padding_hor       : .5rem;//盒子内间距
+@box_padding_ver       : .5rem;
+@box_tit_margin_bottom : .35rem;//副标题到正文距离
+@upload_img_height     : 2.45rem;//图片大小
+@btn_width             : 2.7rem;//所有按钮宽度
+@upload_btn_height     : .75rem;//上传按钮高度
+@dika_btn_height       : 1.1rem;//点击打卡按钮高度
+
+@dika_btn_margin_hor : .25rem;
+@dika_btn_margin_ver : .25rem;
+@tick_height : .5rem;
+
+html{
+	color: extract(@color_black,1);
+}
+
+body{
+	background-image: url("../img/headerbg_PK.png");
+	position: relative;
+}
+/*标题时间*/
+.header{
+	width: 100%;
+	padding: .5rem 0 .2rem;
+
+	color: white;
+	font-size: @font_size_tit;
+	text-align: center;
+	#today{
+		font-size: @font_size_tit * .5;
+	}
+}
+
+/*正文*/
+.container{
+	width  : 100%;
+	margin : 0 auto @box_margin_ver;
+	.box{
+		position           : relative;
+		width              : @box_width - @box_padding_hor*2;
+		padding            : @box_padding_ver @box_padding_hor;
+		margin             : @box_margin_ver auto;
+
+		background-color   : white;
+
+		border-radius      : .2rem;
+		-moz-border-radius : .2rem;
+		box-shadow         : 0 0 .5rem -.05rem #888888;
+		border-radius      : .2rem;
+
+		overflow           : hidden;
+		.line_decoration{
+			position: absolute;
+			width            : .15rem;
+			height           : .6rem;
+			background-color : extract(@color_yellow,1);
+			margin           : -@box_padding_ver -@box_padding_hor;
+		}
+		.box_tit{
+			margin-bottom : @box_tit_margin_bottom;
+			font-size     : @font_size_box_tit;
+			font-weight   : bold;
+		}
+	}
+
+	.upload{
+		position: relative;
+		margin-top: 0;
+		margin-bottom: .5rem;
+		#upload_img{
+			float             : left;
+			width             : @upload_img_height;
+			height            : @upload_img_height;
+
+			background-image  : url("../img/dika/upload.png");
+			background-repeat : no-repeat;
+			background-size   : 100% 100%;
+			img{
+				width         : 100%;
+				height        : 100%;
+			}
+		}
+		#reupload{
+			position         : relative;
+			float            : right;
+			margin-top       : (@upload_img_height - @upload_btn_height)/6;
+
+			width            : @btn_width;
+			height           : @upload_btn_height;
+			line-height      : 0.01rem + @upload_btn_height;
+
+			background-color : extract(@color_yellow,2);
+			border-radius    : @upload_btn_height/2;
+
+			text-align       : center;
+			font-size        : @font_size_upload_btn;
+			color            : white;
+			font-weight      : 600;
+		}
+		#upload_succeed{
+			position    : relative;
+			float       : right;
+			margin-top  : (@upload_img_height - @upload_btn_height)/6;
+
+			width       : @btn_width;
+			height      : @upload_btn_height;
+			line-height : 0.01rem + @upload_btn_height;
+
+			text-align  : center;
+			font-size   : @font_size_upload_btn;
+			color       : extract(@color_yellow,2);
+		}		
+	}
+
+	.dika{
+		position   : relative;
+		overflow-x : hidden;
+		#dika_btns{
+			width: 100%;
+			.dika_btn{
+				float            : left;
+
+				width            : @btn_width;
+				height           : @dika_btn_height;
+
+				margin           : 0 0 @dika_btn_margin_ver;
+
+				background-color : extract(@color_black,5);
+				border-radius    : @upload_btn_height/2;
+
+				color            : white;
+				.tick{
+					float       : left;
+					width       : @tick_height;
+					height      : @tick_height;
+
+					margin-top  :(@dika_btn_height - @tick_height)/2; 
+					margin-left : @upload_btn_height/2;
+				}
+				.description{
+					float        : right;
+					position     : relative;
+					width        : 1.4rem;
+
+					margin-top   :(@dika_btn_height - @tick_height)/3; 
+					margin-right : @upload_btn_height/2;
+					text-align   : center;
+					.btn_tit{
+						font-size     : @font_size_di_btn_tit;
+						margin-bottom : .05rem;
+						font-weight   : 600;
+					}
+					.stat{
+						font-size: @font_size_di_btn_stat;
+					}
+				}
+			}
+			.right_btn{
+				margin-left: @dika_btn_margin_hor;
+			}
+
+			/*未加入打卡*/
+			.unjoined{
+				background-color: extract(@color_black,6);
+				.tick{
+					position: relative;
+					.square{
+						position: absolute;
+						bottom: 0;
+
+						width: .32rem;
+						height: .32rem;
+						border: .05rem solid white;
+						border-radius: .05rem;
+					}
+				}
+			}
+			/*打卡*/
+			.unchecked{
+				background-color: extract(@color_yellow,1);
+				// .tick{
+				// 	background-image: url('../img/dika/tick.png');
+				// 	background-size: 100% 100%;
+				// }
+				.tick{
+					position: relative;
+					.square{
+						position: absolute;
+						bottom: 0;
+
+						width: .32rem;
+						height: .32rem;
+						border: .05rem solid white;
+						border-radius: .05rem;
+					}
+				}
+			}
+			/*审核中*/
+			.checking{
+				background-color: extract(@color_yellow,2);
+				// .tick{
+				// 	background-image: url('../img/dika/tick.png');
+				// 	background-size: 100% 100%;
+				// }
+				.tick{
+					position: relative;
+					.square{
+						position: absolute;
+						bottom: 0;
+
+						width: .32rem;
+						height: .32rem;
+						border: .05rem solid white;
+						border-radius: .05rem;
+					}
+				}
+			}
+			/*已完成*/
+			.checked{
+				background-color: extract(@color_yellow2,2);
+				.tick{
+					background-image: url('../img/dika/tick.png');
+					background-size: 100% 100%;
+				}
+			}
+			.check_my_supervise{
+				width: 100%;
+				margin-top: @dika_btn_margin_ver;
+
+				text-align: right;
+				font-size: @font_size_right_bottom_text;
+			}
+		}
+	}
+}

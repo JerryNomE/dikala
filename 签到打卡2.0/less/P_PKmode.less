@@ -1,0 +1,176 @@
+@import url("S_common.less");
+@import url("M_pageStyle2.less");
+@import url("S_parameter.less");
+@import url("M_button.less");
+@import url("M_clause.less");
+
+body{
+	background-image: url("../img/PKmode/headerbg.png");
+}
+
+.header{
+	font-size   : .7rem;
+	img{
+		margin-left : .2rem;
+		height      : .7 * @header_height;
+	}
+}
+
+.container{
+	margin-top: 1rem!important;
+	padding: 0 @bodySpacing;
+	.table{
+		position: relative;
+		.tr{
+			position : relative;
+			width    : 100%;
+			height   : @round_size;
+			margin-bottom : .7rem;
+			>div{
+				position      : relative;
+				float         : left;
+				box-sizing    : border-box;
+				height        : @round_size;
+			}
+			@round-percentage : round((@round_size / @container_width) * 100) + 1 + 0%;
+			.input{
+				@font-size : .28rem;
+				position   : relative;
+				width      : (100% - @round-percentage) / 2;
+				font-size  : @font-size;
+				text-align : center;
+
+				@option-height : @font-size + .15rem;
+				.triangle{
+					position : absolute;
+					width    : 0;
+				    height   : 0;
+					display  : block;
+					left     : .5rem;
+					top      : (@round_size - @option-height) / 2 + .1rem;
+
+				    border-top    : @font-size/3 solid transparent;
+				    border-left   : @font-size/1.5 solid extract(@color_blackA,1);
+				    border-bottom : @font-size/3 solid transparent;
+				}
+				.spin{
+					@addition  : @option-height;
+					position: relative;
+					margin-top : -@addition;
+					height     : @round_size + @addition*2;
+					width      : 100%;
+					overflow   : hidden;
+					.select{
+				    	position    : absolute;
+						padding-top : (@round_size - @option-height) / 2 + @addition;
+						height      : @round_size - (@round_size - @option-height) / 2;
+						width: 100%;
+						.option{
+							display     : block;
+							border      : 0;
+							font-size   : inherit;
+							height      : @option-height;
+							&.checked{
+								color: extract(@color_yellow,1)
+							}
+						}
+				    }
+				}
+			    
+			}
+			.icon{
+				position : relative;
+				width    : @round-percentage;
+				.round{
+					position: absolute;
+					top:0;right:0;bottom:0;left:0;margin:auto;
+				}
+			}
+			.status{
+				width       : (100% - @round-percentage) / 2;
+				color       : extract(@color_yellow,1);
+				line-height : @round_size;
+				font-size   : .28rem;
+				font-weight : 600;
+				text-align  : center;
+
+				padding-right: (100% - @round-percentage) / 7;
+			}
+
+			&::after{
+				.clear;
+			}
+		}
+	}
+	&::after{
+		height: 1rem;
+	}
+}
+
+.pop_up{
+	&#pop_PKrule{
+		 #pop_PKrule_img{
+			position: relative;
+			display: block;
+			width: 6rem;
+			height: 9.02rem;
+			margin: 0 auto;
+		}
+	}
+	&#pop_matching{
+		.pop_container{
+			margin : 1.6rem auto 0;
+			width  : 100%;
+			#pop_img{
+				display     : block;
+				width       : 2.6rem;
+				margin-left : 2.3rem;
+				transition         : opacity 1s;
+				-moz-transition    : opacity 1s;
+				-webkit-transition : opacity 1s;
+				-o-transition      : opacity 1s;
+			}
+			.pop_stat{
+				margin      : .58rem 0 .3rem 0;
+				width       : 100%;
+				text-align  : center;
+				font-size   : .63rem;
+				color       : white;
+				font-weight : 600;
+			}
+			.pop_info{
+				width      : 100%;
+				text-align : center;
+				font-size  : .24rem;
+				color      : #999;
+			}
+		}
+	}
+	&#pop_share{
+		.pop_container{
+			width      : 4.6rem;
+			margin     : 1.1rem auto 0;
+			text-align : center;
+			.share_img{
+				display: block;
+				width: 5rem;
+				right: .1rem;
+			}
+		}
+	} 
+	.no_bg_btn{
+		display       : block;
+		margin        : .7rem auto;
+		width         : 4.2rem;
+		height        : .85rem;
+		line-height   : .85rem;
+
+		text-align    : center;
+		font-size     : .3rem;
+		color         : extract(@color_yellow,1);
+		font-weight   : 600;
+
+		border        : .02rem solid extract(@color_yellow,1);
+		border-radius : 5rem;	
+	}
+}
